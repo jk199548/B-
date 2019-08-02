@@ -1,0 +1,104 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.7",
+	"appid": "wx8dffe31fbc894591",
+	"projectname": "B%E7%AB%AF",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "投递详情页面",
+					"pathName": "pages/toudixiangqing/toudixiangqing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布",
+					"pathName": "pages/fabu/fabu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页动态展示页面",
+					"pathName": "pages/indexdongtai/indexdongtai",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公司认证",
+					"pathName": "pages/conpanyrenzheng/conpanyrenzheng",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人认证",
+					"pathName": "pages/gerenrenzheng/gerenrenzheng",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "身份选择",
+					"pathName": "pages/shenfenxuanze/shenfenxuanze",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人投递详情",
+					"pathName": "pages/gerentoudixiangqing/gerentoudixiangqing",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,50 @@
+/* pages/shenfenxuanze/shenfenxuanze.wxss */
+.title{
+  width: 690rpx;
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 66rpx;
+}
+.inputbox{
+  width: 630rpx;
+  margin-left: 60rpx;
+  height: 90rpx;
+  background-color: #f4f4f4;
+  border-radius: 15rpx;
+  margin-top: 64rpx;
+}
+.input{
+  width: 630rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding-left: 35rpx;
+  font-size: 28rpx;
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #808080;
+}
+.bottom{
+  width: 630rpx;
+  margin-left: 60rpx;
+  margin-top: 33rpx;
+}
+.bottom text{
+  font-size: 28rpx;
+  color: #fc7001;
+  float: right;
+}
+.netstepbtn{
+  width: 690rpx;
+  height: 90rpx;
+  margin-left: 30rpx;
+  background-color: #fc7001;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #ffffff;
+  border-radius: 45rpx;
+  margin-top: 226rpx;
+}

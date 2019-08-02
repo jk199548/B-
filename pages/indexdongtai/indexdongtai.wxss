@@ -1,0 +1,73 @@
+/* pages/indexdongtai/indexdongtai.wxss */
+.dongtai-box-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 690rpx;
+  margin-left: 30rpx;
+}
+.dongtai-box-top text{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.dongtai-box-top image{
+  width: 30rpx;
+  height: 24rpx;
+}
+.dongtai-box-content{
+  width: 690rpx;
+  font-size: 30rpx;
+  color: #333333;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  line-height: 50rpx;
+}
+.dongtai-box-image{
+  margin-top: 30rpx;
+  width: 720rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.dongtai-box-image image{
+  width: 210rpx;
+  height: 210rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.delmodal{
+  position: absolute;
+  width: 200rpx;
+  height: 240rpx;
+  right: 30rpx;
+  top: 86rpx;
+  background-color: black;
+  opacity: 0.7;
+  border-radius: 15rpx;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+}
+.delmodal view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  
+}
+.delmodal image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+}
+.delmodal text{
+  font-size: 32rpx;
+  color: #ffffff;
+}

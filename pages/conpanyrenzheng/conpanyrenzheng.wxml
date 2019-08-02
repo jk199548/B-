@@ -1,0 +1,27 @@
+<!--pages/conpanyrenzheng/conpanyrenzheng.wxml-->
+<view class="box">
+  <view class="image-box">
+    <image src="../../images/index/banner1.png"></image>
+  </view>
+  <view class="form">
+    <view class="name">
+      <view class="icon" style="color:#FC7001;">*</view>
+      <view class="name-text">姓名:</view>
+      <input class="input-name" bindblur="getusername" placeholder="请填写法人位置" placeholder-class="placeholder"></input>
+    </view>
+    <view class="num">
+      <view class="icon" style="color:#FC7001;">*</view>
+      <view class="num-text" >身份证号:</view>
+      <input class="input-num" bindblur="getidcard" placeholder="请输入法人身份证号" placeholder-class="placeholder"></input>
+    </view>
+  </view>
+  <view class="checkbox" style="margin-top:30rpx;margin-left:63rpx;">
+    <checkbox-group class='pull-left' bindchange="checkboxChange" style="display:inline-block">
+      <label class="checkbox flex flex-vc ">
+        <checkbox bindchange='checkboxChange' value="" checked="true" color='#fff'/>
+      </label>
+    </checkbox-group>
+    <text>点击完后即表示同意《用户注册与隐私保护服务协议》</text>
+  </view>
+  <view class="confirmbtn">完成</view>
+</view>

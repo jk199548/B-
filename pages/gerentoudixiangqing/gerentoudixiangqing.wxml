@@ -1,0 +1,148 @@
+<!--pages/gerentoudixiangqing/gerentoudixiangqing.wxml-->
+<view class="box">
+  <!-- 顶部头像框 -->
+  <view class="top">
+    <view class="top-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="top-right">
+      <view class="top-right-top">
+        <text>张三李四</text>
+        <text>男</text>
+      </view>
+    </view>
+  </view>
+  <!-- 顶部投递职位列表 -->
+  <view class="top-position" wx:for="{{yuyuelist}}">
+    <view wx:if="{{item.position}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
+      <view class="top-position-left" style="background-color:#808080;"></view>
+      <view class="top-position-right">
+        <text style="color:#808080;">于{{item.time}}</text>
+        <text style="color:#808080;">投递"{{item.position}}"</text>
+      </view>
+    </view>
+    <view wx:if="{{item.location}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
+      <view class="top-position-left"></view>
+      <view class="top-position-right">
+        <text>已预约{{item.time}}</text>
+        <text>{{item.location}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 基本资料展示框 -->
+  <view class="basic-box">
+    <view class="basic-text">基本资料</view>
+    <view class="basic-list">
+      <view class="workex">
+        <text>工作经验:</text>
+        <text>3年</text>
+      </view>
+      <view class="schoolex">
+        <text>学历:</text>
+        <text>本科</text>
+      </view>
+      <view class="age">
+        <text>年龄:</text>
+        <text>18</text>
+      </view>
+      <view class="height">
+        <text>身高:</text>
+        <text>170cm</text>
+      </view>
+      <view class="weight">
+        <text>体重:</text>
+        <text>60kg</text>
+      </view>
+      <view class="home">
+        <text>家乡:</text>
+        <text>绵阳</text>
+      </view>
+      <view class="from">
+        <text>来自:</text>
+        <text>成都--金牛</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工作经历展示框 -->
+  <view class="workex-box">
+    <view class="work-text">
+      <text>工作经历</text>
+      <text>系统记录</text>
+    </view>
+    <view class="work-list">
+      <view class="work-list-top">
+        <text>重庆富士康集团</text>
+        <text>2018.03-2018.12</text>
+      </view>
+      <view class="work-list-name">质检员</view>
+      <view class="work-list-bottom">
+        <text>工作内容:</text>
+        <text>检验iphone出厂是否合格</text>
+      </view>
+    </view>
+    <view style="width:690rpx;height:2rpx;background-color:#f4f4f4;margin-top:30rpx;"></view>
+  </view>
+  <!-- 加载更多 -->
+  <view class="showmore">
+    <text>加载更多</text>
+    <image src="../../images/index/showmore.png"></image>
+  </view>
+  <!-- 教育经历 -->
+  <view class="schoolex-box">
+    <view class="schoolex-text">教育经历</view>
+    <view class="schoolex-list">
+      <view class="schoolex-list-item">
+        <text>成都七中</text>
+        <text>2012.09-2015.06</text>
+      </view>
+      <view style="width:690rpx;height:2rpx;background-color:#f4f4f4;"></view>
+      <view class="schoolex-list-item">
+        <text>成都七中</text>
+        <text>2012.09-2015.06</text>
+      </view>
+    </view>
+  </view>
+  <!-- 含有同意的底部按钮 -->
+  <view class="bottom-btn" wx:if="{{!isyuyuesuccess}}">
+    <view class="bottom-btn-left">
+      <view class="bottom-btn-left-left">
+        <image src="../../images/index/wechat.png"></image>
+        <text style="font-size:28rpx;color:#808080;">询问</text>
+      </view>
+      <view style="width:2rpx;height:68rpx;background-color:#f4f4f4;"></view>
+      <view class="bottom-btn-left-right">
+        <image src="../../images/index/disagree.png"></image>
+        <text style="font-size:28rpx;color:#808080;">不同意</text>
+      </view>
+    </view>
+    <view class="bottom-btn-right" bindtap="agree">
+      <image src="../../images/index/agree.png"></image>
+      <text>同意</text>
+    </view>
+  </view>
+  <!-- 不含有同意的底部按钮 -->
+  <view class="mianshitongguo" wx:else>
+    <view class="mianshitongguo-left">面试不通过</view>
+    <view class="mianshitongguo-right">面试通过</view>
+  </view>
+</view>
+<!-- 点击底部同意按钮弹出的模态框 -->
+<view class="modal" catchtouchmove="true" wx:if="{{yuyuemodal}}" bindtap="closemodal"></view>
+<view class="modal-box"  catchtouchmove="true" wx:if="{{yuyuemodal}}">
+  <view class="images-box" bindtap="closeyuyuemodal">
+    <image src="../../images/index/close.png" style="width:50rpx;height:50rpx;"></image>
+  </view>
+  <view class="yuyue-text">预约面试时间</view>
+  <view class="choosetime">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view>{{time}}</view>
+      <image src="../../images/shiming/more.png" style="width:14rpx;height:26rpx;float:right;padding-top:28rpx;margin-right:10rpx;"></image>
+    </picker>
+  </view>
+  <view class="yuyue-text">预约面试地址</view>
+  <view class="input-box">
+    <input placeholder="请填写面试地址" bindinput="inputaddress"></input>
+  </view>
+  <view class="confirm-btn" bindtap="confirmbtn">完成</view>
+</view>

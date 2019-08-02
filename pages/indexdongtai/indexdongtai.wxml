@@ -1,0 +1,27 @@
+<!--pages/indexdongtai/indexdongtai.wxml-->
+<view class="box">
+  <view class="dongtai-box">
+    <view class="dongtai-box-top">
+      <text>6月15日</text>
+      <image src="../../images/index/more.png" bindtap="showdelbtn"></image>
+    </view>
+    <view class="dongtai-box-content">有了心中的目标，就要去追逐它，去为它潜心付出，哪怕是为伊憔悴衣带渐宽？是真正的生活，就要有百折不挠的激情，就要去做自己力所能及的事，就要有中流击水的魄力和不到长城非好汉的气概！库珀补充说:“当你把手中的球投向目标之后，你就要奋勇地向它奔去”这就是积极的活法。如果整天耽于幻想，坐井观天不思进取，那么，最亮堂的目标最终也不过是南柯一梦罢了···
+    </view>
+    <view class="dongtai-box-image">
+      <block wx:for="{{imageurl}}">
+        <image src="{{item}}"></image>
+      </block>
+    </view>
+    <view class="delmodal" wx:if="{{showdelmodal}}">
+      <view>
+        <image src="../../images/index/share.png"></image>
+        <text>分享</text>
+      </view>
+      <view style="width:110rpx;height:2rpx;background-color:#ffffff;"></view>
+      <view bindtap="delbtn">
+        <image src="../../images/index/del.png"></image>
+        <text>删除</text>
+      </view>
+    </view> 
+  </view>
+</view>

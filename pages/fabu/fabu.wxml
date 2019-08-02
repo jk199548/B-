@@ -1,0 +1,22 @@
+<!--pages/fabu/fabu.wxml-->
+<view class="box">
+  <view class="fabu">
+    <textarea class="inputbox"  placeholder="这一刻的想法···" placeholder-style="font-size:30rpx;color:#80808;" maxlength="-1"></textarea>
+  </view>
+  <view class="chooseimage">
+    <image src="../../images/index/chooseimage.png" bindtap="chooseimage"></image>
+    <!-- 线上图片的展示 -->
+    <block wx:for="{{onlineimagearr}}" wx:key='item' wx:for-index="index" wx:if="{{!uploadsuccessarr[index]}}">
+      <image src="{{item}}" data-id="{{item}}" data-index="{{index}}" wx:for-index='index' bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="bingLongTap" bindtap="bindTap" style="position:relative;">
+      </image>
+    </block>
+    <!-- 占位图片加进度条 -->
+    <block wx:for="{{localimagearr}}" wx:key='item' wx:for-index="index" wx:if="{{uploadsuccessarr[index]}}">
+      <image src="{{item}}" style="position:relative">
+        <view style="width:210rpx;height:210rpx;background-color:black;opacity:0.5;position:absolute;left:0;top:0;z-index:8888;" wx:if="{{showmodalarr[index]}}"></view>
+        <progress style="width:100rpx;position:absolute;top:100rpx;left:50rpx;z-index:9999;" active  percent="{{percentarr[index]}}"  active-mode="forwards" wx:if="{{showprogressarr[index]}}"/>
+      </image>
+    </block>
+  </view>
+  <view class="fabubtn">立即发布</view>
+</view>

@@ -1,0 +1,65 @@
+<!--pages/toudixiangqing/toudixiangqing.wxml-->
+<!-- 投递详情页面 -->
+<view class="box">
+  <view class="top-nav">
+    <view class="top-nav-box">
+      <view class="{{selectedid==index?'active':'normal'}}" wx:if="{{navarr}}" wx:for-index="index" data-id="{{index}}" bindtap="changenav" wx:for="{{navarr}}">
+        <view>
+          <text style="font-size:28rpx;margin-right:15rpx;">{{item.text}}</text>
+          <text style="font-size:32rpx;font-weight:bold;">{{item.num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 已报名页面 -->
+  <view class="mid-box" wx:if="{{selectedid==0}}">
+    <view class="mid-box-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="mid-box-right">
+      <view class="mid-box-right-top">
+        <text>张三</text>
+        <text>3年·专科·4-6k</text>
+      </view>
+      <view class="mid-box-right-bottom">
+        <text>投递 — 顺丰配送员</text>
+        <text>10:05</text>
+      </view>
+    </view>
+  </view>
+  <!-- 审核通过页面 -->
+  <view class="mid-box" wx:if="{{selectedid==1}}">
+    <view class="mid-box-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="mid-box-right">
+      <view class="mid-box-right-top">
+        <text>张三</text>
+        <text>3年·专科·4-6k</text>
+      </view>
+      <view class="mid-box-right-bottom">
+        <text>投递 — 顺丰配送员</text>
+        <text>10:05</text>
+      </view>
+    </view>
+  </view>
+  <!-- 进入聊天按钮 -->
+  <view class="tochatgroup" wx:if="{{selectedid==1}}">进入聊天群</view>
+  <!-- 面试通过页面 -->
+  <view class="mid-box" wx:if="{{selectedid==2}}">
+    <view class="mid-box-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="mid-box-right">
+      <view class="mid-box-right-top">
+        <text>张三</text>
+        <text>3年·专科·4-6k</text>
+      </view>
+      <view class="mid-box-right-bottom">
+        <text>投递 — 顺丰配送员</text>
+        <text>10:05</text>
+      </view>
+    </view>
+  </view>
+  <view class="tochatgroup" wx:if="{{selectedid==2}}">进入聊天群</view>
+</view>

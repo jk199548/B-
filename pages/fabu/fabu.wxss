@@ -1,0 +1,41 @@
+/* pages/fabu/fabu.wxss */
+.fabu{
+  width: 750rpx;
+  border-top: 1rpx solid #f4f4f4;
+}
+.inputbox{
+  height: 190rpx;
+  padding-left: 30rpx;
+  margin-top: 60rpx;
+  width: 690rpx;
+}
+.chooseimage{
+  width: 690rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+.chooseimage image{
+  width: 210rpx;
+  height: 210rpx;
+  margin-right: 20rpx;
+  margin-bottom: 10rpx;
+}
+.fabubtn{
+  width: 690rpx;
+  height: 90rpx;
+  background-color: #fc7001;
+  color: #ffffff;
+  font-size: 36rpx;
+  border-radius: 40rpx;
+  margin-left: 30rpx;
+  text-align: center;
+  line-height: 90rpx;
+  position: fixed;
+  left: 0rpx;
+  top: 956rpx;
+}

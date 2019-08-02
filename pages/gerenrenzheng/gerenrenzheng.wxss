@@ -1,0 +1,139 @@
+/* pages/gerenrenzheng/gerenrenzheng.wxss *//* pages/shimingrenzheng/shimingrenzheng.wxss */
+.front{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 300rpx;
+  position: relative;
+  margin-top: 30rpx;
+}
+.front-text{
+  font-size: 30rpx;
+  color: #bcbcbc;
+  margin-left: 5rpx;
+}
+.text-box-front{
+  position: absolute;
+  left: 240rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  top: 135rpx;
+}
+.shengfenzheng-front{
+  width: 506rpx;
+  height: 300rpx;
+}
+.back{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 300rpx;
+  position: relative;
+  margin-top: 30rpx;
+}
+.text-box-back{
+  position: absolute;
+  left: 240rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  top: 135rpx;
+}
+.shengfenzheng-back{
+  width: 506rpx;
+  height: 300rpx;
+}
+.form{
+  width: 630rpx;
+  height: 280rpx;
+  margin-left: 60rpx;
+  margin-top: 10rpx;
+}
+.name{
+  width: 630;
+  height: 140rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.name-text{
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-right: 101rpx;
+}
+.input-name{
+  width: 444rpx;
+  height: 100rpx;
+}
+.num{
+  width: 630;
+  height: 140rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.num-text{
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-right: 45rpx;
+}
+.input-num{
+  width: 444rpx;
+  height: 100rpx;
+}
+.placeholder{
+  color: #bcbcbc;
+  font-size: 28rpx;
+}
+.bottom-text{
+  width: 100%;
+  font-size: 26rpx;
+  color: #3d3d3d;
+  text-align: center;
+  margin-top: 26rpx;
+}
+.comfirm-btn{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 56rpx;
+  background-color: #FC7001;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  height: 90rpx;
+  border-radius: 45rpx;
+}
+/* checkbox未选中时样式 */
+
+checkbox .wx-checkbox-input{  
+   /* 自定义样式.... */
+  border-radius: 3rpx;
+  height: 18rpx;
+  width: 18rpx;
+}
+/* checkbox选中时样式 */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  /* 自定义样式.... */
+  background-color: #fc7001;
+  height: 30rpx;
+  width: 30rpx;
+  line-height: 30rpx;
+  font-size: 30rpx;
+}
+.checkbox text{
+  font-size: 24rpx;
+  color: #3d3d3d;
+}

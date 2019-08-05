@@ -54,6 +54,24 @@ Page({
     multiIndex: [0, 0, 0, 0],
     choose_year: '',
   },
+  //点击不同意按钮
+  disagree:function(e){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定此人不合格',
+      confirmText:'是的确定',
+      confirmColor:'#fc7001',
+      cancelText:'再想想',
+      success:function(res){
+        if(res.confirm){
+          //点击了确定按钮
+        }else if(res.cancel){
+          //点击了取消按钮
+        }
+      }
+    })
+  },
   //预约模态框的点击完成按钮事件
   confirmbtn:function(e){
     var that = this;

@@ -1,0 +1,388 @@
+/* pages/addposition/addposition.wxss */
+.addposition{
+  border-top: 1rpx solid #eeeeee;
+}
+.addposition-text-1{
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+  line-height: 24rpx;
+}
+.addposition-text-1 text:nth-child(1){
+  color: #fc7001;
+  margin-right: 20rpx;
+}
+.addposition-text-1 text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+}
+.checkgroup{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+}
+.checkgroup checkbox-group{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 28rpx;
+  color: #333333;
+}
+checkbox{
+  margin-right: 90rpx;
+}
+/* checkbox未选中时样式 */
+checkbox .wx-checkbox-input{  
+  border-radius: 50%;
+  height: 26rpx;
+  width: 26rpx;
+}
+/* 选中后多选框样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  background-color: #fc7001;
+}
+
+/* checkbox选中时里面的√√的样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  height: 33rpx;
+  width: 33rpx;
+  font-size: 0rpx;
+  color: #ffffff;
+}
+.uploadlogo{
+  width: 690rpx;
+  height: 260rpx;
+  margin-left: 30rpx;
+  margin-top: 57rpx;
+}
+.uploadlogo image{
+  width: 690rpx;
+  height: 260rpx;
+}
+.positionname{
+  width: 690rpx;
+  height: 100rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positionname-left{
+  width: 200rpx;
+}
+.positionname-left text:nth-child(1){
+  color: #fc7001;
+}
+.positionname-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.positionname-right{
+  width: 455rpx;
+}
+.positionname-right input{
+  font-size: 30rpx;
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #808080;
+}
+.workplace{
+  width: 690rpx;
+  height: 100rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.workplace-left{
+  width: 200rpx;
+}
+.workplace-left text:nth-child(1){
+  color: #fc7001;
+}
+.workplace-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.workplace-right{
+  width: 455rpx;
+}
+.workplace-right input{
+  font-size: 30rpx;
+}
+.positionrequire{
+  width: 690rpx;
+  height: 100rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positionrequire-left{
+  width: 200rpx;
+}
+.positionrequire-left text:nth-child(1){
+  color: #fc7001;
+}
+.positionrequire-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.positionrequire-right image{
+  width:14rpx;
+  height: 28rpx; 
+}
+.salary{
+  width: 690rpx;
+  height: 100rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.salary-left{
+  width: 200rpx;
+}
+.salary-left text:nth-child(1){
+  color: #fc7001;
+}
+.salary-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.salary-right image{
+  width:14rpx;
+  height: 28rpx; 
+}
+.recruit{
+  width: 690rpx;
+  height: 100rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.recruit-left{
+  width: 200rpx;
+}
+.recruit-left text:nth-child(1){
+  color: #fc7001;
+}
+.recruit-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.recruit-right{
+  width: 455rpx;
+}
+.recruit-right input{
+  font-size: 30rpx;
+}
+.needgroup{
+  width: 690rpx;
+  height: 100rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.needgroup-left{
+  width: 230rpx;
+}
+.needgroup-left text:nth-child(1){
+  color: #fc7001;
+}
+.needgroup-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.needgroup-right{
+  width: 460rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+/* 单选框未选中 */
+radio .wx-radio-input {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #fc7001;
+}
+/* 单选框选中后对勾样式 */
+radio .wx-radio-input.wx-radio-input-checked::before{
+  width: 38rpx;
+  height: 38rpx;
+  font-size: 0rpx;   
+  color:#fff;
+  background-color: #fc7001;
+  border-radius: 50%;
+}
+.workfuli{
+  width: 690rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.workfuli-left{
+  width: 690rpx;
+  margin-top: 40rpx;
+}
+.workfuli-left text:nth-child(1){
+  color: #fc7001;
+}
+.workfuli-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.workfuli-list{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+.workfuli-list view{
+  width: 120rpx;
+  height: 50rpx;
+  margin-right: 19rpx;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+  color: #808080;
+  line-height: 50rpx;
+  text-align: center;
+  background:rgba(244,244,244,1);
+  border-radius:5rpx;
+}
+.uploadconpanyimage{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+}
+.uploadconpanyimage image{
+  width: 690rpx;
+  height: 340rpx;
+}
+.confirmbtn{
+  width: 690rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background-color: #fc7001;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  margin-bottom: 70rpx;
+}
+.modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+  z-index: 5555;
+}
+.salary-modal{
+  width: 610rpx;
+  height: 620rpx;
+  position: fixed;
+  left: 70rpx;
+  top: 80rpx;
+  background-color: #fff;
+  opacity: 0.95;
+  z-index: 6666;
+  border-radius: 10rpx;
+}
+.salary-modal image{
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+  margin-top: 27rpx;
+  margin-right: 27rpx;
+}
+.salary-modal-list{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 40rpx;
+  width: 530rpx;
+  padding-top: 150rpx;
+}
+.salary-modal-list-active{
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.salary-modal-list-normal{
+  width: 140rpx;
+  height: 60rpx;
+  background:rgba(240,240,240,1);
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #3D3D3D;
+  border-radius: 10rpx;
+}
+.salaryinputbox{
+  margin-top: 78rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 40rpx;
+}
+.salaryinputbox view{
+  width: 390rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border: 1rpx solid #eeeeee;
+}
+.salaryinputbox input{
+  width: 360rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #BEBDBD;
+  padding-left: 30rpx;
+}
+.salaryinputbox text{
+  font-size: 36rpx;
+  color: #333333;
+  margin-left: 60rpx;
+}
+.salaryconfirmbtn{
+  width: 280rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 45rpx;
+  margin-left: 165rpx;
+  margin-top: 90rpx;
+}

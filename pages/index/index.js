@@ -18,6 +18,13 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  //跳转到职位详情页面
+  topositiondetail:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../positiondetail/positiondetail',
+    })
+  },
   //跳转到发布页面
   tofabu:function(e){
     var that = this;

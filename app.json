@@ -10,7 +10,10 @@
     "pages/conpanyrenzheng/conpanyrenzheng",
     "pages/gerenrenzheng/gerenrenzheng",
     "pages/shenfenxuanze/shenfenxuanze",
-    "pages/gerentoudixiangqing/gerentoudixiangqing"
+    "pages/gerentoudixiangqing/gerentoudixiangqing",
+    "pages/addposition/addposition",
+    "pages/positionrequire/positionrequire",
+    "pages/positiondetail/positiondetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

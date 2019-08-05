@@ -1,0 +1,62 @@
+/* pages/positiondetail/positiondetail.wxss */
+.positiondetail-top{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 45rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.positiondetail-top text:nth-child(1){
+  font-size: 32rpx;
+  color: #3d3d3d;
+  font-weight: bold;
+}
+.positiondetail-top text:nth-child(2){
+  font-size: 32rpx;
+  color: #3d3d3d;
+}
+.positiondetail-top-list{
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 60rpx;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.positiondetail-top-list view{
+  width: 200rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.positiondetail-uploadlogo{
+  width: 690rpx;
+  height: 160rpx;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+}
+.positiondetail-uploadlogo image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.positiondetail-name{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-name text:nth-child(1){
+  font-size: 32rpx;
+  color: #3d3d3d;
+  font-weight: bold;
+}
+.positiondetail-name text:nth-child(2){
+  font-size: 32rpx;
+  color: #3d3d3d;
+}

@@ -1,0 +1,19 @@
+<!--pages/positiondetail/positiondetail.wxml-->
+<view class="box">
+  <view class="positiondetail">
+    <view class="positiondetail-top">
+      <text>选择你想招的人</text>
+      <text>编辑</text>
+    </view>
+    <view class="positiondetail-top-list">
+      <view>全职</view>
+    </view>
+    <view class="positiondetail-uploadlogo">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="positiondetail-name">
+      <text>职位名称</text>
+      <text>分拣员</text>
+    </view>
+  </view>
+</view>

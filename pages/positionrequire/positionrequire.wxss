@@ -1,0 +1,75 @@
+/* pages/positionrequire/positionrequire.wxss */
+.box{
+  border-top: 1rpx solid #eeeeee;
+}
+.workexrequire{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+}
+.workexrequire-text text:nth-child(1){
+  font-size: 36rpx;
+  color: #fc7001;
+  font-weight: bold;
+}
+.workexrequire-text text:nth-child(2){
+  font-size: 36rpx;
+  color: #3d3d3d;
+  font-weight: bold;
+  margin-left: 20rpx;
+}
+.workexrequire-list{
+  margin-top: 5rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.workexrequire-list-active{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  background-color: #fc7001;
+  font-size: 28rpx;
+  color: #FFFEFE;
+  text-align: center;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+.workexrequire-list-normal{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  background:rgba(244,244,244,1);
+  font-size: 28rpx;
+  color: #808080;
+  text-align: center;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+.agerequire{
+  width: 690rpx;
+  height: 60rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  margin-top: 30rpx;
+}
+.agerequire input{
+  width: 690rpx;
+  height: 60rpx;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+}
+.confirmbtn{
+  width: 690rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background-color: #fc7001;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  margin-bottom: 70rpx;
+}

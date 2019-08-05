@@ -1,0 +1,45 @@
+<!--pages/positionrequire/positionrequire.wxml-->
+<view class="box">
+  <!-- 工作经验要求 -->
+  <view class="workexrequire">
+    <view class="workexrequire-text">
+      <text>*</text>
+      <text>经验要求</text>
+    </view>
+    <view class="workexrequire-list">
+      <view class="{{workexselectedid==index?'workexrequire-list-active':'workexrequire-list-normal'}}" wx:for="{{workexrequirelist}}" wx:for-index="index" data-id="{{index}}" bindtap="chooseworkex">{{item}}</view>
+    </view>
+  </view>
+  <!-- 工作学历要求 -->
+  <view class="workexrequire">
+    <view class="workexrequire-text">
+      <text>*</text>
+      <text>学历要求</text>
+    </view>
+    <view class="workexrequire-list">
+      <view class="{{schoolexselectedid==index?'workexrequire-list-active':'workexrequire-list-normal'}}" wx:for="{{schoolexrequirelist}}" wx:for-index="index" data-id="{{index}}" bindtap="chooseschoolex">{{item}}</view>
+    </view>
+  </view>
+  <!-- 年龄要求 -->
+  <view class="workexrequire">
+    <view class="workexrequire-text">
+      <text>*</text>
+      <text>年龄要求</text>
+    </view>
+    <view class="agerequire">
+      <input placeholder="请输入您的年龄要求"></input>
+    </view>
+  </view>
+  <!-- 性别要求 -->
+  <view class="workexrequire">
+    <view class="workexrequire-text">
+      <text>*</text>
+      <text>性别要求</text>
+    </view>
+    <view class="workexrequire-list">
+      <view class="{{sexselectedid==index?'workexrequire-list-active':'workexrequire-list-normal'}}" wx:for="{{sexrequirelist}}" wx:for-index="index" data-id="{{index}}" bindtap="choosesex">{{item}}</view>
+    </view>
+  </view>
+  <!-- 完成按钮 -->
+  <view class="confirmbtn">完成</view>
+</view>

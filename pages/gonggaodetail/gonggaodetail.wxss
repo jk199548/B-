@@ -1,0 +1,18 @@
+/* pages/gonggaodetail/gonggaodetail.wxss */
+.gonggaodetail{
+  width: 630rpx;
+  margin-left: 60rpx;
+  margin-top: 50rpx;
+}
+.gonggaodetail view:nth-child(1){
+  width: 630rpx;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28rpx;
+  color: #808080;
+}
+.gonggaodetail view:nth-child(2){
+  font-size: 28rpx;
+  color: #333333;
+  margin-top: 60rpx;
+}

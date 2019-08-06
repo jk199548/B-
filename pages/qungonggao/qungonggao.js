@@ -1,33 +1,23 @@
-// pages/news/news.js
+// pages/qungonggao/qungonggao.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navbar: ["职位管理", "互动"],
-    interestNavbar: ['对我感兴趣', '看过我', '我感兴趣的'],
-    currentIndex: 0,//tabbar索引
-    interestcurrentIndex: 0,
+
   },
-  interestnavbarTab: function (e) {
-    this.setData({
-      interestcurrentIndex: e.currentTarget.dataset.index
-    })
-  },
-  navbarTab: function (e) {
-    this.setData({
-      currentIndex: e.currentTarget.dataset.index
+  //跳转到新增群公告
+  toaddnewgonggao:function(e){
+    wx.navigateTo({
+      url: '../addnewgonggao/addnewgonggao',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setTabBarBadge({
-      index: 1,
-      text: '11',
-    })
+
   },
 
   /**

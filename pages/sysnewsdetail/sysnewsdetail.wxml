@@ -1,0 +1,12 @@
+<!-- 系统消息详情 -->
+<view class="box">
+  <view class="timetext">2019-06-21  17:30</view>
+  <view class="newscontent">
+    <view class="newscontent-title">经公司领导讨论,为了更好的优化公司管理制度!</view>
+    <view class="newscontent-text">1.从本月7月3号起公司所有员工每日用钉钉提交日;</view>
+    <view class="newscontent-text">2.每周五提交周报;</view>
+    <view class="newscontent-text">3.每月底30号/31号提交月报.</view>
+    <view class="newscontent-text">4.所有人的日报、周报、月报直接.</view>
+    <view class="newscontent-end">请各位同事知悉!</view>
+  </view>
+</view>

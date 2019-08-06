@@ -13,7 +13,16 @@
     "pages/gerentoudixiangqing/gerentoudixiangqing",
     "pages/addposition/addposition",
     "pages/positionrequire/positionrequire",
-    "pages/positiondetail/positiondetail"
+    "pages/positiondetail/positiondetail",
+    "pages/sysnews/sysnews",
+    "pages/sysnewsdetail/sysnewsdetail",
+    "pages/chat/chat",
+    "pages/peoplechat/peoplechat",
+    "pages/qungonggao/qungonggao",
+    "pages/addnewgonggao/addnewgonggao",
+    "pages/gonggaodetail/gonggaodetail",
+    "pages/qiandao/qiandao",
+    "pages/qiandaodetail/qiandaodetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

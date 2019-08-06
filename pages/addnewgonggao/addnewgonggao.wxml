@@ -1,0 +1,13 @@
+<!--pages/addnewgonggao/addnewgonggao.wxml-->
+<view class="box">
+  <view class="gonggao-name">
+    <input placeholder="请输入您的公告名称" placeholder-class="placeholder" bindinput="saveinputtitle"></input>
+  </view>
+  <view class="gonggao-content">
+    <textarea placeholder="请输入您的公告内容···" placeholder-class="placeholder" bindinput="saveinputcontent"></textarea>
+  </view>
+  <view class="gonggao-bottom">
+    <view bindtap="savecaogao">存草稿</view>
+    <view bindtap="savegonggao">保存并发布</view>
+  </view>
+</view>

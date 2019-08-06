@@ -1,0 +1,6 @@
+<!--pages/qiandaodetail/qiandaodetail.wxml-->
+<view class="box">
+  <view class="qiandaodetail">
+    <view class="qiandaodetail"></view>
+  </view>
+</view>

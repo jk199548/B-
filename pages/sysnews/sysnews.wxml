@@ -1,0 +1,28 @@
+<!-- 系统消息页面 -->
+<view class="box">
+  <view class="newsbox" bindtap="tosysnewsdetail">
+    <text class="text1">10分钟前</text>
+    <text class="text2">未读</text>
+    <text class="text3">恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你</text>
+  </view>
+  <view class="newsbox">
+    <text class="text1">10分钟前</text>
+    <text class="text2">未读</text>
+    <text class="text3">恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你</text>
+  </view>
+  <view class="newsbox">
+    <text class="text1">10分钟前</text>
+    <text class="text2">未读</text>
+    <text class="text3">恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你</text>
+  </view>
+  <view class="newsbox">
+    <text class="text1">10分钟前</text>
+    <text class="text2">未读</text>
+    <text class="text3">恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你</text>
+  </view>
+  <view class="newsbox">
+    <text class="text1">10分钟前</text>
+    <text class="text2">未读</text>
+    <text class="text3">恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你恭喜你注册成功,欢迎你</text>
+  </view>
+</view>

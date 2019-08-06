@@ -27,7 +27,7 @@
       <text>年龄要求</text>
     </view>
     <view class="agerequire">
-      <input placeholder="请输入您的年龄要求"></input>
+      <input placeholder="请输入您的年龄要求" bindinput="inputage"></input>
     </view>
   </view>
   <!-- 性别要求 -->
@@ -41,5 +41,5 @@
     </view>
   </view>
   <!-- 完成按钮 -->
-  <view class="confirmbtn">完成</view>
+  <view class="confirmbtn" bindtap="confirmbtn">完成</view>
 </view>

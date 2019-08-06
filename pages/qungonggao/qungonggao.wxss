@@ -1,0 +1,101 @@
+/* pages/qungonggao/qungonggao.wxss */
+page{
+  background-color: #FAFAFA;
+  border-top: 1rpx solid #EEEEEE;
+}
+.qungonggao-box{
+  width:690rpx;
+  height:400rpx;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 16rpx 16rpx 0rpx rgba(255,164,92,0.2);
+}
+.qungonggao-box-top{
+  display: flex;
+  justify-content: space-between;
+  width: 630rpx;
+  margin-left: 30rpx;
+  padding-top: 40rpx;
+}
+.qungonggao-box-top text:nth-child(1){
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.qungonggao-box-top text:nth-child(2){
+  font-size: 30rpx;
+  color: #333333;
+}
+.qungonggao-box-center{
+  display: flex;
+  justify-content: space-between;
+  width: 630rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #808080;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 48rpx;
+}
+.qungonggao-box-bottom{
+  width: 630rpx;
+  margin-left: 30rpx;
+  margin-top: 48rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 60rpx;
+}
+.qungonggao-box-bottom text:nth-child(1){
+  font-size: 28rpx;
+  color: #808080;
+  display: block;
+  width: 235rpx;
+}
+.qungonggaobianji{
+  display: flex;
+  width: 390rpx;
+  height: 60rpx;
+  justify-content: space-between;
+}
+.qungonggaobianji view:nth-child(1){
+  width: 180rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+.qungonggaobianji view:nth-child(2){
+  width: 180rpx;
+  height: 60rpx;
+  background-color: #fff;
+  color: #808080;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  border: 1rpx solid #EEEEEE;
+}
+.addnewgonggao{
+  width: 690rpx;
+  height: 90rpx;
+  background-color: #fc7001;
+  color: #fff;
+  font-size: 36rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  margin-left: 30rpx;
+  margin-top: 70rpx;
+}

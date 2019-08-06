@@ -51,12 +51,257 @@
   height: 100rpx;
   border-bottom: 1rpx solid #eeeeee;
 }
-.positiondetail-name text:nth-child(1){
+.positiondetail-require{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-salary{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-zhaopinnum{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-needgroup{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-needgroup text:nth-child(1){
   font-size: 32rpx;
   color: #3d3d3d;
   font-weight: bold;
 }
-.positiondetail-name text:nth-child(2){
+.positiondetail-needgroup text:nth-child(2){
   font-size: 32rpx;
   color: #3d3d3d;
+}
+/* 单选框未选中 */
+radio .wx-radio-input {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #fc7001;
+}
+/* 单选框选中后对勾样式 */
+radio .wx-radio-input.wx-radio-input-checked::before{
+  width: 38rpx;
+  height: 38rpx;
+  font-size: 0rpx;   
+  color:#fff;
+  background-color: #fc7001;
+  border-radius: 50%;
+}
+.workfuli{
+  width: 690rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.workfuli-left{
+  width: 690rpx;
+  margin-top: 40rpx;
+}
+.workfuli-left text:nth-child(1){
+  color: #3d3d3d;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.workfuli-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.workfuli-list{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+.workfuli-list view{
+  width: 120rpx;
+  height: 50rpx;
+  margin-right: 19rpx;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+  color: #fff;
+  line-height: 50rpx;
+  text-align: center;
+  background:#fc7001;
+  border-radius:10rpx;
+}
+.positiondetail-zhaopintime{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-zhaopintime image{
+  width: 12rpx;
+  height: 24rpx;
+}
+.positiondetail-ruzhi{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-tuijian{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.positiondetail-conpanyimage{
+  width: 690rpx;
+  margin-left: 30rpx;
+}
+.positiondetail-conpanyimage view{
+  font-size: 32rpx;
+  color: #3d3d3d;
+  margin-top: 60rpx;
+  font-weight: bold;
+}
+.positiondetail-conpanyimage image{
+  width: 690rpx;
+  height: 320rpx;
+  margin-top: 35rpx;
+}
+.modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+  z-index: 5555;
+}
+.salary-modal{
+  width: 610rpx;
+  height: 620rpx;
+  position: fixed;
+  left: 70rpx;
+  top: 80rpx;
+  background-color: #fff;
+  opacity: 0.95;
+  z-index: 6666;
+  border-radius: 10rpx;
+}
+.salary-modal image{
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+  margin-top: 27rpx;
+  margin-right: 27rpx;
+}
+.salary-modal-list{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 40rpx;
+  width: 530rpx;
+  padding-top: 150rpx;
+}
+.salary-modal-list-active{
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.salary-modal-list-normal{
+  width: 140rpx;
+  height: 60rpx;
+  background:rgba(240,240,240,1);
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #3D3D3D;
+  border-radius: 10rpx;
+}
+.salaryinputbox{
+  margin-top: 78rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 40rpx;
+}
+.salaryinputbox view{
+  width: 390rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border: 1rpx solid #eeeeee;
+}
+.salaryinputbox input{
+  width: 360rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #BEBDBD;
+  padding-left: 30rpx;
+}
+.salaryinputbox text{
+  font-size: 36rpx;
+  color: #333333;
+  margin-left: 60rpx;
+}
+.salaryconfirmbtn{
+  width: 280rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 45rpx;
+  margin-left: 165rpx;
+  margin-top: 90rpx;
+}
+.positiondetail-savechangebtn{
+  width: 690rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #fff;
+  background-color: #fc7001;
+  text-align: center;
+  margin-left: 30rpx;
+  margin-top: 70rpx;
+  margin-bottom: 50rpx;
 }

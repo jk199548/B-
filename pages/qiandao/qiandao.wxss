@@ -1,0 +1,63 @@
+/* pages/qiandao/qiandao.wxss */
+page{
+  background-color: #fafafa;
+}
+.qiandao-box{
+  width: 100%;
+  height: 320rpx;
+  background-color: #fff;
+  margin-top: 30rpx;
+}
+.qiandao-box-top{
+  margin-left: 30rpx;
+  font-size: 36rpx;
+  color: #333333;
+  padding-top: 50rpx;
+  font-weight: bold;
+}
+.qiaddao-box-center{
+  margin-top: 20rpx;
+  width: 690rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.qiandao-box-bottom{
+  display: flex;
+  width: 650rpx;
+  margin-left: 50rpx;
+  justify-content: space-between;
+  margin-top: 50rpx;
+}
+.qiandao-box-bottom view:nth-child(1){
+  width: 260rpx;
+  height: 60rpx;
+  border:1rpx solid rgba(140,140,140,1);
+  color: #808080;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+.qiandao-box-bottom view:nth-child(2){
+  width: 260rpx;
+  height: 60rpx;
+  border:1rpx solid rgba(140,140,140,1);
+  color: #808080;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+.bottombtn{
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  background-color: #fc7001;
+  border-radius: 45rpx;
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+}

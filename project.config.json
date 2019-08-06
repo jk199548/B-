@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 17,
 			"list": [
 				{
 					"id": -1,
@@ -118,6 +118,61 @@
 					"name": "职位详情",
 					"pathName": "pages/positiondetail/positiondetail",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息页面",
+					"pathName": "pages/news/news",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "系统消息",
+					"pathName": "pages/sysnews/sysnews",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "系统消息详情",
+					"pathName": "pages/sysnewsdetail/sysnewsdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "聊天",
+					"pathName": "pages/chat/chat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "群聊",
+					"pathName": "pages/peoplechat/peoplechat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增公告",
+					"pathName": "pages/addnewgonggao/addnewgonggao",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公告详情",
+					"pathName": "pages/gonggaodetail/gonggaodetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "群聊签到",
+					"pathName": "pages/qiandao/qiandao",
 					"scene": null
 				}
 			]

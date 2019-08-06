@@ -1,0 +1,25 @@
+<!--pages/qiandao/qiandao.wxml-->
+<view class="box">
+  <view class="qiandao-box">
+    <view class="qiandao-box-top">2019年1月</view>
+    <view class="qiaddao-box-center">
+      <view class="qiandao-box-center-left">
+        <text style="font-size:28rpx;color:#3d3d3d;">共计</text>
+        <text style="font-size:28rpx;color:#3d3d3d;font-weight:bold;">30</text>
+        <text style="font-size:28rpx;color:#3d3d3d;">人,打卡</text>
+        <text style="font-size:28rpx;color:#3d3d3d;font-weight:bold;">3,341</text>
+        <text style="font-size:28rpx;color:#3d3d3d;">.00小时</text>
+      </view>
+      <view class="qiandao-box-center-right">
+        <text style="font-size:28rpx;color:#3d3d3d;">已发工资</text>
+        <text style="font-size:28rpx;color:#3d3d3d;font-weight:bold;">45,600</text>
+        <text style="font-size:28rpx;color:#3d3d3d;">.00元</text>
+      </view>
+    </view>
+    <view class="qiandao-box-bottom">
+      <view>查看甲方统计明细</view>
+      <view>查看明细</view>
+    </view>
+  </view>
+  <view class="bottombtn">工作结束,解散该群</view>
+</view>

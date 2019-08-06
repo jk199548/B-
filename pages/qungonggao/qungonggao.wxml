@@ -1,0 +1,18 @@
+<!--pages/qungonggao/qungonggao.wxml-->
+<view class="box">
+  <view class="qungonggao-box">
+    <view class="qungonggao-box-top">
+      <text>关于工资发放通知</text>
+      <text>2019-07-22</text>
+    </view>
+    <view class="qungonggao-box-center">各部门，为了加强考勤管理，保证员工正常出勤和工资的全额发放。同时也应总公司总部财务室要求，特对工资发放作出以下通知</view>
+    <view class="qungonggao-box-bottom">
+      <text>草稿</text>
+      <view class="qungonggaobianji">
+        <view>编辑</view>
+        <view>删除</view>
+      </view>
+    </view>
+  </view>
+  <view class="addnewgonggao" bindtap="toaddnewgonggao">新增群公告</view>
+</view>

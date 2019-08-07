@@ -18,7 +18,7 @@
     </view>
     <view class="qiandao-box-bottom">
       <view>查看甲方统计明细</view>
-      <view>查看明细</view>
+      <view bindtap="toqiandaodetail">查看明细</view>
     </view>
   </view>
   <view class="bottombtn">工作结束,解散该群</view>

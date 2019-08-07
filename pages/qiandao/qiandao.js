@@ -7,7 +7,13 @@ Page({
   data: {
 
   },
-
+  //跳转到签到明细
+  toqiandaodetail:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../qiandaodetail/qiandaodetail',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

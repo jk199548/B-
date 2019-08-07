@@ -1,0 +1,28 @@
+<!--pages/allqunliaomembers/allqunliaomembers.wxml-->
+<view class="box">
+  <view class="allmembers">
+    <view class="search">
+      <image src="../../images/index/search.png"></image>
+      <input placeholder="搜索你要寻找的人" placeholder-class="placeholder"></input>
+    </view>
+    <view class="members-list">
+      <view class="members-list-box" wx:for="{{memberslist}}" data-id="{{index}}" wx:for-index="index" bindlongpress="showgroupmodal" >
+        <image src="{{item.avtar}}"></image>
+        <text>{{item.name}}</text>
+        <view class="group">{{item.group}}组</view>
+        <view class="group-modal" wx:if="{{showmodalgroup&&selectedgroupid==index}}" catchtouchmove="true">
+          <view>1组</view>
+          <view>2组</view>
+          <view>3组</view>
+          <view>4组</view>
+          <view>5组</view>
+          <view>6组</view>
+        </view>
+      </view>
+      <view class="members-list-box">
+        <image src="../../images/index/delmembers.png" style="width:100rpx;height:100rpx;"></image>
+      </view>
+    </view>
+  </view>
+  <view class="fenzubtn">分组情况</view>
+</view>

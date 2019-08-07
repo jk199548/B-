@@ -1,0 +1,96 @@
+/* pages/qiandaodetailsome/qiandaodetailsome.wxss */
+.box{
+  border-top: 1rpx solid #e8e8e8;
+}
+.qiandaodetail-some{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+.header{
+  width: 690rpx;
+  display: flex;
+  align-items: center;
+}
+.header image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.header text{
+  font-size: 36rpx;
+  color: #3d3d3d;
+  font-weight: bold;
+  margin-left: 34rpx;
+}
+.name{
+  height: 140rpx;
+  width: 690rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.name text:nth-child(1){
+  font-size: 30rpx;
+  color: #3d3d3d;
+}
+.name text:nth-child(2){
+  font-size: 30rpx;
+  color: #3d3d3d;
+  margin-left: 110rpx;
+}
+.phonenum{
+  height: 140rpx;
+  width: 690rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.phonenum text:nth-child(1){
+  font-size: 30rpx;
+  color: #3d3d3d;
+}
+.phonenum text:nth-child(2){
+  font-size: 30rpx;
+  color: #3d3d3d;
+  margin-left: 76rpx;
+}
+.idcard{
+  height: 140rpx;
+  width: 690rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.idcard text:nth-child(1){
+  font-size: 30rpx;
+  color: #3d3d3d;
+}
+.idcard text:nth-child(2){
+  font-size: 30rpx;
+  color: #3d3d3d;
+  margin-left: 44rpx;
+}
+.qiandaodetail{
+  margin-top: 90rpx;
+}
+.qiandaodetail-top{
+  width: 690rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.qiandaodetail-bottom{
+  width: 690rpx;
+  text-align: right;
+  margin-top: 10rpx;
+}
+.bottombtn{
+  width: 690rpx;
+  height: 90rpx;
+  background-color: #fc7001;
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 45rpx;
+  margin-top: 117rpx;
+}

@@ -22,7 +22,11 @@
     "pages/addnewgonggao/addnewgonggao",
     "pages/gonggaodetail/gonggaodetail",
     "pages/qiandao/qiandao",
-    "pages/qiandaodetail/qiandaodetail"
+    "pages/qiandaodetail/qiandaodetail",
+    "pages/qiandaodetailsome/qiandaodetailsome",
+    "pages/qunguanli/qunguanli",
+    "pages/allqunliaomembers/allqunliaomembers",
+    "pages/qunliaofenzu/qunliaofenzu"
   ],
   "window": {
     "backgroundTextStyle": "light",

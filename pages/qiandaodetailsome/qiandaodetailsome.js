@@ -1,4 +1,4 @@
-// pages/qiandaodetail/qiandaodetail.js
+// pages/qiandaodetailsome/qiandaodetailsome.js
 Page({
 
   /**
@@ -7,13 +7,7 @@ Page({
   data: {
 
   },
-  //跳转到具体某一个签到页面
-  toqiandaodetailsome:function(e){
-    var that = this;
-    wx.navigateTo({
-      url: '../qiandaodetailsome/qiandaodetailsome',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

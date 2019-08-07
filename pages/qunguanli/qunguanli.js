@@ -1,17 +1,44 @@
-// pages/qiandaodetail/qiandaodetail.js
+// pages/qunguanli/qunguanli.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showmodal:false,//是否显示模态框
   },
-  //跳转到具体某一个签到页面
-  toqiandaodetailsome:function(e){
+  showmodal:function(e){
+    var that = this;
+    that.setData({
+      showmodal:false,
+    })
+  },
+  //跳转到群聊所有成员列表
+  toallqunliaomembers:function(e){
     var that = this;
     wx.navigateTo({
-      url: '../qiandaodetailsome/qiandaodetailsome',
+      url: '../allqunliaomembers/allqunliaomembers',
+    })
+  },
+  //退出群聊按钮点击事件
+  tuiqun:function(e){
+    var that = this;
+    that.setData({
+      showmodal:true,
+    })
+  },
+  //再想想吧按钮点击事件
+  thinkbtn:function(e){
+    var that = this;
+    that.setData({
+      showmodal:false,
+    })
+  },
+  //确定退出按钮事件
+  confirmbtn:function(e){
+    var that = this;
+    that.setData({
+      showmodal:false,
     })
   },
   /**

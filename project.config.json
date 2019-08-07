@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 22,
 			"list": [
 				{
 					"id": -1,
@@ -173,6 +173,41 @@
 					"id": -1,
 					"name": "群聊签到",
 					"pathName": "pages/qiandao/qiandao",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "签到详情",
+					"pathName": "pages/qiandaodetail/qiandaodetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "某人的签到详情",
+					"pathName": "pages/qiandaodetailsome/qiandaodetailsome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "群管理",
+					"pathName": "pages/qunguanli/qunguanli",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "群聊所有成员列表",
+					"pathName": "pages/allqunliaomembers/allqunliaomembers",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "群分组列表",
+					"pathName": "pages/qunliaofenzu/qunliaofenzu",
 					"scene": null
 				}
 			]

@@ -1,6 +1,36 @@
 <!--pages/qiandaodetail/qiandaodetail.wxml-->
 <view class="box">
-  <view class="qiandaodetail">
-    <view class="qiandaodetail"></view>
+  <view class="qiandaodetail" bindtap="toqiandaodetailsome">
+    <view class="qiandaodetail-top">
+      <image src="../../images/index/avtar.png"></image>
+      <text>qaz20190629</text>
+    </view>
+    <view class="qiandaodetail-mid">
+      <text>姓名:</text>
+      <text>博雅</text>
+    </view>
+    <view class="qiandaodetail-center">
+      <text>手机号:</text>
+      <text>188888888888</text>
+    </view>
+    <view class="qiandaodetail-bottom">
+      <view class="qiandaodetail-bottom-left">
+        <text style="font-size:28rpx;color:#3d3d3d;">5月打卡</text>
+        <text style="font-size:36rpx;font-weight:bold;color:#3d3d3d;">20</text>
+        <text style="font-size:28rpx;color:#3d3d3d;">天,工作</text>
+        <text style="font-size:36rpx;font-weight:bold;color:#3d3d3d;">400</text>
+        <text style="font-size:28rpx;color:#3d3d3d;">小时</text>
+      </view>
+      <view class="qiandaodetail-bottom-right">
+        <text style="font-size:28rpx;color:#3d3d3d;">预计工资</text>
+        <text style="font-size:36rpx;font-weight:bold;color:#3d3d3d;">4000</text>
+        <text style="font-size:28rpx;color:#3d3d3d;">.00</text>
+      </view>
+    </view>
+    <view class="notice">(此工资为员工自助打卡计算，仅供参考)</view>
+  </view>
+  <view class="showmore">
+    <text>加载更多</text>
+    <image src="../../images/index/showmore.png"></image>
   </view>
 </view>

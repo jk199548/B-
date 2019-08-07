@@ -1,0 +1,62 @@
+<!--pages/qunliaofenzu/qunliaofenzu.wxml-->
+<view class="box">
+  <view class="qunliaogroup">
+    <view class="qunliaogroup-list" wx:for="{{qunliaogrouplist}}" wx:for-index="index" data-id="{{index}}">
+      <text>{{index+1}}</text>
+      <text>{{item.groupname}}</text>
+      <image src="{{item.image}}" bindtap="bianji" data-id="{{index}}" data-name="{{item.groupname}}"></image>
+    </view>
+  </view>
+  <view class="inputnewgroupname" wx:if="{{isaddnewgroup}}">
+    <input placeholder="请输入新的组名" placeholder-class="placeholder" bindinput="inputnewgroupnamehandler"></input>
+  </view>
+  <view class="confirmbtn" wx:if="{{isaddnewgroup}}" bindtap="confirmaddnewgroupname">确定</view>
+  <view class="addnewgroupbtn" wx:if="{{!isaddnewgroup}}" bindtap="addnewgroupname">新增分组</view>
+</view>
+
+<!-- 编辑分组模态框 -->
+<view class="modal" wx:if="{{showmodal}}" catchtouchmove="true"></view>
+<view class="group-modal" wx:if="{{showmodal}}" catchtouchmove="true">
+  <view class="group-modal-groupname">
+    <input value="{{modalgroupname}}" focus="true" cursor="0" bindinput="savenewinputgroupname"></input>
+  </view>
+  <view class="group-modal-memberslist">
+    <view class="group-modal-memberslist-box">
+      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
+      <text>皮卡丘</text>
+      <image src="../../images/index/del1.png" class="delimage"></image>
+    </view>
+    <view class="group-modal-memberslist-box">
+      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
+      <text>皮卡丘</text>
+      <image src="../../images/index/del1.png" class="delimage"></image>
+    </view>
+    <view class="group-modal-memberslist-box" >
+      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
+      <text>皮卡丘</text>
+      <image src="../../images/index/del1.png" class="delimage"></image>
+    </view>
+    <view class="group-modal-memberslist-box">
+      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
+      <text>皮卡丘</text>
+      <image src="../../images/index/del1.png" class="delimage"></image>
+    </view>
+    <view class="group-modal-memberslist-box">
+      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
+      <text>皮卡丘</text>
+      <image src="../../images/index/del1.png" class="delimage"></image>
+    </view>
+    <view class="group-modal-memberslist-box">
+      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
+      <text>皮卡丘</text>
+      <image src="../../images/index/del1.png" class="delimage"></image>
+    </view>
+    <view class="group-modal-memberslist-box">
+      <image src="../../images/index/addnewmembers.png" style="width: 100rpx;height: 100rpx;"></image>
+    </view>
+  </view>
+  <view class="group-modal-bottombtn">
+    <view bindtap="closemodalbtn">取消</view>
+    <view bindtap="savemodalchangebtn">确定</view>
+  </view>
+</view>

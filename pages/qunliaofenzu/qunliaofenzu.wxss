@@ -1,0 +1,153 @@
+/* pages/qunliaofenzu/qunliaofenzu.wxss */
+.box{
+  border-top: 1rpx solid #eeeeee;
+}
+.qunliaogroup{
+  width: 690rpx;
+  margin-left: 30rpx;
+}
+.qunliaogroup-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  height: 110rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.qunliaogroup-list text:nth-child(1){
+  font-size: 30rpx;
+  color: #808080;
+  width: 50rpx;
+}
+.qunliaogroup-list text:nth-child(2){
+  font-size: 30rpx;
+  color: #808080;
+  width: 600rpx;
+}
+.qunliaogroup-list image{
+  width: 25rpx;
+  height: 25rpx;
+}
+.addnewgroupbtn{
+  width: 690rpx;
+  height: 70rpx;
+  margin-left: 30rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fc7001;
+  border-radius: 45rpx;
+  border: 1rpx solid #fc7001;
+  margin-top: 60rpx;
+  margin-bottom: 60rpx;
+}
+.inputnewgroupname{
+  margin-top: 60rpx;
+  width: 690rpx;
+  height: 80rpx;
+  margin-left: 30rpx;
+  background:rgba(255,255,255,1);
+  border: 1rpx solid rgba(229,229,229,1);
+}
+.inputnewgroupname input{
+  width: 690rpx;
+  height: 80rpx;
+}
+.placeholder{
+  font-size: 30rpx;
+  color: #333333;
+}
+.confirmbtn{
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 45rpx;
+  background-color: #fc7001;
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+}
+.modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+  z-index: 5555;
+}
+.group-modal{
+  width: 610rpx;
+  height: 730rpx;
+  position: fixed;
+  left: 70rpx;
+  top: 80rpx;
+  background-color: #fff;
+  opacity: 0.95;
+  z-index: 6666;
+  border-radius: 10rpx;
+}
+.group-modal-groupname{
+  font-size: 32rpx;
+  color: #333333;
+  width: 610rpx;
+  text-align: center;
+  margin-top: 60rpx;
+}
+.group-modal-memberslist{
+  margin-top: 50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.group-modal-memberslist-box{
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50rpx;
+  position: relative;
+}
+.delimage{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: -6rpx;
+  right: 14rpx;
+}
+.group-modal-memberslist-box text{
+  font-size: 26rpx;
+  color: #333333;
+}
+.group-modal-bottombtn{
+  width: 530rpx;
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.group-modal-bottombtn view:nth-child(1){
+  width:230rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 1rpx solid #eeeeee;
+  font-size: 28rpx;
+  color: #808080;
+  border-radius: 10rpx;
+}
+.group-modal-bottombtn view:nth-child(2){
+  width:230rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 1rpx solid #eeeeee;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  background-color: #fc7001;
+}

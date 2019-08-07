@@ -1,0 +1,196 @@
+/* pages/qunguanli/qunguanli.wxss */
+.box{
+  border-top: 1rpx solid #eeeeee;
+}
+.qunmember{
+  width: 750rpx;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 50rpx;
+  flex-wrap: wrap;
+}
+.qunmember-box{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.group{
+  position: absolute;
+  right: 20rpx;
+  top: 80rpx;
+  font-size: 18rpx;
+  color: #fff;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  background-color: #fc7001;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.qunmember-box image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.qunmember-box text{
+  font-size: 28rpx;
+  color: #333333;
+  margin-top: 10rpx;
+}
+.position-require-lookmore{
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+.position-require-lookmore-icon{
+  width: 20rpx;
+  height: 10rpx;
+  margin-left: 8rpx;
+}
+.position-require-lookmore-text{
+  font-size: 28rpx;
+  color: #9d9d9d;
+  font-weight: 400;
+}
+.qunliaoname{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.qunliaoname text:nth-child(1){
+  font-size: 30rpx;
+  color: #808080;
+}
+.qunliaoname text:nth-child(2){
+  font-size: 30rpx;
+  color: #333333;
+}
+.qunqrcode{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.checkliaotianmsg{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.checkliaotianmsg text{
+  font-size: 30rpx;
+  color: #808080;
+}
+.checkliaotianmsg image{
+  width: 16rpx;
+  height: 30rpx;
+}
+.qunliaozhiding{
+  width: 690rpx;
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.qunliaozhiding text{
+  font-size: 30rpx;
+  color: #808080;
+}
+.tuiqun{
+  width: 690rpx;
+  height: 90rpx;
+  margin-left: 30rpx;
+  margin-top: 100rpx;
+  background-color: #fc7001;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  border-radius: 50rpx;
+}
+.modal-mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.2;
+  z-index: 9000;
+}
+.modal{
+  width: 610rpx;
+  height: 460rpx;
+  position: fixed;
+  top: 110rpx;
+  left: 70rpx;
+  background: #fff;
+  z-index: 9999;
+  opacity: 0.95;
+  border-radius:10rpx;
+}
+.modal-top{
+  text-align: center;
+  margin-top: 107rpx;
+}
+.modal-top text:nth-child(1){
+  font-size: 32rpx;
+  color: #333333;
+}
+.modal-top text:nth-child(2){
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333333;
+}
+.modal view:nth-child(2){
+  font-size: 32rpx;
+  color: #333333;
+  text-align: center;
+}
+.modal view:nth-child(3){
+  font-size: 28rpx;
+  color: #808080;
+  text-align: center;
+  width: 220rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid #9d9d9d;
+  float: left;
+  margin-top: 110rpx;
+  margin-left: 44rpx;
+  margin-right: 80rpx;
+}.modal view:nth-child(4){
+  font-size: 28rpx;
+  color: #ffffff;
+  width: 220rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  float: left;
+  background-color: #fc7001;
+  margin-top: 110rpx;
+}

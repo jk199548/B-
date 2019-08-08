@@ -1,1 +1,228 @@
 /* pages/mine/mine.wxss */
+page{
+  background-color: #F9F9F9;
+}
+.box{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.mine-banner{
+  width: 100%;
+  height: 340rpx;
+}
+.banner{
+  width: 100%;
+  height: 340rpx;
+}
+.userinfobox{
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 690rpx;
+  height: 177rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14rpx;
+}
+.userinfobox-left{
+  width: 175rpx;
+  height: 175rpx;
+  background-color: #FEB734;
+  border: 1rpx solid #FEB734;
+  border-radius: 50%;
+  line-height: 175rpx;
+  text-align: center;
+}
+.userinfobox-left image{
+  width: 157rpx;
+  height: 157rpx;
+  margin-top: 10rpx;
+}
+.userinfobox-right{
+  width: 510rpx;
+  height: 177rpx;
+  margin-left: 20rpx;
+}
+.userinfobox-right-top{
+  display: flex;
+  justify-content: space-between;
+  height: 40rpx;
+  line-height: 40rpx;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.userinfobox-right-top text{
+  font-size: 40rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+.userinfobox-right-top image{
+  width: 28rpx;
+  height: 28rpx;
+}
+.userinfobox-right-mid{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+.userinfobox-right-mid text:nth-child(1){
+  font-size: 30rpx;
+  color: #ffffff;
+}
+.userinfobox-right-mid text:nth-child(2){
+  font-size: 30rpx;
+  color: #ffffff;
+}
+.userinfobox-right-bottom{
+  font-size: 28rpx;
+  color: #ffffff;
+  margin-top: 5rpx;
+}
+.renzhengbox{
+  position: absolute;
+  left: 30rpx;
+  top: 236rpx;
+  width: 690rpx;
+  height: 100rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  border: 1rpx solid #eee;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.renzhengbox image{
+  width: 36rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  margin-right: 20rpx;
+}
+.renzhengbox text:nth-child(2){
+  font-size: 28rpx;
+  color: #333333;
+}
+.renzhengbox text:nth-child(3){
+  font-size: 28rpx;
+  color: #fc7101;
+}
+.yue{
+  width: 690rpx;
+  height: 200rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+.fengexian{
+  width: 1rpx;
+  height: 90rpx;
+  background-color: #eee;
+}
+.yue-left{
+  width: 345rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.yue-right{
+  width: 345rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.zonghepingfen{
+  width: 690rpx;
+  height: 100rpx;
+  background-color: #ffffff;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10rpx;
+}
+.zonghepingfen-left{
+  font-size: 30rpx;
+  color: #333333;
+  margin-left: 30rpx;
+}
+.zonghepingfen-right text{
+  font-size: 30rpx;
+  color: #fc7001;
+  font-weight: bold;
+}
+.zonghepingfen image{
+  width: 12rpx;
+  height: 21rpx;
+  margin-right: 30rpx;
+  margin-left: 20rpx;
+}
+.myjianliku{
+  width: 690rpx;
+  height: 300rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.myjianliku view:last-child{
+  border-bottom: none;
+}
+.myjianlikubox{
+  width: 690rpx;
+  height: 99rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.myjianlikubox view{
+  font-size: 30rpx;
+  color: #333333;
+  margin-left: 30rpx;
+}
+.myjianlikubox image{
+  width: 12rpx;
+  height: 24rpx;
+  margin-right: 30rpx;
+}
+.aboutus{
+  width: 690rpx;
+  height: 200rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+}
+.aboutus view:last-child{
+  border-bottom: none;
+}
+.aboutusbox{
+  width: 690rpx;
+  height: 99rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.aboutusbox view{
+  font-size: 30rpx;
+  color: #333333;
+  margin-left: 30rpx;
+}
+.aboutusbox image{
+  width: 12rpx;
+  height: 24rpx;
+  margin-right: 30rpx;
+}

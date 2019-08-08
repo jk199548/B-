@@ -53,7 +53,7 @@
       <image src="../../images/shiming/more.png" style="width:16rpx;height:30rpx;margin-left:21rpx;"></image>
     </view>
   </view>
-  <view class="checkliaotianmsg">
+  <view class="checkliaotianmsg" bindtap="tosearchchatrecord">
     <text>查找聊天记录</text>
     <image src="../../images/shiming/more.png"></image>
   </view>

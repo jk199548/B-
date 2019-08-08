@@ -1,24 +1,18 @@
-// pages/mine/mine.js
+// pages/myjianliku/myjianliku.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    navlist:['全部简历','已收到的','工作中的','已完成的'],
+    selectednavid:0
   },
-  //跳转到综合评分
-  tozonghepingfen:function(e){
+  //导航切换点击事件
+  changenav:function(e){
     var that = this;
-    wx.navigateTo({
-      url: '../zonghepingfen/zonghepingfen',
-    })
-  },
-  //跳转到我的简历库
-  tomyjianliku:function(e){
-    var that = this;
-    wx.navigateTo({
-      url: '../myjianliku/myjianliku',
+    that.setData({
+      selectednavid:e.currentTarget.dataset.id
     })
   },
   /**

@@ -8,51 +8,63 @@ Page({
     qunliaogrouplist:[
       {
         'groupname':'小红帽新都区·1组',
-        'image':'../../images/index/bianji.png'
+        'image':'../../images/index/bianji.png',
+        'delimage':'../../images/index/del.png'
       },
       {
         'groupname': '小红帽新都区·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '小红帽新都区·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '小红帽新都区·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '小红帽新都区·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '小红帽新都区·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '小红帽新都区·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '百世快递分拣员·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '百世快递分拣员·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '百世快递分拣员·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '百世快递分拣员·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
       {
         'groupname': '百世快递分拣员·1组',
-        'image': '../../images/index/bianji.png'
+        'image': '../../images/index/bianji.png',
+        'delimage': '../../images/index/del.png'
       },
     ],
     isaddnewgroup:false,
@@ -61,6 +73,12 @@ Page({
     modalgroupid:0,//模态框的id
     modalgroupname:'',//模态框显示时所展示的组名
     modalinputgroupname:''//模态框用户输入的新组名
+  },
+  //点击模态框添加新成员
+  addnewmembers:function(e){
+    wx.navigateTo({
+      url: '../allqunliaomemberslist/allqunliaomemberslist',
+    })
   },
   //点击编辑图标显示模态框
   bianji:function(e){
@@ -107,7 +125,7 @@ Page({
       })
     }else{
       that.setData({
-        modalinputgroupname: e.detail.value
+        modalinputgroupname: e.detail.value,
       })
     }
   },
@@ -139,7 +157,7 @@ Page({
         isaddnewgroup:false,
         qunliaogrouplist:that.data.qunliaogrouplist.concat([
           {
-            'groupname': that.data.inputnewgourpname,
+            'groupname': that.data.inputnewgroupname,
             'image':'../../images/index/bianji.png'
           }
         ])

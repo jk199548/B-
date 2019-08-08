@@ -26,7 +26,12 @@
     "pages/qiandaodetailsome/qiandaodetailsome",
     "pages/qunguanli/qunguanli",
     "pages/allqunliaomembers/allqunliaomembers",
-    "pages/qunliaofenzu/qunliaofenzu"
+    "pages/qunliaofenzu/qunliaofenzu",
+    "pages/allqunliaomemberslist/allqunliaomemberslist",
+    "pages/chatrecord/chatrecord",
+    "pages/myjianliku/myjianliku",
+    "pages/zonghepingfen/zonghepingfen",
+    "pages/personrecruitmentdetail/personrecruitmentdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -5,6 +5,7 @@
       <text>{{index+1}}</text>
       <text>{{item.groupname}}</text>
       <image src="{{item.image}}" bindtap="bianji" data-id="{{index}}" data-name="{{item.groupname}}"></image>
+      <image src="{{item.delimage}}" bindtap="delgroup" data-id="{{index}}" data-name="{{item.groupname}}"></image>
     </view>
   </view>
   <view class="inputnewgroupname" wx:if="{{isaddnewgroup}}">
@@ -51,7 +52,7 @@
       <text>皮卡丘</text>
       <image src="../../images/index/del1.png" class="delimage"></image>
     </view>
-    <view class="group-modal-memberslist-box">
+    <view class="group-modal-memberslist-box" bindtap="addnewmembers">
       <image src="../../images/index/addnewmembers.png" style="width: 100rpx;height: 100rpx;"></image>
     </view>
   </view>

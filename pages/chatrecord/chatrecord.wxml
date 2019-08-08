@@ -1,0 +1,18 @@
+<!--pages/chatrecord/chatrecord.wxml-->
+<view class="box">
+  <view class="top">
+    <view class="top-search">
+      <input placeholder="请输入你想要搜索得关键字" placeholder-class="placeholder"></input>
+    </view>
+  </view>
+  <view class="chatrecord-list">
+    <view class="chatrecord-list-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="chatrecord-list-mid">
+      <text>我的名字</text>
+      <text>我说的话你看得见吗</text>
+    </view>
+    <view class="chatrecord-list-right">礼拜一</view>
+  </view>
+</view>

@@ -1,0 +1,201 @@
+<!--pages/personrecruitmentdetail/personrecruitmentdetail.wxml-->
+<!-- 个人招聘详情页面 -->
+<view class='box'>
+  <view class="top">
+    <image src="../../images/index/1.png"></image>
+  </view>
+  <view class='head-top'>
+    <view class='head-top-left'>
+      <image class='head-top-left-image' src='../../images/index/avtar.png'></image>
+    </view>
+    <view class='head-top-right'>
+      <view class='head-top-right-top'>
+        <view class="head-top-right-top-left">
+          <text>张三丰</text>
+          <view>已认证</view>
+        </view>
+        <image src="../../images/index/bianji.png" style="width:30rpx;height:30rpx;"></image>
+      </view>
+      <view class='head-top-right-mid'>
+        <view class='head-top-right-mid-left'>女 | 33岁 | 四川成都</view>
+        <view class='head-top-right-mid-right'>
+          <text>评分:</text>
+          <text class='head-top-right-mid-right-score'>89</text>
+        </view>
+      </view>
+      <!-- <view class='head-top-right-bottom'>
+        <view class='head-top-right-bottom-box'>
+          <text class='head-top-right-bottom-box-bold'>5个</text>
+          <text>在招职位</text>
+        </view>
+        <view class='head-top-right-bottom-box'>
+          <text class='head-top-right-bottom-box-bold'>99.9%</text>
+          <text>消息回复率</text>
+        </view>
+        <view class='head-top-right-bottom-box'>
+          <text class='head-top-right-bottom-box-bold'>1-2天</text>
+          <text>报名处理速度</text>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <view class="nav">
+    <view wx:for="{{navlist}}" class="navnormal" data-id="{{index}}" bindtap="changenavid">
+      <text class="{{selectid==index?'active':'normal'}}">{{item}}</text>
+      <view style="width:42rpx;height:6rpx;background-color:#fc7001;margin-top:20rpx;"  wx:if="{{selectid==index}}"></view>
+    </view>
+  </view>
+  
+  <!-- 个人介绍 -->
+  <view class="qiyehezuo" wx:if="{{selectid==1}}">
+    <view class="qiyehezuo-top">
+      <text>企业合作</text>
+      <image src="../../images/index/bianji.png" style="width:30rpx;height:30rpx;"></image>
+    </view>
+    <view class="qiyehezuo-list">
+      <view style="width:25%;height:110rpx;display:flex;justify-content: center;">
+        <image src="../../images/index/jd1.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+      <view style="width:25%;height:110rpx;display:flex;justify-content: center;">
+        <image src="../../images/index/jd1.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+      <view style="width:25%;height:110rpx;display:flex;justify-content: center;">
+        <image src="../../images/index/jd1.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+      <view style="width:25%;height:110rpx;display:flex;justify-content: center;">
+        <image src="../../images/index/jd1.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+      <view style="width:25%;height:110rpx;display:flex;justify-content: center;">
+        <image src="../../images/index/jd1.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+      <view style="width:25%;height:110rpx;display:flex;justify-content: center;">
+        <image src="../../images/index/jd1.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 我的动态 -->
+  <view class="mydongtai" wx:if="{{selectid==2}}">
+    <view class="mydongtai-box">
+      <view class="mydongtai-box-top">
+        <text>2分钟前</text>
+        <image src="../../images/gerenzhaopindetail/share.png" bindtap="share"></image>
+      </view>
+      <view class="mydongtai-box-mid">发布了“京东物流分拣员”</view>
+      <view class="mydongtai-box-bottom">
+        <block wx:for="{{imageurl}}">
+          <image src="{{item}}" lazy-load="true"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 在招职位列表 -->
+  <view class='positioning-list' wx:if="{{selectid==0}}">
+    <view class='positioning-list-left'>
+      <image src='../../images/index/jd.png'></image>
+      <text>京东</text>
+    </view>
+    <view class='positioning-list-right'>
+      <view class='positioning-list-right-top'>
+        <view class='positioning-list-right-top-name'>京东物流分拣员</view>
+        <view class='positioning-list-right-top-btn' bindtap='baoming'>立即报名</view>
+      </view>
+      <view class='positioning-list-right-mid'>
+        <text>待遇:</text>
+        <text class='positioning-list-right-mid-bold'>4k-6k</text>
+      </view>
+      <view class='positioning-list-right-address'>
+        地址：成都新都兴城大道-京东物流园
+      </view>
+      <view class='positioning-list-right-bottom'>
+        <view class='positioning-list-right-bottom-text'>日薪</view>
+        <view class='positioning-list-right-bottom-text'>兼职</view>
+        <view class='positioning-list-right-bottom-text'>包吃住</view>
+        <view class='positioning-list-right-bottom-text'>加班补助</view>
+        <view class='positioning-list-right-bottom-text'>···</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='lookmore'>
+    <text>查看更多</text>
+    <image src='../../images/worklist/xiangxia.png'></image>
+  </view>
+
+  <!-- 评价 -->
+  <view class='positioning'>
+    <view></view>
+    <text>他的评价</text>
+    <view></view>
+  </view>
+  <!-- 评价列表 -->
+  <view>
+    <view class='pingjialist' style='height:{{height}}rpx'>
+      <view class='pingjialist-left'>
+        <image src='../../images/gerenzhaopindetail/head.png'></image>
+      </view>
+      <view class='pingjialist-right'>
+        <view class='pingjialist-right-top'>
+          <text>哈哈哈哈哈哈</text>
+          <view class='pingjialist-right-top-right'>
+            <image src='../../images/gerenzhaopindetail/dianzan.png'></image>
+            <text>16</text>
+          </view>
+        </view>
+        <view class='pingjialist-right-bottom-normal {{readmore.status ? "pingjialist-right-bottom-hidden":""}}'>四川省创享人力资源管理有限公司成立于2010年，位于天府之国成都，已从单一劳务派遣服务供应商，发展成为四川省创享人力资源管理有限公司成立于2010年，位于天府之国成都，已从单一劳务派遣服务供应商，发展成为</view>
+        <view bindtap='lookmore' wx:if="{{ismore}}" style='font-size:28rpx;color:#808080;margin-bottom:40rpx;'>{{readmore.tip}}</view>
+      </view>
+      
+    </view>
+    <view style='width:690rpx;height:1rpx;margin-left:30rpx;margin-bottom:30rpx;'></view>
+  </view>
+
+  <view>
+    <view class='pingjialist' style='height:{{height}}rpx'>
+      <view class='pingjialist-left'>
+        <image src='../../images/gerenzhaopindetail/head.png'></image>
+      </view>
+      <view class='pingjialist-right'>
+        <view class='pingjialist-right-top'>
+          <text>哈哈哈哈哈哈</text>
+          <view class='pingjialist-right-top-right' bindtap='dianzan'>
+            <image src='{{isdianzan?"../../images/gerenzhaopindetail/dianzanactive.png":"../../images/gerenzhaopindetail/dianzan.png"}}'></image>
+            <text>16</text>
+          </view>
+        </view>
+        <view class='pingjialist-right-bottom-normal {{readmore.status ? "pingjialist-right-bottom-hidden":""}}'>四川省创享人力资源管理有限公司成立于2010年，位于天府之国成都，已从单一劳务派遣服务供应商，发展成为四川省创享人力资源管理有限公司成立于2010年，位于天府之国成都，已从单一劳务派遣服务供应商，发展成为</view>
+        <view bindtap='lookmore' wx:if="{{ismore}}" style='font-size:28rpx;color:#808080;margin-bottom:40rpx;'>{{readmore.tip}}</view>
+      </view>
+    </view>
+    <view style='width:690rpx;height:1rpx;margin-left:30rpx;margin-bottom:30rpx;'></view>
+  </view>
+</view>
+
+
+<!-- 模态框 -->
+<view class='modal-mask' catchtouchmove='true' bindtap='showmodal' wx:if="{{showmodal}}"></view>
+
+<view class='modal-success' wx:if="{{showmodal}}" catchtouchmove='true'>
+  <image  src='../../images/gerenzhaopindetail/success.png'></image>
+  <text class='zhaopin-success'>恭喜你已经报名成功!</text>
+  <text class='zhaopin-msg'>招聘者信息</text>
+  <text class='zhaopin-name'>姓名:  张大大</text>
+  <text class='zhaopin-phone'>手机号: 18888888888</text>
+  <view class='confirm-btn' bindtap='confirmbtn'>确定</view>
+</view>
+
+
+<!-- 分享的模态框 -->
+<view class='modal-mask' catchtouchmove='true' bindtap='showsharemodal' wx:if="{{showsharemodal}}"></view>
+<view class="modal" wx:if="{{showsharemodal}}" catchtouchmove='true'>
+  <text>分享到</text>
+  <view class="modal-box">
+    <view>
+      <image src="../../images/gerenzhaopindetail/wechat.png"></image>
+      <text class="wechat">微信</text>
+    </view>
+    <view>
+      <image src="../../images/gerenzhaopindetail/friend.png"></image>
+      <text class="friend">朋友圈</text>
+    </view>
+  </view>
+</view>

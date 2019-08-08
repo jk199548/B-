@@ -1,0 +1,83 @@
+/* pages/myjianliku/myjianliku.wxss */
+page{
+  background-color: #f9f9f9;
+}
+.nav{
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.normal{
+  width: 25%;
+  height: 100rpx;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 100rpx;
+  text-align: center;
+}
+.active{
+  width: 25%;
+  height: 100rpx;
+  font-size: 30rpx;
+  color: #fc7001;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #fc7001;
+}
+.lookme-box{
+  margin-top: 30rpx;
+  background-color: #fff;
+}
+.lookme-top{
+  width: 690rpx;
+  height: 280rpx;
+  border-bottom:1rpx solid #f4f4f4;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.lookme-top-left{
+  width: 160rpx;
+  height: 280rpx;
+  margin-top: 50rpx;
+}
+.lookme-top-left image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.lookme-top-right{
+  width: 500rpx;
+  height: 210rpx;
+  margin-top: 50rpx;
+}
+.lookme-top-right-top text:nth-child(1){
+  font-size: 36rpx;
+  color: #3d3d3d;
+  font-weight: bold;
+}
+.lookme-top-right-top text:nth-child(2){
+  font-size: 28rpx;
+  color: #808080;
+  margin-left: 20rpx;
+}
+.lookme-top-right-top text:nth-child(3){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  float: right;
+}
+.lookme-top-right-mid{
+  font-size: 28rpx;
+  color: #333333;
+  margin-top: 30rpx;
+}
+.lookme-top-right-bottom{
+  font-size: 28rpx;
+  color: #333333;
+}

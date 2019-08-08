@@ -13,6 +13,13 @@ Page({
       showmodal:false,
     })
   },
+  //跳转到查看聊天记录页面
+  tosearchchatrecord:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../chatrecord/chatrecord',
+    })
+  },
   //跳转到群聊所有成员列表
   toallqunliaomembers:function(e){
     var that = this;

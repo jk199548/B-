@@ -1,2 +1,77 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="box">
+  <view class="mine-banner">
+    <image class='banner' src="../../images/mine/headbanner.png"></image>
+  </view>
+  <view class="userinfobox">
+    <view class="userinfobox-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="userinfobox-right">
+      <view class="userinfobox-right-top">
+        <text>我的名字</text>
+        <image src="../../images/index/bianji1.png"></image>
+      </view>
+      <view class="userinfobox-right-mid">
+        <text>京东人事</text>
+        <text>18888888888</text>
+      </view>
+      <view class="userinfobox-right-bottom">服务区域：四川-成都-金牛区</view>
+    </view>
+  </view>
+  <view class="renzhengbox">
+    <image src="../../images/mine/safe.png"></image>
+    <text>你还未进行认证哦!请点击</text>
+    <text>立即认证</text>
+  </view>
+  <view class="yue">
+    <view class="yue-left">
+      <image src="../../images/mine/yue.png" style="width:38rpx;height:47rpx;"></image>
+      <view>
+        <text style="font-size:30rpx;color:#333333;">余额:</text>
+        <text style="font-size:30rpx;color:#fc7001;font-weight:bold;">12321</text>
+        <text style="font-size:30rpx;color:#333333;">.00</text>
+      </view>
+    </view>
+    <view class="fengexian"></view>
+    <view class="yue-right">
+      <image src="../../images/mine/jiangli.png" style="width:48rpx;height:50rpx;"></image>
+      <view>
+        <text style="font-size:30rpx;color:#333333;">推广奖励:</text>
+        <text style="font-size:30rpx;color:#fc7001;font-weight:bold;">12321</text>
+        <text style="font-size:30rpx;color:#333333;">.00</text>
+      </view>
+    </view>
+  </view>
+  <view class="zonghepingfen" bindtap="tozonghepingfen">
+    <view class="zonghepingfen-left">综合评分</view>
+    <view class="zonghepingfen-right">
+      <text>89</text>
+      <image src="../../images/shiming/more.png"></image>
+    </view>
+  </view>
+  <view class="myjianliku">
+    <view class="myjianlikubox" bindtap="tomyjianliku">
+      <view>我的简历库</view>
+      <image src="../../images/shiming/more.png"></image>
+    </view>
+     <view class="myjianlikubox">
+      <view>我的动态</view>
+      <image src="../../images/shiming/more.png"></image>
+    </view>
+     <view class="myjianlikubox">
+      <view>我的店铺</view>
+      <image src="../../images/shiming/more.png"></image>
+    </view>
+  </view>
+  <view class="aboutus">
+    <view class="aboutusbox">
+      <view>关于我们</view>
+      <image src="../../images/shiming/more.png"></image>
+    </view>
+    <view class="aboutusbox">
+      <view>意见反馈</view>
+      <image src="../../images/shiming/more.png"></image>
+    </view>
+  </view>
+</view>

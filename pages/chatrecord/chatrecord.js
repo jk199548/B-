@@ -1,4 +1,4 @@
-// pages/mine/mine.js
+// pages/chatrecord/chatrecord.js
 Page({
 
   /**
@@ -7,20 +7,7 @@ Page({
   data: {
 
   },
-  //跳转到综合评分
-  tozonghepingfen:function(e){
-    var that = this;
-    wx.navigateTo({
-      url: '../zonghepingfen/zonghepingfen',
-    })
-  },
-  //跳转到我的简历库
-  tomyjianliku:function(e){
-    var that = this;
-    wx.navigateTo({
-      url: '../myjianliku/myjianliku',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

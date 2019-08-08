@@ -1,16 +1,15 @@
-// pages/allqunliaomembers/allqunliaomembers.js
+// pages/allqunliaomemberslist/allqunliaomemberslist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showmodalgroup:false,
-    memberslist:[
+    memberslist: [
       {
-        'name':'么么哒',
-        'avtar':'../../images/index/avtar.png',
-        'group':'赏罚分明'
+        'name': '么么哒',
+        'avtar': '../../images/index/avtar.png',
+        'group': '赏罚分明'
       },
       {
         'name': '么么哒',
@@ -88,25 +87,8 @@ Page({
         'group': 1
       },
     ],
-    selectedgroupid:0
   },
-  //跳转到分组情况页面
-  toqunliaofenzu:function(e){
-    var that = this;
-    wx.navigateTo({
-      url: '../qunliaofenzu/qunliaofenzu',
-    })
-  },
-  //长按显示分组
-  showgroupmodal:function(e){
-    console.log(e)
-    var that = this;
-    that.setData({
-      showmodalgroup:true,
-      selectedgroupid: e.currentTarget.dataset.id
-    })
-    console.log(that.data.selectedgroupid)
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

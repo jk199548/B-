@@ -1,0 +1,18 @@
+<!--pages/allqunliaomemberslist/allqunliaomemberslist.wxml-->
+<!--pages/allqunliaomembers/allqunliaomembers.wxml-->
+<view class="box">
+  <view class="allmembers">
+    <view class="search">
+      <image src="../../images/index/search.png"></image>
+      <input placeholder="搜索你要寻找的人" placeholder-class="placeholder"></input>
+    </view>
+    <view class="members-list">
+      <view class="members-list-box" wx:for="{{memberslist}}" data-id="{{index}}" wx:for-index="index">
+        <image src="{{item.avtar}}"></image>
+        <text>{{item.name}}</text>
+        <view class="group">{{item.group}}组</view>
+      </view>
+    </view>
+  </view>
+</view>
+

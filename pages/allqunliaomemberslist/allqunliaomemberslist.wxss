@@ -1,0 +1,81 @@
+/* pages/allqunliaomemberslist/allqunliaomemberslist.wxss */
+.box{
+  border-top: 1rpx solid #eeeeee;
+}
+.allmembers{
+  width: 690rpx;
+  margin-left: 30rpx;
+}
+.search{
+  width: 690rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+  background-color: #f8f8f8;
+  border-radius: 45rpx;
+  line-height: 80rpx;
+  display: flex;
+  align-items: center;
+}
+.search image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 32rpx;
+  margin-right: 10rpx;
+}
+.search input{
+  width: 620rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #808080;
+}
+.members-list{
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.members-list-box{
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.members-list-box image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.members-list-box text{
+  font-size: 28rpx;
+  color: #333333;
+  margin-top: 10rpx;
+}
+.group{
+  position: absolute;
+  right: 5rpx;
+  top: 80rpx;
+  font-size: 18rpx;
+  color: #fff;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  /* padding-top: 5rpx; */
+  padding-bottom: 5rpx;
+  background-color: #fc7001;
+  border-radius: 15rpx;
+  text-align: center;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+

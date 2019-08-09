@@ -1,0 +1,8 @@
+<!--pages/yijianfankui/yijianfankui.wxml-->
+<view class="box">
+  <view class="toptext">您们的支持，是我们前进最大的动力</view>
+  <view class="content">
+    <textarea placeholder="请输入您的公告内容..." placeholder-class="placeholder" bindinput="inputhandler"></textarea>
+  </view>
+  <view bindtap="submit" class="{{isinput?'active':'normal'}}">提交</view>
+</view>

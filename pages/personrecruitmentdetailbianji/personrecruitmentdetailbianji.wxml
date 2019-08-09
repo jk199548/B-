@@ -1,0 +1,125 @@
+<!--pages/personrecruitmentdetail/personrecruitmentdetail.wxml-->
+<!-- 个人招聘详情页面 -->
+<view class='box'>
+  <view class='head-top'>
+    <view class='head-top-left'>
+      <image class='head-top-left-image' src='../../images/index/avtar.png'></image>
+    </view>
+    <view class='head-top-right'>
+      <view class='head-top-right-top'>
+        <view class="head-top-right-top-left">
+          <text>张三丰</text>
+          <view>已认证</view>
+        </view>
+        <image src="../../images/index/bianji.png" style="width:30rpx;height:30rpx;"></image>
+      </view>
+      <view class='head-top-right-mid'>
+        <view class='head-top-right-mid-left'>女 | 33岁 | 四川成都</view>
+        <view class='head-top-right-mid-right'>
+          <text>评分:</text>
+          <text class='head-top-right-mid-right-score'>89</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="nav">
+    <view wx:for="{{navlist}}" class="navnormal" data-id="{{index}}" bindtap="changenavid">
+      <text class="{{selectid==index?'active':'normal'}}">{{item}}</text>
+      <view style="width:42rpx;height:6rpx;background-color:#fc7001;margin-top:20rpx;"  wx:if="{{selectid==index}}"></view>
+    </view>
+  </view>
+  
+  <!-- 企业介绍 -->
+  <view class="qiyehezuo" wx:if="{{selectid==1}}">
+    <!-- 企业合作 -->
+    <view class="qiyehezuo-top">
+      <text>企业合作</text>
+    </view>
+    <view class="qiyehezuo-list">
+      <view style="width:25%;height:110rpx;display:flex;justify-content:center;" wx:for="{{qiyeimageurl}}" wx:for-index="index">
+        <image src="{{item}}" style="width:110rpx;height:110rpx;"></image>
+        <image class="delimage" src="../../images/index/del1.png" data-id="{{index}}" bindtap="dellogoimage"></image>
+      </view>
+      <view style="width:25%;height:110rpx;display:flex;justify-content:center;" bindtap="uploadqiyelogo">
+        <image src="../../images/index/add.png" style="width:110rpx;height:110rpx;"></image>
+      </view>
+    </view>
+    <!-- 企业基本信息 -->
+    <view class="qiye">
+      <view class="qiyebasicinfo">
+        <text>企业基本信息</text>
+      </view>
+      <view class="qiyebasicinfo-list">
+        <view class="qiyebasicinfo-list-box" wx:for="{{qiyebasicinfo}}">
+          <text>{{item.name}}:</text>
+          <text>{{item.text}}</text>
+        </view>
+      </view>
+      <view class="tianyancha">
+        <text>以上信息是由</text>
+        <image src="../../images/index/tianyancha.png"></image>
+        <text>提供</text>
+      </view>
+    </view>
+    <!-- 个人介绍 -->
+    <view class="geren">
+      <view class="gerenjieshao">
+        <text>个人介绍</text>
+      </view>
+      <textarea class="gerenjieshaoinfo" value="本人从事人力招聘行业10年，专注于人力招聘，长期给富士康、京东方提供人力外包服务。在行业内有着极好的口碑。本人保证本人所提供的岗位工资为日发，均为本人代发，有关于工作的任何问题均可找我咨询。关于住宿：因甲方不提供住宿，但本人所招的员工由我在工作附近（不超过3公里）租房子，提供住宿保证，若甲方提供住宿，需要按甲方要求执行"></textarea>
+      <!-- <input  class="gerenjieshaoinfo" value="本人从事人力招聘行业10年，专注于人力招聘，长期给富士康、京东方提供人力外包服务。在行业内有着极好的口碑。本人保证本人所提供的岗位工资为日发，均为本人代发，有关于工作的任何问题均可找我咨询。关于住宿：因甲方不提供住宿，但本人所招的员工由我在工作附近（不超过3公里）租房子，提供住宿保证，若甲方提供住宿，需要按甲方要求执行"></input> -->
+      <!-- <view class="gerenjieshaoinfo"></view> -->
+    </view>
+    <view class="imageshow">
+      <image src="https:\/\/www.xiaoshetong.cn\/upload_auth\/2019-08-09\/zPd2961PgqGD22KLLQD.png" lazy-load="true" mode="widthFix" style="width:750rpx;"></image>
+      <image class="del1image" src="../../images/index/del1.png"></image>
+    </view>
+    <view class="uploadbigimage">
+      继续上传图片
+    </view>
+    <!-- 确定修改按钮 -->
+    <view class="confirmbtn">确定修改</view>
+  </view>
+  
+  <!-- 我的动态 -->
+  <view class="mydongtai" wx:if="{{selectid==2}}">
+    <view class="mydongtai-box">
+      <view class="mydongtai-box-top">
+        <text>2分钟前</text>
+        <image src="../../images/gerenzhaopindetail/share.png" bindtap="share"></image>
+      </view>
+      <view class="mydongtai-box-mid">发布了“京东物流分拣员”</view>
+      <view class="mydongtai-box-bottom">
+        <block wx:for="{{imageurl}}">
+          <image src="{{item}}" lazy-load="true"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 在招职位列表 -->
+  <view class='positioning-list' wx:if="{{selectid==0}}">
+    <view class='positioning-list-left'>
+      <image src='../../images/index/jd.png'></image>
+      <text>京东</text>
+    </view>
+    <view class='positioning-list-right'>
+      <view class='positioning-list-right-top'>
+        <view class='positioning-list-right-top-name'>京东物流分拣员</view>
+      </view>
+      <view class='positioning-list-right-mid'>
+        <text>待遇:</text>
+        <text class='positioning-list-right-mid-bold'>4k-6k</text>
+      </view>
+      <view class='positioning-list-right-address'>
+        地址：成都新都兴城大道-京东物流园
+      </view>
+      <view class='positioning-list-right-bottom'>
+        <view class='positioning-list-right-bottom-text'>日薪</view>
+        <view class='positioning-list-right-bottom-text'>兼职</view>
+        <view class='positioning-list-right-bottom-text'>包吃住</view>
+        <view class='positioning-list-right-bottom-text'>加班补助</view>
+        <view class='positioning-list-right-bottom-text'>···</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -31,7 +31,11 @@
     "pages/chatrecord/chatrecord",
     "pages/myjianliku/myjianliku",
     "pages/zonghepingfen/zonghepingfen",
-    "pages/personrecruitmentdetail/personrecruitmentdetail"
+    "pages/personrecruitmentdetail/personrecruitmentdetail",
+    "pages/personrecruitmentdetailbianji/personrecruitmentdetailbianji",
+    "pages/gerenziliao/gerenziliao",
+    "pages/yijianfankui/yijianfankui",
+    "pages/mywallte/mywallte"
   ],
   "window": {
     "backgroundTextStyle": "light",

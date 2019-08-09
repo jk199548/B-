@@ -1,0 +1,53 @@
+/* pages/yijianfankui/yijianfankui.wxss */
+.toptext{
+  font-size: 28rpx;
+  color: #333333;
+  width: 100%;
+  margin-top: 40rpx;
+  text-align: center;
+}
+.content{
+  width: 630rpx;
+  height: 920rpx;
+  margin-left: 60rpx;
+  margin-top: 40rpx;
+ 
+}
+.content textarea{
+  width: 610rpx;
+  height: 900rpx;
+  background-color: #fafafa;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #808080;
+}
+.active{
+  width: 630rpx;
+  margin-left: 60rpx;
+  margin-top: 50rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  background-color: #fc7001;
+  font-size: 28rpx;
+  color: #ffffff;
+}
+.normal{
+  width: 630rpx;
+  margin-left: 60rpx;
+  margin-top: 50rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  background-color: burlywood;
+  font-size: 28rpx;
+  color: white;
+}

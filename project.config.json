@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 27,
+			"current": 32,
 			"list": [
 				{
 					"id": -1,
@@ -243,6 +243,41 @@
 					"id": -1,
 					"name": "个人招聘详情",
 					"pathName": "pages/personrecruitmentdetail/personrecruitmentdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人招聘编辑",
+					"pathName": "pages/personrecruitmentdetailbianji/personrecruitmentdetailbianji",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人资料",
+					"pathName": "pages/gerenziliao/gerenziliao",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/yijianfankui/yijianfankui",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的钱包",
+					"pathName": "pages/mywallte/mywallte",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钱包",
+					"pathName": "pages/mywallte/mywallte",
 					"scene": null
 				}
 			]

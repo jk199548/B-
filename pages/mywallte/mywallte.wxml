@@ -1,0 +1,53 @@
+<!--pages/mywallte/mywallte.wxml-->
+<view class="box">
+  <view class="wallte">
+    <image src="../../images/index/mywallte.png"></image>
+    <text class="myyue">我的余额</text>
+    <view class="mymoney">
+      <text style="font-size:40rpx;color:#fefefe;font-weight:bold;">￥</text>
+      <text style="font-size:60rpx;color:#fefefe;font-weight:bold;">2400</text>
+      <text style="font-size:40rpx;color:#fefefe;font-weight:bold;">.00</text>
+    </view>
+    <view class="tixian">提现</view>
+    <view class="chongzhi">立即充值</view>
+  </view>
+  <view class="center" >
+    <picker class="center-left" mode="date" fields="month">
+      <text style="font-size:36rpx;color:#333333;">2019年5月</text>
+      <image src="../../images/index/more1.png" style="width:27rpx;height:13rpx;margin-left:5rpx;"></image>
+    </picker>
+    <view class="center-right">
+      <text style="font-size:36rpx;color:#333333;">支出</text>
+      <text style="font-size:40rpx;color:#333333;font-weight:bold;">-18,900</text>
+      <text style="font-size:36rpx;color:#333333;">.00</text>
+    </view>
+  </view>
+  <view class="list">
+    <view class="list-mid">
+      <text>京东配送员工作结算</text>
+      <text>-3,300.00</text>
+    </view>
+    <view class="list-bottom">5月30日16:20</view>
+  </view>
+  <view class="list">
+    <view class="list-mid">
+      <text>推荐入职奖</text>
+      <text style="font-size:36rpx;color:#fc7001;font-weight:bold;">+3,300.00</text>
+    </view>
+    <view class="list-bottom">5月30日16:20</view>
+  </view>
+  <view class="list">
+    <view class="list-mid">
+      <text>提现至微信</text>
+      <text>-3,300.00</text>
+    </view>
+    <view class="list-bottom">5月30日16:20</view>
+  </view>
+  <view class="list">
+    <view class="list-mid">
+      <text>充值-微信</text>
+      <text style="font-size:36rpx;color:#fc7001;font-weight:bold;">+3,300.00</text>
+    </view>
+    <view class="list-bottom">5月30日16:20</view>
+  </view>
+</view>

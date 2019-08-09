@@ -633,38 +633,44 @@
 .gerenjieshaoinfo{
   font-size: 28rpx;
   color: #333333;
-  width: 690rpx;
+  width:690rpx;
+  height:420rpx;
+  background:rgba(244,244,244,1);
+  border:1px solid rgba(229,229,229,1);
+  border-radius:10rpx;
   margin-left: 30rpx;
   margin-top: 50rpx;
   line-height: 50rpx;
 }
-.conpanyintro{
-  width: 690rpx;
-  margin-left: 30rpx;
-  margin-top: 60rpx;
-}
-.conpanyintro text:nth-child(1){
-  font-size: 36rpx;
-  color: #3d3d3d;
-  font-weight: bold;
-}
-.conpanynet{
+.imageshow{
+  position: relative;
   margin-top: 30rpx;
 }
-.conpanynet text:nth-child(1){
-  font-size: 28rpx;
-  color: #333333;
-  font-weight: normal;
+.del1image{
+  position: absolute;
+  top: 0rpx;
+  right: 20rpx;
+  width:36rpx;
+  height: 36rpx;
 }
-.conpanynet text:nth-child(2){
-  font-size: 28rpx;
-  color: #0098C1;
-  margin-left: 20rpx;
-}
-.conpanycontent{
-  font-size: 28rpx;
-  color: #333333;
+.uploadbigimage{
   width: 690rpx;
-  margin-top: 50rpx;
-  line-height: 50rpx;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #fc7001;
+  text-align: right;
+}
+.confirmbtn{
+  width: 690rpx;
+  height: 90rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  background-color: #fc7001;
+  text-align: center;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  color: #fff;
+  font-size: 36rpx;
 }

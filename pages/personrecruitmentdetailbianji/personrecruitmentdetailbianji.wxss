@@ -229,12 +229,14 @@
   -webkit-box-orient:vertical;
 }
 .nav{
-  width: 750rpx;
+  width: 630rpx;
   height: 110rpx;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  margin-left: 60rpx;
+
 }
 .nav view{
   display: flex;
@@ -243,7 +245,6 @@
   flex-direction: column;
   height: 110rpx;
 }
-
 .active{
   font-size: 32rpx;
   color: #333333;
@@ -424,6 +425,18 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+}
+.sharebtn{
+  background-color: #fff;
+  color: #FFF;
+}
+.sharebtn::after{
+  border: 0;
+}
+.mydongtai-box-top view{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .mydongtai-box-top text{
   font-size: 30rpx;

@@ -71,6 +71,28 @@ Page({
     isdianzan: false,
     showsharemodal: false,
   },
+  //跳转到个人资料页面
+  togerenziliao:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../gerenziliao/gerenziliao',
+    })
+  },
+  //删除我的动态
+  deldongtai:function(e){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除此条动态吗？',
+      success:function(res){
+        if(res.confirm){
+          console.log('点击了确定按钮')
+        }else{
+          console.log('点击了取消按钮')
+        }
+      }
+    })
+  },
   //删除企业logo事件
   dellogoimage:function(e){
     var that = this;
@@ -109,16 +131,11 @@ Page({
     })
   },
   //点击分享图标事件
-  share: function (e) {
+  share:function(e){
     var that = this;
-    that.setData({
-      showsharemodal: true,
-    })
-  },
-  showsharemodal: function (e) {
-    var that = this;
-    that.setData({
-      showsharemodal: false,
+    wx.onShareAppMessage({
+      title:'啊哈哈',
+      path:'../personrecruitmentdetailbianji/personrecruitmentdetailbianji'
     })
   },
   

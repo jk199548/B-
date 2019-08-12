@@ -35,7 +35,9 @@
     "pages/personrecruitmentdetailbianji/personrecruitmentdetailbianji",
     "pages/gerenziliao/gerenziliao",
     "pages/yijianfankui/yijianfankui",
-    "pages/mywallte/mywallte"
+    "pages/mywallte/mywallte",
+    "pages/tuiguangjiangli/tuiguangjiangli",
+    "pages/addgerenjieshao/addgerenjieshao"
   ],
   "window": {
     "backgroundTextStyle": "light",

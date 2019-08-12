@@ -1,0 +1,77 @@
+<!--pages/tuiguangjiangli/tuiguangjiangli.wxml-->
+<view class="box">
+  <view class="tuiguang-top">
+    <image src="../../images/index/mywallte.png"></image>
+    <view>我的收入</view>
+    <view>成功邀请</view>
+    <view>
+      <text style="font-size:40rpx;color:#fefefe;font-weight:bold;">￥</text>
+      <text style="font-size:60rpx;color:#fefefe;font-weight:bold;">2400</text>
+      <text style="font-size:40rpx;color:#fefefe;font-weight:bold;">.00</text>
+    </view>
+    <view>
+      <text style="font-size:60rpx;color:#fff;font-weight:bold;">15</text>
+      <text style="font-size:38rpx;color:#fff;">人</text>
+    </view>
+  </view>
+  <view class='positioning'>
+    <view></view>
+    <text>我邀请的人</text>
+    <view></view>
+  </view>
+  <!-- 已邀请人列表 -->
+  <view class="invited">
+    <view class="invited-list">
+      <view class="invited-list-left">
+        <image src="../../images/index/avtar.png"></image>
+        <text>马冬梅</text>
+      </view>
+      <view class="invited-list-right">
+        <text>18695241256</text>
+        <view>
+          <text style="font-size:24rpx;color:#333333;">已入职</text>
+          <text style="font-size:30rpx;color:#fc7001;margin-left:20rpx;font-weight:bold;">+50</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="showmore">
+    <text>加载更多</text>
+    <image src="../../images/index/showmore.png"></image>
+  </view>
+  <view class='positioning'>
+    <view></view>
+    <text>推荐赚钱的人</text>
+    <view></view>
+  </view>
+  <view class="liucheng">
+    <view class="liucheng-box">
+      <image src="../../images/fastmoney/icon.png" style="width:54rpx;height:54rpx;"></image>
+      <text style="font-size:26rpx;color:#808080;margin-top:8rpx;">选择岗位</text>
+    </view>
+    <image src="../../images/fastmoney/jiantou.png" style="width:36rpx;height:14rpx;"></image>
+    <view class="liucheng-box">
+      <image src="../../images/fastmoney/icon.png" style="width:54rpx;height:54rpx;"></image>
+      <text style="font-size:26rpx;color:#808080;margin-top:8rpx;">入职期满</text>
+    </view>
+    <image src="../../images/fastmoney/jiantou.png" style="width:36rpx;height:14rpx;"></image>
+    <view class="liucheng-box">
+      <image src="../../images/fastmoney/icon.png" style="width:54rpx;height:54rpx;"></image>
+      <text style="font-size:26rpx;color:#808080;margin-top:8rpx;">点击报名</text>
+    </view>
+    <image src="../../images/fastmoney/jiantou.png" style="width:36rpx;height:14rpx;"></image>
+    <view class="liucheng-box">
+      <image src="../../images/fastmoney/icon.png" style="width:54rpx;height:54rpx;"></image>
+      <text style="font-size:26rpx;color:#808080;margin-top:8rpx;">成功入职</text>
+    </view>
+    <image src="../../images/fastmoney/jiantou.png" style="width:36rpx;height:14rpx;"></image>
+    <view class="liucheng-box">
+      <image src="../../images/fastmoney/icon.png" style="width:54rpx;height:54rpx;"></image>
+      <text style="font-size:26rpx;color:#808080;margin-top:8rpx;">钱包提现</text>
+    </view>
+  </view>
+  <view class="invitedbtn">立即邀请</view>
+  <view class="banner-bottom">
+    <image src="../../images/shiming/banner.png"></image>
+  </view>
+</view>

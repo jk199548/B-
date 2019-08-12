@@ -1,0 +1,51 @@
+<!--pages/addgerenjieshao/addgerenjieshao.wxml-->
+<view class="box">
+  <view class="headinfo">
+    <view class="headinfo-left">
+      <image src="../../images/shiming/conpanylogo.png"></image>
+    </view>
+    <view class="headinfo-right">
+      <view>四川省创享人力资源管理有限公司</view>
+      <view>已认证</view>
+    </view>
+  </view>
+  <view class="headinfobox">
+    <view class="headinfobox-left">
+      <image src="../../images/index/avtar.png"></image>
+    </view>
+    <view class="headinfobox-right">
+      <view class="headinfobox-right-top">张三丰</view>
+      <view class="headinfobox-right-mid">
+        <text>女 | 33岁 | 四川成都</text>  
+        <text>综合评分:80</text>           
+      </view>
+    </view>
+    <view class="headinfobox-bottom">他是武侯区服务第一</view>
+  </view>
+  <view class="qiyehezuo">
+    <view class="qiyehezuo-text">企业合作</view>
+    <view class="qiyehezuo-list">
+      <view class="qiyehezuo-list-box" wx:for="{{qiyelogourl}}">
+        <image src="{{item}}"></image>
+      </view>
+      <view class="qiyehezuo-list-box" bindtap="chooselogo">
+        <image src="../../images/index/add.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="conpanyintro">
+    <view class="conpanyintro-text">公司介绍</view>
+    <view class="conpanyintro-content">
+      <textarea placeholder="请输入您的个人介绍"></textarea>
+    </view>
+  </view>
+  <view class="uploadimage">
+    <view class="uploadimage-text">上传图片</view>
+    <view wx:for="{{qiyeimage}}">
+      <image src="{{item}}"></image>
+    </view>
+    <image src="../../images/index/group.png" bindtap="uploadimage"></image>
+    <text>每张图片的大小不能超过2M</text>
+  </view>
+  <view class="confirmbtn">确定</view>
+</view>

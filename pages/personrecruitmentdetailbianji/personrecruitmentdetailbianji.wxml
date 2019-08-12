@@ -11,7 +11,7 @@
           <text>张三丰</text>
           <view>已认证</view>
         </view>
-        <image src="../../images/index/bianji.png" style="width:30rpx;height:30rpx;"></image>
+        <image bindtap="togerenziliao" src="../../images/index/bianji.png" style="width:30rpx;height:30rpx;"></image>
       </view>
       <view class='head-top-right-mid'>
         <view class='head-top-right-mid-left'>女 | 33岁 | 四川成都</view>
@@ -86,7 +86,13 @@
     <view class="mydongtai-box">
       <view class="mydongtai-box-top">
         <text>2分钟前</text>
-        <image src="../../images/gerenzhaopindetail/share.png" bindtap="share"></image>
+        <view>
+          <button class="sharebtn" open-type="share">
+            <image src="../../images/index/share1.png"></image>
+          </button>
+          <image src="../../images/index/del2.png" style="margin-right:10rpx;" bindtap="deldongtai"></image>
+        </view>
+        
       </view>
       <view class="mydongtai-box-mid">发布了“京东物流分拣员”</view>
       <view class="mydongtai-box-bottom">

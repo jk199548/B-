@@ -1,11 +1,11 @@
 <!--pages/shenfenxuanze/shenfenxuanze.wxml-->
 <view class="box">
   <view class="title">请选择你的身份</view>
-  <view class="inputbox">
-    <input class="input" placeholder="请填写公司名称" placeholder-class="placeholder"></input>
+  <view class="inputbox" >
+    <input class="input" placeholder="请填写公司名称" placeholder-class="placeholder" bindinput="inputcompanyname"></input>
   </view>
   <view class="bottom">
     <text bindtap="togerenrenzheng">个人招聘</text>
   </view>
-  <view class="netstepbtn" bindtap="toconpanyrenzheng">下一步</view>
+  <button class="confirmbtn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">下一步</button>
 </view>

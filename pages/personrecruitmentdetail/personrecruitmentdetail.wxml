@@ -93,7 +93,6 @@
     <view class="imageshow">
       <image src="https:\/\/www.xiaoshetong.cn\/upload_auth\/2019-08-09\/zPd2961PgqGD22KLLQD.png" lazy-load="true" mode="widthFix" style="width:750rpx;"></image>
     </view>
-    
   </view>
   <!-- 我的动态 -->
   <view class="mydongtai" wx:if="{{selectid==2}}">

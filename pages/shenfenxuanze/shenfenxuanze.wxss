@@ -34,7 +34,9 @@
 .bottom text{
   font-size: 28rpx;
   color: #fc7001;
-  float: right;
+  display: flex;
+  width: 630rpx;
+  justify-content: flex-end;
 }
 .netstepbtn{
   width: 690rpx;
@@ -47,4 +49,15 @@
   color: #ffffff;
   border-radius: 45rpx;
   margin-top: 226rpx;
+}
+.confirmbtn{
+  width: 690rpx;
+  height: 90rpx;
+  background-color: #fc7001;
+  line-height: 90rpx;
+  text-align: center;
+  margin-left: 30rpx;
+  border-radius: 40rpx;
+  color: #ffffff;
+  margin-top: 100rpx;
 }

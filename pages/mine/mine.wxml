@@ -5,24 +5,24 @@
   </view>
   <view class="userinfobox">
     <view class="userinfobox-left">
-      <image src="../../images/index/avtar.png"></image>
+      <image src="{{header}}" style="border-radius:50%;"></image>
     </view>
     <view class="userinfobox-right">
       <view class="userinfobox-right-top">
-        <text>我的名字</text>
-        <image src="../../images/index/bianji1.png"></image>
+        <text>{{name}}</text>
+        <image src="../../images/index/bianji1.png" bindtap="togerenziliao"></image>
       </view>
       <view class="userinfobox-right-mid">
         <text>京东人事</text>
-        <text>18888888888</text>
+        <text>{{phonenum}}</text>
       </view>
       <view class="userinfobox-right-bottom">服务区域：四川-成都-金牛区</view>
     </view>
   </view>
-  <view class="renzhengbox">
+  <view class="renzhengbox" wx:if="{{isComPany==0}}">
     <image src="../../images/mine/safe.png"></image>
     <text>你还未进行认证哦!请点击</text>
-    <text>立即认证</text>
+    <text bindtap="tocompanyrenzheng">立即认证</text>
   </view>
   <view class="yue">
     <view class="yue-left">

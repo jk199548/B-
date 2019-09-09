@@ -5,7 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inputcompanyname:'',
+  },
+  //获取用户信息
+  getUserInfo:function(e){
+    var that = this;
+    console.log(e.detail.errMsg)
+    if(e.detail.errMsg== "getUserInfo:ok"){
+      wx.setStorageSync('header',e.detail.userInfo.avatarUrl);
+      wx.setStorageSync('sex',e.detail.userInfo.gender);
+      var reg = /^[\u4e00-\u9fa5]{2,10}$/;
+      if (that.data.inputcompanyname == '') {
+        wx.showToast({
+          title: '公司名字不能为空',
+          icon: 'none',
+          duration: 1500
+        })
+      } else {
+        if(reg.test(that.data.inputcompanyname)){
+          wx.navigateTo({
+            url: '../conpanyrenzheng/conpanyrenzheng?companyname='+that.data.inputcompanyname,
+          })
+        }else{
+          wx.showToast({
+            title:'公司名字只能为汉字',
+            icon:'none'
+          })
+        }
+      }
+    }else{
+      wx.showToast({
+        title:'请先登录',
+        icon:'none'
+      })
+    }
+  },
+  //用户输入公司名字事件
+  inputcompanyname:function(e){
+    var that = this;
+    that.setData({
+      inputcompanyname:e.detail.value
+    })
   },
   //跳转到个人招聘页面
   togerenrenzheng:function(e){
@@ -13,18 +53,21 @@ Page({
       url: '../gerenrenzheng/gerenrenzheng',
     })
   },
-  //跳转到公司认证页面
-  toconpanyrenzheng:function(e){
-    wx.navigateTo({
-      url: '../conpanyrenzheng/conpanyrenzheng',
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    if(options.from=='mine'){
+      
+    }else{
+      console.log(111111)
+      if(wx.getStorageSync('token')){
+        wx.switchTab({
+          url: '../index/index',
+        })
+      }
+    }
   },
 
   /**

@@ -1,7 +1,7 @@
 {
   "pages": [
+    "pages/shenfenxuanze/shenfenxuanze",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/mine/mine",
     "pages/news/news",
     "pages/toudixiangqing/toudixiangqing",
@@ -9,7 +9,6 @@
     "pages/indexdongtai/indexdongtai",
     "pages/conpanyrenzheng/conpanyrenzheng",
     "pages/gerenrenzheng/gerenrenzheng",
-    "pages/shenfenxuanze/shenfenxuanze",
     "pages/gerentoudixiangqing/gerentoudixiangqing",
     "pages/addposition/addposition",
     "pages/positionrequire/positionrequire",

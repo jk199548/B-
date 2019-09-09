@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    header:'',
     fuwuregion:'',
     positionname:'aa',
     name:'西喜爱',
@@ -54,6 +55,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      header:wx.getStorageSync('header')
+    })
     if(that.data.shopaddress==''){
       that.setData({
         changeshopaddress:false,

@@ -4,7 +4,7 @@
     <!-- 用户头像 -->
     <view class="headbox">
       <text>头像</text>
-      <image src="../../images/index/avtar.png"></image>
+      <image src="{{header}}"></image>
     </view>
     <!-- 公司名称 -->
     <view class="conpanyname">

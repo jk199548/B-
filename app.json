@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/shenfenxuanze/shenfenxuanze",
     "pages/index/index",
     "pages/mine/mine",

@@ -448,14 +448,6 @@
   flex-direction: row;
   margin-top: 20rpx;
   flex-wrap: wrap;
-  max-height: 160rpx;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  white-space: normal !important;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 .mydongtai-box-bottom image{
   width: 150rpx;

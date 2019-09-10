@@ -1,4 +1,5 @@
-// pages/addposition/addposition.js
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -13,6 +14,70 @@ Page({
     uploadconpanyimage: '../../images/shiming/conpany.png',
     conpanyimage: [],
     logourl:'../../images/index/uploadlogo.png',//公司logo
+    cate:'',
+    number:'',//职位需要的招聘人数
+    title:'',//职位的名称
+    longitude:'',
+    latitude:'',
+    province:'',//省
+    city:'',//市
+    district:'',//区
+    location:'',//详细位置
+    street:'',//街道
+    experience:'',//工作经验要求
+    age:'',//年龄
+    education:'',//学历
+    sex:'',//性别要求
+
+  },
+  //用户输入的职位名称
+  inputpositionname:function(e){
+    var that = this;
+    that.setData({
+      title:e.detail.value
+    })
+  },
+  //用户输入的工作地点
+  inputworkplace:function(e){
+    var that = this;
+    console.log(e.detail.value);
+    var qqmapsdk = new QQMapWX({
+      key: 'DEQBZ-SZEWJ-3R4FM-FPGJ2-CSRE2-3PFZU'
+    });
+    qqmapsdk.geocoder({
+      address: e.detail.value,
+      success: function(res){
+        console.log(res)
+        that.setData({
+          longitude:res.result.location.lng,
+          latitude:res.result.location.lat,
+        });
+        qqmapsdk.reverseGeocoder({
+          location:{
+            longitude: res.result.location.lng,
+            latitude: res.result.location.lat,
+          },
+          success:function(res){
+            that.setData({
+              province:res.result.address_component.province,
+              city:res.result.address_component.city,
+              district:res.result.address_component.district,
+              street:res.result.address_component.street,
+              location:e.detail.value
+            })
+          }
+        })
+      },
+    });
+  },
+  //招聘职位类型的选择
+  radioChange:function(e){
+    var that = this;
+    console.log(e);
+    that.setData({
+      cate:e.detail.value
+    })
+    console.log(that.data.cate)
   },
   //显示薪资模态框
   showsalarymodal:function(e){
@@ -81,8 +146,28 @@ Page({
     wx.chooseImage({
       count:1,
       success: function(res) {
-        that.setData({
-          logourl:res.tempFilePaths
+        wx.uploadFile({
+          url: 'https://www.xiaoshetong.cn/api/recruit/uploadLogo',
+          filePath:res.tempFilePaths[0],
+          name:'logo',
+          // header: {}, // 设置请求的 header
+          // formData: {}, // HTTP 请求中其他额外的 form data
+          success: function(res){
+            console.log(res)
+            if(JSON.parse(res.data).code==0){
+              that.setData({
+                logourl:JSON.parse(res.data).result
+              })
+            }else{
+              wx.showToast({
+                title:'上传失败',
+                icon:'none'
+              })
+            }
+          },
+          fail:function(res){
+            console.log(res)
+          }
         })
       },
     })
@@ -91,7 +176,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -105,7 +190,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

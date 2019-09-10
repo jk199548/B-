@@ -116,7 +116,7 @@ Page({
       })
       if(wx.getStorageSync('is_company')==0){
         if(wx.getStorageSync('is_company')==1){
-
+          
         }else{
           api._post('/editUserInfo',{
             'isCompany':1,

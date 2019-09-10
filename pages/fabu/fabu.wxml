@@ -1,7 +1,7 @@
 <!--pages/fabu/fabu.wxml-->
 <view class="box">
   <view class="fabu">
-    <textarea class="inputbox"  placeholder="这一刻的想法···" placeholder-style="font-size:30rpx;color:#80808;" maxlength="-1"></textarea>
+    <textarea class="inputbox"  placeholder="这一刻的想法···" placeholder-style="font-size:30rpx;color:#80808;" maxlength="-1" bindinput="inputcontent"></textarea>
   </view>
   <view class="chooseimage">
     <image src="../../images/index/chooseimage.png" bindtap="chooseimage"></image>
@@ -18,5 +18,5 @@
       </image>
     </block>
   </view>
-  <view class="fabubtn">立即发布</view>
+  <view class="fabubtn" bindtap="addDynamic">立即发布</view>
 </view>

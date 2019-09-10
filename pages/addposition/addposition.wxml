@@ -6,11 +6,11 @@
       <text>选择你想招的人</text>
     </view>
     <view class="checkgroup">
-      <checkbox-group>
-        <checkbox>全职</checkbox>
-        <checkbox>兼职</checkbox>
-        <checkbox>实习</checkbox>
-      </checkbox-group>
+      <radio-group bindchange="radioChange">
+        <radio value="1">全职</radio>
+        <radio value="4">兼职</radio>
+        <radio value="5">实习</radio>
+      </radio-group>
     </view>
     <view class="uploadlogo" bindtap="chooseconpanylogo">
       <image src="{{logourl}}"></image>
@@ -21,7 +21,7 @@
         <text>职位名称</text>
       </view>
       <view class="positionname-right">
-        <input placeholder="请输入职位名称" placeholder-class="placeholder"></input>
+        <input bindinput="inputpositionname" placeholder="请输入职位名称" placeholder-class="placeholder"></input>
       </view>
     </view>
     <view class="workplace">
@@ -30,7 +30,7 @@
         <text>工作地点</text>
       </view>
       <view class="workplace-right">
-        <input placeholder="请输入工作地点" placeholder-class="placeholder"></input>
+        <input bindblur="inputworkplace" placeholder="请输入工作地点" placeholder-class="placeholder"></input>
       </view>
     </view>
     <view class="positionrequire" bindtap="topositionrequire">
@@ -38,6 +38,7 @@
         <text>*</text>
         <text>职位要求</text>
       </view>
+      <view wx:if="{{age}}" style="font-size:28rpx;color:#3d3d3d;">{{age}}|{{sex}}|{{education}}|{{experience}}</view>
       <view class="positionrequire-right">
         <image src="../../images/shiming/more.png"></image>
       </view>
@@ -55,7 +56,7 @@
     <view class="recruit">
       <view class="recruit-left">
         <text>*</text>
-        <text>工作地点</text>
+        <text>招聘人数</text>
       </view>
       <view class="recruit-right">
         <input placeholder="请输入招聘人数" placeholder-class="placeholder"></input>

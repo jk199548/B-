@@ -1,12 +1,14 @@
 //index.js
 //获取应用实例
 const app = getApp();
-
+const api = require('../../utils/api.js');
+var  util = require('../../utils/util.js');
 Page({
   data: {
     delmodalid:0,
     showdelmodal:false,
     mydongtainodata:false,
+    mypositionnodata:true,
     navid:0,
     showmodal:false,
     shaixuanisactive:false,
@@ -16,7 +18,38 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    dynamiclist:[],
+  },
+  //获取到我的动态数据
+  getDynamic:function(e){
+    var that = this;
+    api._get('/getDynamic',{
+      'recruiter_id':wx.getStorageSync('id')
+    }).then(res=>{
+      console.log(res)
+      if(res.code==0){
+        if(res.result.length==0){
+          that.setData({
+            mydongtainodata:true,
+          })
+        }else{
+          for(var i = 0; i < res.result.length; i++){
+            res.result[i].created_at = util.js_date_time(res.result[i].created_at);
+          }
+          that.setData({
+            dynamiclist:res.result,
+            mydongtainodata:false
+          })
+        }
+      }
+    })
+  },
+  //跳转到职位发布页面
+  toaddposition:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../addposition/addposition',
+    })
   },
   //跳转到职位详情页面
   topositiondetail:function(e){
@@ -44,6 +77,14 @@ Page({
         if(res.confirm){
           that.setData({
             showdelmodal:false
+          });
+          api._delete('/deleteDynamic',{
+            'id':e.currentTarget.dataset.id,
+            'recruiter_id':wx.getStorageSync('id')
+          }).then(res=>{
+            if(res.code==0){
+              that.getDynamic();
+            }
           })
         }else{
           console.log('取消删除')
@@ -54,6 +95,7 @@ Page({
   //点击我的动态页面的图标事件展示分享删除弹框
   showdelmodal:function(e){
     var that = this;
+    console.log(e)
     that.setData({
       showdelmodal:!that.data.showdelmodal,
       delmodalid:e.currentTarget.dataset.id
@@ -124,5 +166,10 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    that.getDynamic();
   },
+  onShow:function(){
+    var that = this;
+    that.getDynamic();
+  }
 })

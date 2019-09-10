@@ -120,14 +120,14 @@
     </view>
   </view>
   <!-- 首页我的职位页面 -->
-  <view class="myposition" wx:if="{{selectedid==2}}">
+  <view class="myposition" wx:if="{{selectedid==2&&mypositionnodata!=true}}">
     <view class="myposition-box">
-      <view class="myposition-box-top">
+      <view class="myposition-box-top" bindtap="topositiondetail">
         <view class="myposition-box-top-left">
           <image src="../../images/index/avtar.png"></image>
         </view>
         <view class="myposition-box-top-right">
-          <view class="myposition-box-top-right-top" bindtap="topositiondetail">
+          <view class="myposition-box-top-right-top" >
             <text style="font-size: 36rpx;color: #333333;font-weight: bold;">京东物流分拣员</text>
             <view>
               <text style="font-size: 28rpx;color: #333333;">招聘人数:</text>
@@ -172,106 +172,27 @@
       </view>
     </view>
   </view>
-  <!-- 首页我的动态页面--没有动态 -->
-  <view class="mydongtainodata" wx:if="{{selectedid==3&&mydongtainodata==true}}">
-    <image src="../../images/index/banner.png"></image>
-    <view >暂未发布动态</view>
-    <view>你暂未发动态，请点击</view>
-    <view>立即发布</view>
-  </view>
+  <!-- 我的动态页面 -->
   <view class="mydongtai" wx:if="{{selectedid==3&&mydongtainodata==false}}">
     <view class="fabu" bindtap="tofabu">
       <image src="../../images/index/fabu.png"></image>
     </view>
-    <view class="mydongtai-box">
+    <view class="mydongtai-box" wx:for="{{dynamiclist}}">
       <view class="mydongtai-box-top">
-        <text>7月2日</text>
-        <image src="../../images/index/more.png" bindtap="showdelmodal" data-id="0"></image>
+        <text>{{item.created_at}}</text>
+        <image src="../../images/index/more.png" bindtap="showdelmodal" data-id="{{item.id}}"></image>
       </view>
-      <view class="mydongtai-box-center">发布了“京东物流分拣员”</view>
-      <view class="mydongtai-box-bottom">
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
+      <view class="mydongtai-box-center" style="font-size:28rpx;color:#808080;">{{item.content}}</view>
+      <view class="mydongtai-box-bottom"  >
+        <image wx:for="{{item.dynamic_image}}" src="{{item.image_path}}"></image>
       </view>
-      <view class="delmodal" wx:if="{{showdelmodal&&delmodalid==0}}">
-        <view>
+      <view class="delmodal" wx:if="{{delmodalid==item.id&&showdelmodal}}" data-id="index">
+        <button open-type="share" style="border:none;background-color: black;opacity: 0.5;line-height: 1;">
           <image src="../../images/index/share.png"></image>
-          <text>分享</text>
-        </view>
+          <text style="color: #fff;">分享</text>
+        </button>
         <view style="width:110rpx;height:2rpx;background-color:#ffffff;"></view>
-        <view bindtap="deldongtai">
-          <image src="../../images/index/del.png"></image>
-          <text>删除</text>
-        </view>
-      </view>
-    </view>
-    <view class="mydongtai-box">
-      <view class="mydongtai-box-top">
-        <text>7月2日</text>
-        <image src="../../images/index/more.png" bindtap="showdelmodal" data-id="1"></image>
-      </view>
-      <view class="mydongtai-box-center">发布了“京东物流分拣员”</view>
-      <view class="mydongtai-box-bottom" style="font-size:28rpx;color:#808080;">主要是负责推广超市APP,让新用户免费扫码注册，注册成功免费送水果，不用到处跑，入职不用到处跑，入职不用到处跑，入职</view>
-      <view class="delmodal" wx:if="{{showdelmodal&&delmodalid==1}}">
-        <view>
-          <image src="../../images/index/share.png"></image>
-          <text>分享</text>
-        </view>
-        <view style="width:110rpx;height:2rpx;background-color:#ffffff;"></view>
-        <view>
-          <image src="../../images/index/del.png"></image>
-          <text>删除</text>
-        </view>
-      </view>
-    </view>
-    <view class="mydongtai-box">
-      <view class="mydongtai-box-top">
-        <text>7月2日</text>
-        <image src="../../images/index/more.png" bindtap="showdelmodal" data-id="2"></image>
-      </view>
-      <view class="mydongtai-box-center" style="font-size:28rpx;color:#808080;">主要是负责推广超市APP,让新用户免费扫码注册，注册成功免费送水果，不用到处跑，入职不用到处跑，入职不用到处跑，入职</view>
-      <view class="mydongtai-box-bottom">
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-      </view>
-      <view class="delmodal" wx:if="{{showdelmodal&&delmodalid==2}}">
-        <view>
-          <image src="../../images/index/share.png"></image>
-          <text>分享</text>
-        </view>
-        <view style="width:110rpx;height:2rpx;background-color:#ffffff;"></view>
-        <view >
-          <image src="../../images/index/del.png"></image>
-          <text>删除</text>
-        </view>
-      </view>
-    </view>
-    <view class="mydongtai-box">
-      <view class="mydongtai-box-top">
-        <text>7月2日</text>
-        <image src="../../images/index/more.png" bindtap="showdelmodal" data-id="3"></image>
-      </view>
-      <view class="mydongtai-box-center" style="font-size:28rpx;color:#808080;">主要是负责推广超市APP,让新用户免费扫码注册，注册成功免费送水果，不用到处跑，入职不用到处跑，入职不用到处跑，入职</view>
-      <view class="mydongtai-box-bottom">
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-        <image src="../../images/index/dongtai.png"></image>
-      </view>
-      <view class="delmodal" wx:if="{{delmodalid==3&&showdelmodal}}">
-        <view>
-          <image src="../../images/index/share.png"></image>
-          <text>分享</text>
-        </view>
-        <view style="width:110rpx;height:2rpx;background-color:#ffffff;"></view>
-        <view>
+        <view bindtap="deldongtai" data-id="{{item.id}}">
           <image src="../../images/index/del.png"></image>
           <text>删除</text>
         </view>
@@ -289,3 +210,19 @@
   <view></view>
   <text>待面试</text>
 </view>
+
+
+  <!-- 首页我的动态页面--没有动态 -->
+  <view class="mydongtainodata" wx:if="{{selectedid==3&&mydongtainodata==true}}">
+    <image src="../../images/index/banner.png"></image>
+    <view >暂未发布动态</view>
+    <view>你暂未发动态，请点击</view>
+    <view bindtap="tofabu">立即发布</view>
+  </view>
+  <!-- 首页我的职位页面--没有职位 -->
+  <view class="mydongtainodata" wx:if="{{selectedid==2&&mypositionnodata==true}}">
+    <image src="../../images/index/banner.png"></image>
+    <view >暂未发布职位</view>
+    <view>你暂未发职位，请点击</view>
+    <view bindtap="toaddposition">立即发布</view>
+  </view>

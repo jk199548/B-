@@ -1,4 +1,5 @@
 // pages/gerenziliao/gerenziliao.js
+const api = require('../../utils/api.js')
 Page({
 
   /**
@@ -7,19 +8,92 @@ Page({
   data: {
     header:'',
     fuwuregion:'',
-    positionname:'aa',
-    name:'西喜爱',
-    phonenum:'额呵呵呵',
-    shopaddress:'乐乐乐乐',
-    changeshopaddress:false,
+    companyname:'',
+    positionname:'',//职位名称
+    name:'',//招聘人名
+    phonenum:'',//电话号码
+    shopaddress:'',//门店地址
+    serviceregion:'',//服务区域
+    idcard:'',//身份证号码
+    ischange:false,//用户是否已经重新输入了新的手机号码
+    changeidcard:false,
     changephonenum:false,
     changename:false,
+  },
+  //获取已过认证的个人或公司信息
+  getMyDetail:function(e){
+    var that = this;
+    api._get('/getMyDetails',{
+      'token':wx.getStorageSync('token'),
+      'id':wx.getStorageSync('id')
+    }).then(res=>{
+      console.log(res)
+      if(res.result.is_company==1){
+        that.setData({
+          companyname:res.result.company,
+          header:wx.getStorageSync('header'),
+          phonenum:res.result.phone,
+          name:res.result.username,
+          idcard:res.result.idcard,
+          changephonenum:true,
+          changename:true,
+          changeidcard:true
+        })
+      }else{
+        that.setData({
+          name:res.result.username,
+          header:wx.getStorageSync('header'),
+          phonenum:res.result.phone,
+          idcard:res.result.idcard,
+          changephonenum:true,
+          changename:true,
+          changeidcard:true
+        })
+      }
+    })
+  },
+  //用户修改完手机号后的提交事件
+  editPhone:function(e){
+    var that = this;
+    var phonenumreg = /^1[3456789]\d{9}$/;
+    if(phonenumreg.test(that.data.phonenum)){
+      api._post('/editPhone',{
+        'id':wx.getStorageSync('id'),
+        'phone':that.data.phonenum
+      }).then(res=>{
+        if(res.code==0){
+          wx.showToast({
+            title:'修改成功',
+            icon:'none'
+          });
+          wx.switchTab({
+            url: '../mine/mine',
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title:'手机号码格式不正确',
+        icon:'none'
+      })
+    }
+  },
+  //用户输入手机号码事件
+  changephonenum:function(e){
+    var that = this;
+    console.log(e)
+    if(e.detail.value!=''){
+      that.setData({
+        ischange:true,
+        phonenum:e.detail.value
+      })
+    }
   },
   //选择服务区域
   chooseregion:function(e){
     var that = this;
     that.setData({
-      fuwuregion:e.detail.value
+      serviceregion:e.detail.value
     })
   },
   //点击修改职位名称
@@ -55,45 +129,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.getMyDetail();
     that.setData({
       header:wx.getStorageSync('header')
     })
-    if(that.data.shopaddress==''){
-      that.setData({
-        changeshopaddress:false,
-      })
-    }else{
-      that.setData({
-        changeshopaddress: true,
-      })
-    }
-    if (that.data.phonenum == '') {
-      that.setData({
-        changephonenum: false,
-      })
-    } else {
-      that.setData({
-        changephonenum: true,
-      })
-    }
-    if (that.data.name == '') {
-      that.setData({
-        changename: false,
-      })
-    } else {
-      that.setData({
-        changename: true,
-      })
-    }
-    if (that.data.positionname == '') {
-      that.setData({
-        changepositionname: false,
-      })
-    } else {
-      that.setData({
-        changepositionname: true,
-      })
-    }
   },
 
   /**

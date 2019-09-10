@@ -7,5 +7,5 @@
   <view class="bottom">
     <text bindtap="togerenrenzheng">个人招聘</text>
   </view>
-  <button class="confirmbtn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">下一步</button>
+  <button class="confirmbtn" bindtap="tonextpage">下一步</button>
 </view>

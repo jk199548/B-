@@ -26,12 +26,16 @@ Page({
       })
     } else {
       var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2]; //上一个页面
+      var prevPage = pages[pages.length - 2];//上一个页面
+      console.log(that.data.workex); 
+      console.log(that.data.schoolex); 
+      console.log(that.data.age); 
+      console.log(that.data.sexrequire); 
       prevPage.setData({
-        workex:that.data.workex,
-        schoolex: that.data.schoolex,
+        experience:that.data.workex,
+        education: that.data.schoolex,
         age: that.data.age,
-        sexrequire: that.data.sexrequire,
+        sex: that.data.sexrequire,
       })
       wx.navigateBack({
         //返回

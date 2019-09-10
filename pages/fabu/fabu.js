@@ -1,4 +1,5 @@
 // pages/fabu/fabu.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -12,6 +13,49 @@ Page({
     percentarr:[],//进度条的的数字数组
     onlineimagearr:[],//线上图片数组
     localimagearr:[],//本地图片数组
+    inputcontent:'',//用户输入的动态内容
+  },
+  //发布按钮事件
+  addDynamic:function(e){
+    var that = this;
+    if(that.data.inputcontent==''){
+      wx.showToast({
+        title: '内容不能为空',
+        icon:'none'
+      })
+    }else if(that.data.onlineimagearr.length==0){
+      api._post('/addDynamic', {
+        'recruiter_id': wx.getStorageSync('id'),
+        'content': that.data.inputcontent,
+      }).then(res => {
+        wx.showToast({
+          title:'发布成功'
+        });
+        wx.switchTab({
+          url: '../index/index',
+        })
+      })
+    }else{
+      api._post('/addDynamic',{
+        'images':that.data.onlineimagearr,
+        'recruiter_id':wx.getStorageSync('id'),
+        'content':that.data.inputcontent,
+      }).then(res=>{
+        wx.showToast({
+          title:'发布成功'
+        });
+        wx.switchTab({
+          url: '../index/index',
+        })
+      })
+    }
+  },
+  //用户输入的内容
+  inputcontent:function(e){
+    var that = this;
+    that.setData({
+      inputcontent:e.detail.value
+    })
   },
   //长按删除图片
   bingLongTap:function(e){

@@ -38,8 +38,9 @@
         <text>*</text>
         <text>职位要求</text>
       </view>
-      <view wx:if="{{age}}" style="font-size:28rpx;color:#3d3d3d;">{{age}}|{{sex}}|{{education}}|{{experience}}</view>
-      <view class="positionrequire-right">
+      
+      <view class="positionrequire-right" style="display: flex;width:610rpx;justify-content:flex-end;align-items: center;">
+        <view wx:if="{{age}}" style="font-size:28rpx;color:#3d3d3d;margin-right:30rpx;">{{age}}|{{sex}}|{{education}}|{{experience}}</view>
         <image src="../../images/shiming/more.png"></image>
       </view>
     </view>
@@ -48,7 +49,9 @@
         <text>*</text>
         <text>薪资待遇</text>
       </view>
-      <view class="salary-right">
+      
+      <view class="salary-right" style="display: flex;width:610rpx;justify-content:flex-end;align-items: center;">
+        <view wx:if="{{!showmodal&&salary}}" style="font-size:28rpx;color:#3d3d3d;margin-right:30rpx;">{{salary}}/{{salaryday}}</view>
         <image src="../../images/shiming/more.png"></image>
       </view>
     </view>
@@ -62,7 +65,7 @@
         <input placeholder="请输入招聘人数" placeholder-class="placeholder"></input>
       </view>
     </view>
-    <!-- 是否需要分组 -->
+    <!-- 是否需要分组
     <view class="needgroup">
       <view class="needgroup-left">
         <text>*</text>
@@ -74,22 +77,16 @@
           <radio style="margin-left:50rpx;font-size:28rpx;color:#333333;">是</radio>
         </radio-group>
       </view>
-    </view>
+    </view> -->
     <!-- 工作福利 -->
-    <view class="workfuli">
+    <view class="workfuli" >
       <view class="workfuli-left">
         <text>*</text>
         <text>工作福利</text>
       </view>
       <view class="workfuli-list">
-        <view>包吃</view>
-        <view>包吃包住</view>
-        <view>啊包吃</view>
-        <view>包啊啊吃</view>
-        <view>包吃是</view>
-        <view>包吃</view>
-        <view>包吃</view>
-        <view>＋添加</view>
+        <view wx:for="{{welfarearr}}" wx:if="{{welfarearr&&!showwelfaremodal}}">{{item}}</view> 
+        <view bindtap="showwelfaremodal">＋添加</view>
       </view>
     </view>
     <!-- 招聘有效期 -->
@@ -98,11 +95,12 @@
         <text>*</text>
         <text>招聘有效期</text>
       </view>
-      <view class="salary-right">
+      <picker mode="date" start="2019-09-11" end="2019-09-30" bindchange="bindTimeChange" class="salary-right" style="width:490rpx;display:flex;justify-content:flex-end;height:100rpx;align-items: center;">
+        <text style="font-size:28rpx;color:#808080;margin-right:20rpx;">{{validity_time}}</text>
         <image src="../../images/shiming/more.png"></image>
-      </view>
+      </picker>
     </view>
-    <!-- 入职奖 -->
+    <!-- 入职奖
     <view class="recruit">
       <view class="recruit-left">
         <text>*</text>
@@ -112,8 +110,8 @@
         <input placeholder="请输入你的入职奖金" placeholder-class="placeholder"></input>
       </view>
     </view>
-    <!-- 推荐奖 -->
-    <view class="recruit">
+    推荐奖 -->
+    <!-- <view class="recruit">
       <view class="recruit-left">
         <text>*</text>
         <text>推荐奖</text>
@@ -121,7 +119,7 @@
       <view class="recruit-right">
         <input placeholder="请输入你的推荐奖金" placeholder-class="placeholder"></input>
       </view>
-    </view>
+    </view> -->
     <!-- 上传工作环境图片 -->
     <view class="uploadconpanyimage" >
       <image src="{{uploadconpanyimage}}" bindtap="uploadconpanyimage"></image>
@@ -145,9 +143,27 @@
   </view>
   <view class="salaryinputbox">
     <view>
-      <input placeholder="请输入薪资"></input>
+      <input placeholder="请输入薪资" value="{{salary}}" bindinput="salaryinput"></input>
     </view>
     <text>/{{salaryday}}</text>
   </view>
-  <view class="salaryconfirmbtn">完成</view>
+  <view class="salaryconfirmbtn" bindtap="salarymodalbtn">完成</view>
+</view>
+
+<!-- 工作福利模态框 -->
+<view class="modal" wx:if="{{showwelfaremodal}}" catchtouchmove="true"></view>
+<view class="salary-modal" wx:if="{{showwelfaremodal}}" catchtouchmove="true">
+  <view bindtap="closewelfaremodal">
+    <image src="../../images/index/close.png"></image>
+  </view>
+  <view class="welfareinputbox">
+    <view>
+      <input placeholder="请输入工作福利" value="{{welfare}}" bindinput="welfareinput"></input>
+    </view>
+  </view>
+  <view style="display: flex;justify-content:center;width:610rpx;margin-top: 20rpx;">
+    <text style="font-size:28rpx;color:red;">注意</text>
+    <text style="font-size:28rpx;color:#808080;">：请将每个工作福利用,(逗号)隔开</text>
+  </view>
+  <view class="salaryconfirmbtn" bindtap="welfaremodalbtn">完成</view>
 </view>

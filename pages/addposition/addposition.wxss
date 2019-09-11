@@ -271,6 +271,13 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   text-align: center;
   background:rgba(244,244,244,1);
   border-radius:5rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .uploadconpanyimage{
   width: 690rpx;
@@ -385,4 +392,24 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   border-radius: 45rpx;
   margin-left: 165rpx;
   margin-top: 90rpx;
+}
+.welfareinputbox{
+  margin-top: 78rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 610rpx;
+}
+.welfareinputbox input{
+  width: 360rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #BEBDBD;
+  padding-left: 30rpx;
+}
+.welfareinputbox view{
+  width: 390rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border: 1rpx solid #eeeeee;
 }

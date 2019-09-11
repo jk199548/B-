@@ -114,7 +114,7 @@ Page({
       }).then(res=>{
 
       })
-      if(wx.getStorageSync('is_company')==0){
+      if(wx.getStorageSync('is_company')===0){
         if(wx.getStorageSync('is_company')==1){
           
         }else{

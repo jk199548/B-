@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showwelfaremodal:false,
+    salar:'',
     salaryday:'天',
     salaryselectedid:0,
     salarymodallist:['日结','周结','月结'],
@@ -28,7 +30,16 @@ Page({
     age:'',//年龄
     education:'',//学历
     sex:'',//性别要求
-
+    welfarearr:[],
+    welfare:'',//工作福利
+    validity_time:'请选择招聘有效期',//招聘有效期
+  },
+  //用户选择招聘有效期
+  bindTimeChange:function(e){
+    var that = this;
+    that.setData({
+      validity_time:e.detail.value
+    })
   },
   //用户输入的职位名称
   inputpositionname:function(e){
@@ -79,6 +90,66 @@ Page({
     })
     console.log(that.data.cate)
   },
+  //工作福利模态框
+  showwelfaremodal:function(e){
+    var that = this;
+    that.setData({
+      showwelfaremodal:true
+    })
+  },
+  //工作福利模态框input输入事件
+  welfareinput:function(e){
+    var that = this;
+    if(e.detail.value==''){
+      that.setData({
+        welfarearr:[],
+      })
+    }else{
+      var newwelfare = e.detail.value.split("，");
+      that.setData({
+        welfarearr:newwelfare,
+        welfare:e.detail.value
+      })
+    }
+    console.log(that.data.welfarearr)
+  },
+  //关闭工作福利模态框
+  closewelfaremodal:function(e){
+    var that = this;
+    that.setData({
+      showwelfaremodal:false,
+    })
+  },
+  //工作福利模态框确定按钮
+  welfaremodalbtn:function(e){
+    var that = this;
+    if(that.data.welfarearr.length==0){
+      that.setData({
+        welfarearr:[],
+        showwelfaremodal:false,
+      })
+    }else{
+      that.setData({
+        showwelfaremodal:false,
+      })
+    }
+  },
+  //薪资模态框输入框输入事件
+  salaryinput:function(e){
+    var that = this;
+    that.setData({
+      salary:e.detail.value
+    })
+  },
+  //点击薪资模态框完成按钮事件
+  salarymodalbtn:function(e){
+    var that = this;
+    //var reg = /^[1-9]\d{1,5}$/;
+      that.setData({
+        showmodal:false,
+        salary:that.data.salary,
+      })
+  },
   //显示薪资模态框
   showsalarymodal:function(e){
     var that = this;
@@ -91,6 +162,7 @@ Page({
     var that = this;
     that.setData({
       showmodal:false,
+      showwelfaremodal:false,
     })
   },
   //薪资待遇模态框薪资结算方法的点击
@@ -99,17 +171,20 @@ Page({
     if(e.currentTarget.dataset.id==0){
       that.setData({
         salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '天'
+        salaryday: '天',
+        salary:''
       })
     }else if(e.currentTarget.dataset.id==1){
       that.setData({
         salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '周'
+        salaryday: '周',
+        salary:''
       })
     } else if (e.currentTarget.dataset.id == 2){
       that.setData({
         salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '月'
+        salaryday: '月',
+        salary:''
       })
     }
    
@@ -123,19 +198,40 @@ Page({
   //上传公司环境图片
   uploadconpanyimage:function(e){
     var that = this;
-    if (that.data.conpanyimage.length > 6) {
+    if (that.data.conpanyimage.length >= 6) {
       wx.showToast({
         title: '最多上传6张',
         icon: 'none'
       })
     }else{
+      console.log(that.data.conpanyimage.length);
       wx.chooseImage({
         count: that.data.imagecount,
         success: function (res) {
-          that.setData({
-            conpanyimage: that.data.conpanyimage.concat(res.tempFilePaths),
-            imagecount: that.data.imagecount - that.data.conpanyimage.concat(res.tempFilePaths).length
-          })
+          for(var item in res.tempFilePaths){
+            wx.uploadFile({
+              url: 'https://www.xiaoshetong.cn/api/recruit/uploadLogo',
+              filePath:res.tempFilePaths[item],
+              name:'logo',
+              success: function(res){
+                if(JSON.parse(res.data).code==0){
+                  that.setData({
+                    conpanyimage: that.data.conpanyimage.concat(JSON.parse(res.data).result),
+                    imagecount: 6 - that.data.conpanyimage.length - 1
+                  })
+                }else{
+                  wx.showToast({
+                    title:'上传失败',
+                    icon:'none'
+                  })
+                }
+              },
+              fail:function(res){
+                console.log(res)
+              }
+            })
+          }
+          
         },
       })
     }

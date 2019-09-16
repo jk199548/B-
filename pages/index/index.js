@@ -19,6 +19,29 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     dynamiclist:[],
+    myposition:[],
+  },
+  //获取用户已经发布的职位
+  getMyWork:function(e){
+    var that = this;
+    api._get('/getMyWork',{
+      'token':wx.getStorageSync('token'),
+      'id':wx.getStorageSync('id')
+    }).then(res=>{
+      if(res.code==0){
+        var newmyposition = res.result;
+        for (let i = 0; i < newmyposition.length; i++) {
+          if (newmyposition[i].welfare != null) {
+            var newwelfare = newmyposition[i].welfare.split(",");
+            newmyposition[i].welfare = newwelfare;
+          }
+        }
+        that.setData({
+          mypositionnodata:false,
+          myposition:newmyposition
+        })
+      }
+    })
   },
   //获取到我的动态数据
   getDynamic:function(e){
@@ -167,9 +190,11 @@ Page({
   onLoad: function () {
     var that = this;
     that.getDynamic();
+    that.getMyWork();
   },
   onShow:function(){
     var that = this;
     that.getDynamic();
+    that.getMyWork();
   }
 })

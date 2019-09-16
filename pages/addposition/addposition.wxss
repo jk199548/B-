@@ -1,4 +1,15 @@
 /* pages/addposition/addposition.wxss */
+.ql-container {
+  box-sizing: border-box;
+  padding: 12px 15px;
+  width: 100%;
+  min-height: 30vh;
+  height: 20px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  width: 690rpx;
+}
 .addposition{
   border-top: 1rpx solid #eeeeee;
 }

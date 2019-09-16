@@ -22,7 +22,7 @@
     <text class="{{shaixuanisactive?'shaixuanactive':'shaixuannormal'}}">筛选</text>
     <image src="{{shaixuanisactive?'../../images/index/shaixuan-active.png':'../../images/index/shaixuan-normal.png'}}"></image>
   </view>
-  <view class="zhaopin-yes" wx:if="{{selectedid==0}}">
+  <view class="zhaopin-yes" wx:if="{{selectedid==0}}" style="background-color: #fff;">
     <view class="zhaopin-yes-box">
       <view class="left">
         <image src="../../images/index/avtar.png"></image>
@@ -42,7 +42,7 @@
     </view>
   </view>
   <!-- 首页人才市场页面 -->
-  <view class="rencaishichang" wx:if="{{selectedid==1}}">
+  <view class="rencaishichang" wx:if="{{selectedid==1}}" style="background-color: #fff;">
     <view class="rencaishichang-box">
       <view class="nav">
         <view class="nav-box" bindtap="lookme" data-id="0">
@@ -121,56 +121,56 @@
   </view>
   <!-- 首页我的职位页面 -->
   <view class="myposition" wx:if="{{selectedid==2&&mypositionnodata!=true}}">
-    <view class="myposition-box">
+    <view class="myposition-box" wx:for="{{myposition}}">
       <view class="myposition-box-top" bindtap="topositiondetail">
         <view class="myposition-box-top-left">
-          <image src="../../images/index/avtar.png"></image>
+          <image src="{{item.header}}"></image>
         </view>
         <view class="myposition-box-top-right">
           <view class="myposition-box-top-right-top" >
-            <text style="font-size: 36rpx;color: #333333;font-weight: bold;">京东物流分拣员</text>
+            <text style="font-size: 36rpx;color: #333333;font-weight: bold;">{{item.title}}</text>
             <view>
               <text style="font-size: 28rpx;color: #333333;">招聘人数:</text>
-              <text style="font-size:32rpx;color:#333333;font-weight:bold;">260</text>
+              <text style="font-size:32rpx;color:#333333;font-weight:bold;">{{item.number}}</text>
             </view>
           </view>
           <view class="myposition-box-top-right-mid">
-            <text style="font-size:36rpx;color:#FF7315;font-weight:bold;">18</text>
+            <text style="font-size:36rpx;color:#FF7315;font-weight:bold;">{{item.wages / 100}}</text>
             <text style="font-size:36rpx;color:#FF7315;">/小时</text>
           </view>
-          <view class="myposition-box-top-right-center">
-            <view>日薪</view>
-            <view>兼职</view>
-            <view>加班补助</view>
-            <view>包吃住</view>
+          <view class="myposition-box-top-right-center" wx:if="{{item.welfare!=''}}">
+            <view wx:for="{{item.welfare}}" >{{item}}</view>
           </view>
           <view class="myposition-box-top-right-bottom">
-            <view>
+            <!-- <view>
               <image src="../../images/index/city.png" style="width:20rpx;height:22rpx;"></image>
               <text style="font-size:26rpx;color:#333333;">成都怪糖科技有限公司</text>            
-            </view>
+            </view> -->
             <view>
               <image src="../../images/index/location.png" style="width:18rpx;height:24rpx;"></image>
-              <text style="font-size:26rpx;color:#333333;">武侯区晋阳</text>   
+              <text style="font-size:26rpx;color:#333333;margin-left:10rpx;">{{item.address}}</text>   
             </view>
           </view>
         </view>
       </view>
       <view class="myposition-box-bottom" bindtap="totoudixiangqing">
         <view>
-          <text style="font-size: 32rpx;color: #333333;font-weight: bold;">360</text>
+          <text style="font-size: 32rpx;color: #333333;font-weight: bold;">{{item.sign}}</text>
           <text style="font-size: 28rpx;color: #333333;">已报名</text>
         </view>
         <view>
-          <text style="font-size: 32rpx;color: #333333;font-weight: bold;">360</text>
+          <text style="font-size: 32rpx;color: #333333;font-weight: bold;">{{item.audit_pass}}</text>
           <text style="font-size: 28rpx;color: #333333;">审核通过</text>
         </view>
         <view>
-          <text style="font-size: 32rpx;color: #333333;font-weight: bold;">360</text>
+          <text style="font-size: 32rpx;color: #333333;font-weight: bold;">{{item.interview_pass}}</text>
           <text style="font-size: 28rpx;color: #333333;">面试通过</text>
         </view>
       </view>
     </view>
+  </view>
+  <view class="fabubtn" wx:if="{{selectedid==2&&mypositionnodata!=true}}">
+    发布
   </view>
   <!-- 我的动态页面 -->
   <view class="mydongtai" wx:if="{{selectedid==3&&mydongtainodata==false}}">

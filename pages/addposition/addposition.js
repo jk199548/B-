@@ -10,13 +10,15 @@ Page({
     salar:'',
     salaryday:'天',
     salaryselectedid:0,
-    salarymodallist:['日结','周结','月结'],
+    salarymodallist:['日结','小时','月结'],
     showmodal:false,
     imagecount:6,
     uploadconpanyimage: '../../images/shiming/conpany.png',
     conpanyimage: [],
     logourl:'../../images/index/uploadlogo.png',//公司logo
     cate:'',
+    describe:'',//工作描述
+    cycle:1,
     number:'',//职位需要的招聘人数
     title:'',//职位的名称
     longitude:'',
@@ -34,6 +36,125 @@ Page({
     welfare:'',//工作福利
     validity_time:'请选择招聘有效期',//招聘有效期
   },
+  //富文本编辑器
+  onEditorReady() {
+    // 输入~编辑框
+    var that = this;
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context;
+      console.log("初始化成功：" + wx.getStorageSync("content"))
+      that.editorCtx.setContents({ html:that.data.content}) // 注意：插入的是对象
+    }).exec()
+
+  },
+  // 获取内容
+  onContentChange(e) {
+    var that = this;
+    console.log(e.detail)
+    that.setData({
+      describe:e.detail.html
+    })
+  },
+  //完成按钮事件
+  submitBtn:function(e){
+    var that = this;
+    if(that.data.logourl=='../../images/index/uploadlogo.png'){
+      wx.showToast({
+        title:'请上传公司logo',
+        icon:'none'
+      })
+    }else if(that.data.cate==''){
+      wx.showToast({
+        title:'请先选择工作类型',
+        icon:'none'
+      })
+    }else if(that.data.title==''){
+      wx.showToast({
+        title:'请填写职位名称',
+        icon:'none'
+      })
+    }else if(that.data.latitude==''){
+      wx.showToast({
+        title:'请填写工作地点',
+        icon:'none'
+      })
+    }else if(that.data.age==''){
+      wx.showToast({
+        title:'请选择职位要求',
+        icon:'none'
+      })
+    }else if(that.data.describe==''){
+      wx.showToast({
+        tile:'请输入工作描述',
+        icon:'none'
+      })
+    }else if(that.data.salary==''){
+      wx.showToast({
+        title:'请输入职位薪资',
+        icon:'none'
+      })
+    }else if(that.data.numer==''){
+      wx.showToast({
+        title:'请输入需要招聘的人数',
+        icon:'none'
+      })
+    }else if(that.data.welfarearr.length==0){
+      wx.showToast({
+        title:'请填写工作福利',
+        icon:'none'
+      })
+    }else if(that.data.validity_time=='请选择招聘有效期'){
+      wx.showToast({
+        title:'请选择招聘有效期',
+        icon:'none'
+      })
+    }else if(that.data.conpanyimage.length==0){
+      wx.showToast({
+        title:'请选择公司环境图片',
+        icon:'none'
+      })
+    }else{
+      api._post('/addJob',{
+        'id':wx.getStorageSync('id'),
+        'cate':that.data.cate,
+        'title':that.data.title,
+        'cycle':that.data.cycle,
+        'wages':that.data.salary,
+        'token':wx.getStorageSync('token'),
+        'validity_time':that.data.validity_time,
+        'experience':that.data.experience,
+        'age':that.data.age,
+        'education':that.data.education,
+        'welfare':that.data.welfare,
+        'longitude':that.data.longitude,
+        'latitude':that.data.latitude,
+        'cate':that.data.cate,
+        'province':that.data.province,
+        'header':that.data.logourl,
+        'city':that.data.city,
+        'district':that.data.district,
+        'location':that.data.location,
+        'street':that.data.street,
+        'number':that.data.number,
+        'describe':that.data.describe
+      }).then(res=>{
+        console.log(res);
+        if(res.code==0){
+          wx.showToast({
+            title:'发布成功',
+          });
+          wx.navigateBack();
+        }
+      })
+    }
+  },
+  //用户输入的招聘人数
+  inputnumber:function(e){
+    var that = this;
+    that.setData({
+      number:e.detail.value
+    })
+  },
   //用户选择招聘有效期
   bindTimeChange:function(e){
     var that = this;
@@ -46,6 +167,13 @@ Page({
     var that = this;
     that.setData({
       title:e.detail.value
+    })
+  },
+  //用户输入工作描述事件
+  inputdescribe:function(e){
+    var that = this;
+    that.setData({
+      describe:e.detail.value
     })
   },
   //用户输入的工作地点
@@ -123,6 +251,7 @@ Page({
   //工作福利模态框确定按钮
   welfaremodalbtn:function(e){
     var that = this;
+    console.log(e)
     if(that.data.welfarearr.length==0){
       that.setData({
         welfarearr:[],
@@ -171,20 +300,23 @@ Page({
     if(e.currentTarget.dataset.id==0){
       that.setData({
         salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '天',
-        salary:''
+        salaryday: '日结',
+        salary:'',
+        cycle:1
       })
     }else if(e.currentTarget.dataset.id==1){
       that.setData({
         salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '周',
-        salary:''
+        salaryday: '时薪',
+        salary:'',
+        cycle:0
       })
     } else if (e.currentTarget.dataset.id == 2){
       that.setData({
         salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '月',
-        salary:''
+        salaryday: '月结',
+        salary:'',
+        cycle:2
       })
     }
    

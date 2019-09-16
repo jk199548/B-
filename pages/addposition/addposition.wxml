@@ -30,7 +30,7 @@
         <text>工作地点</text>
       </view>
       <view class="workplace-right">
-        <input bindblur="inputworkplace" placeholder="请输入工作地点" placeholder-class="placeholder"></input>
+        <input bindinput="inputworkplace" placeholder="请输入工作地点" placeholder-class="placeholder"></input>
       </view>
     </view>
     <view class="positionrequire" bindtap="topositionrequire">
@@ -38,10 +38,20 @@
         <text>*</text>
         <text>职位要求</text>
       </view>
-      
       <view class="positionrequire-right" style="display: flex;width:610rpx;justify-content:flex-end;align-items: center;">
         <view wx:if="{{age}}" style="font-size:28rpx;color:#3d3d3d;margin-right:30rpx;">{{age}}|{{sex}}|{{education}}|{{experience}}</view>
         <image src="../../images/shiming/more.png"></image>
+      </view>
+    </view>
+    <view class="workdescribe" style="width:690rpx;margin-left:30rpx;border-bottom: 1rpx solid #eeeeee;">
+      <view class="workplace-left">
+        <text>*</text>
+        <text>职位描述</text>
+      </view>
+      <view class="workplace-right">
+        <editor id="editor" class="ql-container" placeholder="请输入,例:工作职位说明，工作岗位要求等" bindready="onEditorReady" bindinput="onContentChange">
+        </editor>
+        <!-- <input bindblur="inputdescribe" placeholder="请输入工作描述" placeholder-class="placeholder"></input> -->
       </view>
     </view>
     <view class="salary" bindtap="showsalarymodal">
@@ -62,7 +72,7 @@
         <text>招聘人数</text>
       </view>
       <view class="recruit-right">
-        <input placeholder="请输入招聘人数" placeholder-class="placeholder"></input>
+        <input bindinput="inputnumber" placeholder="请输入招聘人数" placeholder-class="placeholder"></input>
       </view>
     </view>
     <!-- 是否需要分组
@@ -128,7 +138,7 @@
       </block>
     </view>
     <!-- 完成按钮 -->
-    <view class="confirmbtn">完成</view>
+    <view class="confirmbtn" bindtap="submitBtn">完成</view>
   </view>
 </view>
 
@@ -152,18 +162,18 @@
 
 <!-- 工作福利模态框 -->
 <view class="modal" wx:if="{{showwelfaremodal}}" catchtouchmove="true"></view>
-<view class="salary-modal" wx:if="{{showwelfaremodal}}" catchtouchmove="true">
+<form class="salary-modal" wx:if="{{showwelfaremodal}}" catchtouchmove="true" bindsubmit="welfaremodalbtn" report-submit>
   <view bindtap="closewelfaremodal">
     <image src="../../images/index/close.png"></image>
   </view>
   <view class="welfareinputbox">
     <view>
-      <input placeholder="请输入工作福利" value="{{welfare}}" bindinput="welfareinput"></input>
+      <input name="welfare" placeholder="请输入工作福利" value="{{welfare}}" bindinput="welfareinput"></input>
     </view>
   </view>
   <view style="display: flex;justify-content:center;width:610rpx;margin-top: 20rpx;">
     <text style="font-size:28rpx;color:red;">注意</text>
     <text style="font-size:28rpx;color:#808080;">：请将每个工作福利用,(逗号)隔开</text>
   </view>
-  <view class="salaryconfirmbtn" bindtap="welfaremodalbtn">完成</view>
-</view>
+  <button class="salaryconfirmbtn" form-type="submit">完成</button>
+</form>

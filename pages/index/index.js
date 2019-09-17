@@ -28,11 +28,12 @@ Page({
       'token':wx.getStorageSync('token'),
       'id':wx.getStorageSync('id')
     }).then(res=>{
+      console.log(res)
       if(res.code==0){
         var newmyposition = res.result;
         for (let i = 0; i < newmyposition.length; i++) {
           if (newmyposition[i].welfare != null) {
-            var newwelfare = newmyposition[i].welfare.split(",");
+            var newwelfare = newmyposition[i].welfare.split("，");
             newmyposition[i].welfare = newwelfare;
           }
         }
@@ -77,8 +78,9 @@ Page({
   //跳转到职位详情页面
   topositiondetail:function(e){
     var that = this;
+    console.log(e)
     wx.navigateTo({
-      url: '../positiondetail/positiondetail',
+      url: '../positiondetail/positiondetail?workid='+e.currentTarget.dataset.id,
     })
   },
   //跳转到发布页面

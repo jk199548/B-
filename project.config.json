@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 34,
+			"current": 35,
 			"list": [
 				{
 					"id": -1,
@@ -114,7 +114,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "职位详情",
 					"pathName": "pages/positiondetail/positiondetail",
 					"query": "",
@@ -292,6 +292,14 @@
 					"id": -1,
 					"name": "新增个人介绍",
 					"pathName": "pages/addgerenjieshao/addgerenjieshao",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "职位编辑",
+					"pathName": "pages/editposition/editposition",
+					"query": "",
 					"scene": null
 				}
 			]

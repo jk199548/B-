@@ -1,121 +1,129 @@
-<!--pages/positiondetail/positiondetail.wxml-->
+<!--pages/addposition/addposition.wxml-->
 <view class="box">
-  <view class="positiondetail">
-    <view class="positiondetail-top">
-      <text>选择你想招的人</text>
-      <text bindtap="editbtn">编辑</text>
+  <view class="addposition">
+    <view class="addposition-text-1">
+      <text>你想招的人</text>
+      <text bindtap="toeditposition">编辑</text>
     </view>
-    <view class="positiondetail-top-list">
-      <view>全职</view>
+    <view class="checkgroup">
+      <radio-group bindchange="radioChange">
+        <radio checked="false" wx:if="{{cate==1}}">全职</radio>
+        <radio checked="false" wx:if="{{cate==4}}">兼职</radio>
+        <radio checked="false" wx:if="{{cate==5}}">实习</radio>
+      </radio-group>
     </view>
-    <view class="positiondetail-uploadlogo">
-      <image src="../../images/index/avtar.png"></image>
+    <view class="uploadlogo">
+      <view style="font-size:32rpx;font-weight:bold;color:#3d3d3d;">企业logo</view>
+      <image src="{{logourl}}"></image>
     </view>
-    <view class="positiondetail-name">
-      <text style="font-weight:bold;font-size:32rpx;color:#3d3d3d;">职位名称</text>
-      <text></text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">分拣员</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png" style="width:12rpx;height:24rpx;"></image>
+    <view class="positionname">
+      <view class="positionname-left">
+        <text>职位名称</text>
+      </view>
+      <view class="positionname-right">
+        <text>{{title}}</text>
       </view>
     </view>
-    <view class="positiondetail-require" bindtap="topositionrequire">
-      <text style="font-weight:bold;font-size:32rpx;color:#3d3d3d;">职位要求</text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">{{workex}}/{{schoolex}}/{{age}}/{{sexrequire}}</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png" style="width:12rpx;height:24rpx;"></image>
+    <view class="workplace">
+      <view class="workplace-left">
+        <text>工作地点</text>
+      </view>
+      <view class="workplace-right">
+        <text>{{location}}</text>
       </view>
     </view>
-    <view class="positiondetail-salary" bindtap="showsalarymodal">
-      <text style="font-weight:bold;font-size:32rpx;color:#3d3d3d;">薪资要求</text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">{{salary}}</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png" style="width:12rpx;height:24rpx;"></image>
+    <view class="positionrequire">
+      <view class="positionrequire-left">
+        <text>职位要求</text>
+      </view>
+      <view class="positionrequire-right">
+        <view style="font-size:32rpx;color:#3d3d3d;">{{age}}|{{sex}}|{{education}}|{{experience}}</view>
+      </view>
+    </view>
+    <view class="workdescribe" style="width:690rpx;margin-left:30rpx;border-bottom: 1rpx solid #eeeeee;">
+      <view class="workplace-left" style="margin-top:20rpx;margin-bottom:50rpx;">
+        <text>职位描述</text>
+      </view>
+      <view class="workplace-right" style="margin-bottom:100rpx;">
+        <!-- <editor id="editor" class="ql-container" placeholder="请输入,例:工作职位说明，工作岗位要求等" bindready="onEditorReady" bindinput="onContentChange">
+        </editor> -->
+        <rich-text nodes="{{describe}}"></rich-text>
+      </view>
+    </view>
+    <view class="salary">
+      <view class="salary-left">
+        <text>薪资待遇</text>
+      </view>
+      <view class="salary-right">
+        <view wx:if="{{cycle==0}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/小时</view>
+        <view wx:if="{{cycle==1}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/天</view>
+        <view wx:if="{{cycle==2}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/月</view>
       </view>
     </view>
     <!-- 招聘人数 -->
-    <view class="positiondetail-zhaopinnum">
-      <text style="font-weight:bold;font-size:32rpx;color:#3d3d3d;">招聘人数</text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">需100人   已招80人</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png" style="width:12rpx;height:24rpx;"></image>
+    <view class="recruit">
+      <view class="recruit-left">
+        <text>招聘人数</text>
+      </view>
+      <view class="recruit-right">
+        <text>{{number}}</text>
       </view>
     </view>
-    <!-- 是否需要分组 -->
-    <view class="positiondetail-needgroup">
-      <text>是否需要分组</text>
-      <view>
+    <!-- 是否需要分组
+    <view class="needgroup">
+      <view class="needgroup-left">
+        <text>是否需要分组</text>
+      </view>
+      <view class="needgroup-right">
         <radio-group>
-          <radio checked="true">否</radio>
-          <radio wx:if="{{isedit}}">是</radio>
+          <radio style="font-size:28rpx;color:#333333;">否</radio>
+          <radio style="margin-left:50rpx;font-size:28rpx;color:#333333;">是</radio>
         </radio-group>
       </view>
-    </view>
+    </view> -->
     <!-- 工作福利 -->
-    <view class="workfuli">
+    <view class="workfuli" >
       <view class="workfuli-left">
         <text>工作福利</text>
       </view>
       <view class="workfuli-list">
-        <view>包吃</view>
-        <view>包吃包住</view>
-        <view>啊包吃</view>
-        <view>包啊啊吃</view>
-        <view>包吃是</view>
-        <view>包吃</view>
-        <view>包吃</view>
-        <view>＋添加</view>
+        <view wx:for="{{welfarearr}}">{{item}}</view> 
       </view>
     </view>
     <!-- 招聘有效期 -->
-    <view class="positiondetail-zhaopintime">
-      <text style="font-size: 32rpx;color:#3d3d3d;font-weight: bold;">招聘有效期</text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">2019.07.23~2019.09.01</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png"></image>
+    <view class="salary">
+      <view class="salary-left">
+        <text>招聘有效期</text>
+      </view>
+      <view class="salary-right">
+        <text style="font-size:32rpx;color:#3d3d3d;">{{validity_time}}</text>
       </view>
     </view>
-    <!-- 入职奖 -->
-    <view class="positiondetail-ruzhi">
-      <text style="font-weight:bold;font-size:32rpx;color:#3d3d3d;">入职奖</text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">200</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png" style="width:12rpx;height:24rpx;"></image>
+    <!-- 入职奖
+    <view class="recruit">
+      <view class="recruit-left">
+        <text>入职奖</text>
+      </view>
+      <view class="recruit-right">
+        <input placeholder="请输入你的入职奖金" placeholder-class="placeholder"></input>
       </view>
     </view>
-    <!-- 推荐奖 -->
-    <view class="positiondetail-tuijian">
-      <text style="font-weight:bold;font-size:32rpx;color:#3d3d3d;">推荐奖</text>
-      <view>
-        <text style="font-size: 32rpx;color:#3d3d3d;margin-right:10rpx;">300</text>
-        <image wx:if="{{isedit}}"  src="../../images/shiming/more.png" style="width:12rpx;height:24rpx;"></image>
+    推荐奖 -->
+    <!-- <view class="recruit">
+      <view class="recruit-left">
+        <text>推荐奖</text>
       </view>
+      <view class="recruit-right">
+        <input placeholder="请输入你的推荐奖金" placeholder-class="placeholder"></input>
+      </view>
+    </view> -->
+    <!-- 上传工作环境图片 -->
+    <view class="uploadconpanyimage" >
+      <view style="margin-top:32rpx;font-size:32rpx;font-weight:bold;margin-bottom:30rpx;">企业环境</view>
+      <block wx:for="{{companyimage}}" wx:key="{{item}}">
+        <image src="{{item.work_image}}"></image>
+      </block>
     </view>
-    <!-- 工作环境图片的展示 -->
-    <view class="positiondetail-conpanyimage">
-      <view>企业环境</view>
-      <image src="../../images/shiming/positiondetail.png"></image>
-    </view>
-    <!-- 保存修改按钮 -->
-    <view class="positiondetail-savechangebtn" wx:if="{{isedit}}" bindtap="savechangebtn">保存修改</view>
   </view>
-</view>
-
-
-<!-- 薪资要求模态框 -->
-<view class="modal" wx:if="{{showmodal}}" catchtouchmove="true"></view>
-<view class="salary-modal" wx:if="{{showmodal}}" catchtouchmove="true">
-  <view bindtap="closesalarymodal">
-    <image src="../../images/index/close.png"></image>
-  </view>
-  <view class="salary-modal-list">
-    <view data-id="{{index}}" wx:for="{{salarymodallist}}" wx:for-index="index" class="{{salaryselectedid==index?'salary-modal-list-active':'salary-modal-list-normal'}}" bindtap="choosesalaryway">{{item}}</view>
-  </view>
-  <view class="salaryinputbox">
-    <view>
-      <input placeholder="请输入薪资" bindinput="inputsalary"></input>
-    </view>
-    <text>/{{salaryday}}</text>
-  </view>
-  <view class="salaryconfirmbtn"  bindtap="salaryconpletebtn">完成</view>
+  <view class="stopzhaopin" bindtap="stopzhaopin">停止招聘</view>
 </view>

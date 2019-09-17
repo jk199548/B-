@@ -11,24 +11,17 @@
 }
 .addposition{
   border-top: 1rpx solid #eeeeee;
+  
 }
 .addposition-text-1{
-  width: 690rpx;
   margin-left: 30rpx;
   margin-top: 50rpx;
   line-height: 24rpx;
-  display: flex;
-  justify-content: space-between;
 }
 .addposition-text-1 text:nth-child(1){
+  color: #3d3d3d;
   font-size: 32rpx;
-  color: #3D3D3D;
-  margin-right: 20rpx;
   font-weight: bold;
-}
-.addposition-text-1 text:nth-child(2){
-  font-size: 30rpx;
-  color: #808080;
 }
 .checkgroup{
   width: 690rpx;
@@ -37,7 +30,7 @@
 }
 .checkgroup radio-group{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   font-size: 28rpx;
   color: #333333;
 }
@@ -66,14 +59,14 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   color: #ffffff;
 }
 .uploadlogo{
-  width: 690rpx;
+  width: 240rpx;
   margin-left: 30rpx;
-  margin-top: 50rpx;
+  margin-top: 57rpx;
+  position: relative ;
 }
 .uploadlogo image{
   width: 240rpx;
   height: 120rpx;
-  margin-top: 30rpx;
 }
 .positionname{
   width: 690rpx;
@@ -85,89 +78,137 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
 }
+.positionname-left{
+  width: 200rpx;
+}
 .positionname-left text:nth-child(1){
   color: #3d3d3d;
   font-size: 32rpx;
   font-weight: bold;
 }
-.positionname-right text:nth-child(1){
-  font-size: 32rpx;
+.positionname-left text:nth-child(2){
+  font-size: 28rpx;
   color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.positionname-right{
+  width: 455rpx;
+}
+.positionname-right input{
+  font-size: 30rpx;
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #808080;
 }
 .workplace{
   width: 690rpx;
-  height: 130rpx;
+  height: 100rpx;
   margin-left: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
 }
-
+.workplace-left{
+  width: 200rpx;
+}
 .workplace-left text:nth-child(1){
   color: #3d3d3d;
   font-size: 32rpx;
   font-weight: bold;
 }
-.workplace-right text:nth-child(1){
-  font-size: 32rpx;
+.workplace-left text:nth-child(2){
+  font-size: 28rpx;
   color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.workplace-right{
+  width: 455rpx;
+}
+.workplace-right input{
+  font-size: 30rpx;
 }
 .positionrequire{
   width: 690rpx;
-  height: 130rpx;
+  height: 100rpx;
   margin-left: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
 }
+.positionrequire-left{
+  width: 200rpx;
+}
 .positionrequire-left text:nth-child(1){
-  font-size: 32rpx;
   color: #3d3d3d;
+  font-size: 32rpx;
   font-weight: bold;
 }
 .positionrequire-left text:nth-child(2){
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.positionrequire-right image{
+  width:14rpx;
+  height: 28rpx; 
 }
 .salary{
   width: 690rpx;
-  height: 130rpx;
+  height: 100rpx;
   margin-left: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
 }
+.salary-left{
+  width: 200rpx;
+}
 .salary-left text:nth-child(1){
-  font-size: 32rpx;
   color: #3d3d3d;
+  font-size: 32rpx;
   font-weight: bold;
 }
-.salary-right text{
-  font-size: 32rpx;
+.salary-left text:nth-child(2){
+  font-size: 28rpx;
   color: #3d3d3d;
+  margin-left: 20rpx;
+}
+.salary-right image{
+  width:14rpx;
+  height: 28rpx; 
 }
 .recruit{
   width: 690rpx;
-  height: 130rpx;
+  height: 100rpx;
   margin-left: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
 }
+.recruit-left{
+  width: 200rpx;
+}
 .recruit-left text:nth-child(1){
-  font-size: 32rpx;
   color: #3d3d3d;
+  font-size: 32rpx;
   font-weight: bold;
 }
-.recruit-right text:nth-child(1){
-  font-size: 32rpx;
+.recruit-left text:nth-child(2){
+  font-size: 28rpx;
   color: #3d3d3d;
+  margin-left: 20rpx;
 }
-
+.recruit-right{
+  width: 455rpx;
+}
+.recruit-right input{
+  font-size: 30rpx;
+}
 /* 单选框未选中 */
 radio .wx-radio-input {
   width: 20rpx;
@@ -196,12 +237,17 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 }
 .workfuli-left{
   width: 690rpx;
-  margin-top: 60rpx;
+  margin-top: 40rpx;
 }
 .workfuli-left text:nth-child(1){
-  font-size: 32rpx;
   color: #3d3d3d;
+  font-size: 32rpx;
   font-weight: bold;
+}
+.workfuli-left text:nth-child(2){
+  font-size: 28rpx;
+  color: #3d3d3d;
+  margin-left: 20rpx;
 }
 .workfuli-list{
   display: flex;
@@ -215,10 +261,10 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   margin-right: 19rpx;
   font-size: 26rpx;
   margin-bottom: 20rpx;
-  color: #fff;
+  color: #808080;
   line-height: 50rpx;
   text-align: center;
-  background:#FC7101;
+  background:rgba(244,244,244,1);
   border-radius:5rpx;
   display: -webkit-box;
   overflow: hidden;
@@ -237,16 +283,128 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   width: 690rpx;
   height: 340rpx;
 }
-.stopzhaopin{
+.confirmbtn{
   width: 690rpx;
-  margin-top: 80rpx;
-  margin-left: 30rpx;
-  background-color: #fc7001;
-  text-align: center;
-  line-height: 90rpx;
   height: 90rpx;
+  border-radius: 45rpx;
+  background-color: #fc7001;
+  line-height: 90rpx;
+  text-align: center;
   font-size: 36rpx;
   color: #fff;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  margin-bottom: 70rpx;
+}
+.modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+  z-index: 5555;
+}
+.salary-modal{
+  width: 610rpx;
+  height: 620rpx;
+  position: fixed;
+  left: 70rpx;
+  top: 80rpx;
+  background-color: #fff;
+  opacity: 0.95;
+  z-index: 6666;
+  border-radius: 10rpx;
+}
+.salary-modal image{
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+  margin-top: 27rpx;
+  margin-right: 27rpx;
+}
+.salary-modal-list{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 40rpx;
+  width: 530rpx;
+  padding-top: 150rpx;
+}
+.salary-modal-list-active{
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.salary-modal-list-normal{
+  width: 140rpx;
+  height: 60rpx;
+  background:rgba(240,240,240,1);
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #3D3D3D;
+  border-radius: 10rpx;
+}
+.salaryinputbox{
+  margin-top: 78rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 40rpx;
+}
+.salaryinputbox view{
+  width: 390rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border: 1rpx solid #eeeeee;
+}
+.salaryinputbox input{
+  width: 360rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #BEBDBD;
+  padding-left: 30rpx;
+}
+.salaryinputbox text{
+  font-size: 36rpx;
+  color: #333333;
+  margin-left: 60rpx;
+}
+.salaryconfirmbtn{
+  width: 280rpx;
+  height: 60rpx;
+  background-color: #fc7001;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
   border-radius: 45rpx;
-  margin-bottom: 80rpx;
+  margin-left: 165rpx;
+  margin-top: 90rpx;
+}
+.welfareinputbox{
+  margin-top: 78rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 610rpx;
+}
+.welfareinputbox input{
+  width: 360rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #BEBDBD;
+  padding-left: 30rpx;
+}
+.welfareinputbox view{
+  width: 390rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border: 1rpx solid #eeeeee;
 }

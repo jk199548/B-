@@ -1,92 +1,101 @@
-// pages/positiondetail/positiondetail.js
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showmodal: false,
-    salarymodallist: ['日结', '周结', '月结'],
-    isedit:false,//是否是可编辑的状态
-    workex:'',
-    schoolex:'',
-    age:'',
-    sexrequire:'',
-    salary:''
+    wages:'',
+    workid:'',
+    salarymodallist: ['日结', '小时', '月结'],
+    companyimage:[],
+    uploadconpanyimage: '../../images/shiming/conpany.png',
+    logourl: '../../images/index/uploadlogo.png',//公司logo
+    catetext:'',
+    cate: '',
+    describe: '',//工作描述
+    cycle: 1,
+    number: '',//职位需要的招聘人数
+    title: '',//职位的名称
+    location: '',//详细位置
+    street: '',//街道
+    experience: '',//工作经验要求
+    age: '',//年龄
+    education: '',//学历
+    sex: '',//性别要求
+    welfarearr: [],
+    welfare: '',//工作福利
+    validity_time: '',//招聘有效期
   },
-  //薪资模态框完成按钮点击事件
-  salaryconpletebtn:function(e){
+  //停止招聘
+  stopzhaopin:function(e){
     var that = this;
-    that.setData({
-      showmodal:false,
-      salary:that.data.salary +'元/每'+ that.data.salaryday
+    api._put('/delWork',{
+      'id':wx.getStorageSync('id'),
+      'workid':that.data.workid
+    }).then(res=>{
+      if(res.code==0){
+        wx.showToast({
+          title: '下架成功',
+        });
+        wx.navigateBack({
+          delta:1
+        })
+      }
     })
   },
-  //薪资模态框输入事件
-  inputsalary:function(e){
+  //点击编辑按钮
+  toeditposition:function(e){
     var that = this;
-    that.setData({
-      salary:e.detail.value
+    wx.navigateTo({
+      url: '../editposition/editposition?workid='+that.data.workid,
     })
   },
-  //显示薪资模态框
-  showsalarymodal: function (e) {
+  //获取工作详情
+  getWorkDetails:function(e){
     var that = this;
-    if(that.data.isedit){
-      that.setData({
-        showmodal: true,
-      })
-    }
-  },
-  //关闭掉薪资待遇模态框
-  closesalarymodal: function (e) {
-    var that = this;
-    that.setData({
-      showmodal: false,
-    })
-  },
-  //薪资待遇模态框薪资结算方法的点击
-  choosesalaryway: function (e) {
-    var that = this;
-    if (e.currentTarget.dataset.id == 0) {
-      that.setData({
-        salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '天'
-      })
-    } else if (e.currentTarget.dataset.id == 1) {
-      that.setData({
-        salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '周'
-      })
-    } else if (e.currentTarget.dataset.id == 2) {
-      that.setData({
-        salaryselectedid: e.currentTarget.dataset.id,
-        salaryday: '月'
-      })
-    }
-
-  },
-  //跳转到职位要求页面
-  topositionrequire:function(e){
-    var that = this;
-    if(that.data.isedit){
-      wx.navigateTo({
-        url: '../positionrequire/positionrequire',
-      })
-    }
-  },
-  //编辑按钮点击事件
-  editbtn:function(e){
-    var that = this;
-    that.setData({
-      isedit:true,
+    api._get('/workDetail',{
+      "id":that.data.workid,
+    }).then(res=>{
+      if(res.code==0){
+        var newmyposition = that.data.welfarearr.concat([res.result]);
+        for (let i = 0; i < newmyposition.length; i++) {
+          if (newmyposition[i].welfare != null) {
+            var newwelfare = newmyposition[i].welfare.split("，");
+            newmyposition[i].welfare = newwelfare;
+          }
+        }
+        that.setData({
+          location:res.result.address,
+          logourl:res.result.header,
+          age:res.result.age,
+          experience:res.result.experience,
+          education:res.result.education,
+          sex:res.result.sex,
+          title:res.result.title,
+          describe:res.result.describe.content,
+          cycle:res.result.cycle,
+          number:res.result.number,
+          validity_time:res.result.validity_time,
+          wages:res.result.wages,
+          cate:res.result.cate,
+          welfarearr:newwelfare,
+          companyimage:res.result.work_image
+        })
+        console.log(that.data.welfarearr)
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      workid:options.workid
+    })
+    that.getWorkDetails();
   },
 
   /**
@@ -100,7 +109,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getWorkDetails();
   },
 
   /**

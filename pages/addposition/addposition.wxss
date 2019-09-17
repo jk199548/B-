@@ -2,7 +2,6 @@
 .ql-container {
   box-sizing: border-box;
   padding: 12px 15px;
-  width: 100%;
   min-height: 30vh;
   height: 20px;
   background: #fff;

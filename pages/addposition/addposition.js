@@ -129,6 +129,7 @@ Page({
         'longitude':that.data.longitude,
         'latitude':that.data.latitude,
         'cate':that.data.cate,
+        'sex':that.data.sex,
         'province':that.data.province,
         'header':that.data.logourl,
         'city':that.data.city,
@@ -140,10 +141,17 @@ Page({
       }).then(res=>{
         console.log(res);
         if(res.code==0){
-          wx.showToast({
-            title:'发布成功',
-          });
-          wx.navigateBack();
+          api._post('/addWorkImage',{
+            'workid':res.result,
+            'src': that.data.conpanyimage
+          }).then(res=>{
+            if(res.code==0){
+              wx.showToast({
+                title: '发布成功',
+              });
+              wx.navigateBack();
+            }
+          })
         }
       })
     }

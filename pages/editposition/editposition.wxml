@@ -2,40 +2,38 @@
 <view class="box">
   <view class="addposition">
     <view class="addposition-text-1">
-      <text>*</text>
       <text>选择你想招的人</text>
     </view>
     <view class="checkgroup">
       <radio-group bindchange="radioChange">
-        <radio value="1">全职</radio>
-        <radio value="4">兼职</radio>
-        <radio value="5">实习</radio>
+        <radio value="1" checked="{{cate==1}}">全职</radio>
+        <radio value="4" checked="{{cate==4}}">兼职</radio>
+        <radio value="5" checked="{{cate==5}}">实习</radio>
       </radio-group>
     </view>
     <view class="uploadlogo" bindtap="chooseconpanylogo">
+      <view style="font-size:32rpx;font-weight:bold;color:#3d3d3d;margin-bottom:40rpx;">企业logo</view>
       <image src="{{logourl}}"></image>
+      <image bindtap="dellogo" src="../../images/index/close.png" style="position:absolute;width:34rpx;height:34rpx;top:60rpx;left:223rpx;"></image>
     </view>
     <view class="positionname">
       <view class="positionname-left">
-        <text>*</text>
         <text>职位名称</text>
       </view>
       <view class="positionname-right">
-        <input bindinput="inputpositionname" placeholder="请输入职位名称" placeholder-class="placeholder"></input>
+        <input value="{{title}}" bindinput="inputpositionname" placeholder="请输入职位名称" placeholder-class="placeholder"></input>
       </view>
     </view>
     <view class="workplace">
       <view class="workplace-left">
-        <text>*</text>
         <text>工作地点</text>
       </view>
       <view class="workplace-right">
-        <input bindinput="inputworkplace" placeholder="请输入工作地点" placeholder-class="placeholder"></input>
+        <input value="{{location}}" bindinput="inputworkplace" placeholder="请输入工作地点" placeholder-class="placeholder"></input>
       </view>
     </view>
     <view class="positionrequire" bindtap="topositionrequire">
       <view class="positionrequire-left">
-        <text>*</text>
         <text>职位要求</text>
       </view>
       <view class="positionrequire-right" style="display: flex;width:610rpx;justify-content:flex-end;align-items: center;">
@@ -45,40 +43,36 @@
     </view>
     <view class="workdescribe" style="width:690rpx;margin-left:30rpx;border-bottom: 1rpx solid #eeeeee;">
       <view class="workplace-left">
-        <text>*</text>
         <text>职位描述</text>
       </view>
       <view class="workplace-right">
-        <editor id="editor" class="ql-container" placeholder="请输入,例:工作职位说明，工作岗位要求等" bindready="onEditorReady" bindinput="onContentChange">
+        <editor id="editor" bindblur="editblur" value="{{describe}}" class="ql-container" placeholder="请输入,例:工作职位说明，工作岗位要求等" bindready="onEditorReady" bindinput="onContentChange">
         </editor>
-        <!-- <input bindblur="inputdescribe" placeholder="请输入工作描述" placeholder-class="placeholder"></input> -->
       </view>
     </view>
     <view class="salary" bindtap="showsalarymodal">
       <view class="salary-left">
-        <text>*</text>
         <text>薪资待遇</text>
       </view>
-      
       <view class="salary-right" style="display: flex;width:610rpx;justify-content:flex-end;align-items: center;">
-        <view wx:if="{{!showmodal&&salary}}" style="font-size:28rpx;color:#3d3d3d;margin-right:30rpx;">{{salary}}/{{salaryday}}</view>
+        <view wx:if="{{cycle==0}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/小时</view>
+        <view wx:if="{{cycle==1}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/天</view>
+        <view wx:if="{{cycle==2}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/月</view>
         <image src="../../images/shiming/more.png"></image>
       </view>
     </view>
     <!-- 招聘人数 -->
     <view class="recruit">
       <view class="recruit-left">
-        <text>*</text>
         <text>招聘人数</text>
       </view>
       <view class="recruit-right">
-        <input bindinput="inputnumber" placeholder="请输入招聘人数" placeholder-class="placeholder"></input>
+        <input bindinput="inputnumber" value="{{number}}" placeholder="请输入招聘人数" placeholder-class="placeholder"></input>
       </view>
     </view>
     <!-- 是否需要分组
     <view class="needgroup">
       <view class="needgroup-left">
-        <text>*</text>
         <text>是否需要分组</text>
       </view>
       <view class="needgroup-right">
@@ -91,7 +85,6 @@
     <!-- 工作福利 -->
     <view class="workfuli" >
       <view class="workfuli-left">
-        <text>*</text>
         <text>工作福利</text>
       </view>
       <view class="workfuli-list">
@@ -102,7 +95,6 @@
     <!-- 招聘有效期 -->
     <view class="salary">
       <view class="salary-left">
-        <text>*</text>
         <text>招聘有效期</text>
       </view>
       <picker mode="date" start="2019-09-11" end="2019-09-30" bindchange="bindTimeChange" class="salary-right" style="width:490rpx;display:flex;justify-content:flex-end;height:100rpx;align-items: center;">
@@ -113,7 +105,7 @@
     <!-- 入职奖
     <view class="recruit">
       <view class="recruit-left">
-        <text>*</text>
+
         <text>入职奖</text>
       </view>
       <view class="recruit-right">
@@ -123,7 +115,7 @@
     推荐奖 -->
     <!-- <view class="recruit">
       <view class="recruit-left">
-        <text>*</text>
+
         <text>推荐奖</text>
       </view>
       <view class="recruit-right">
@@ -133,12 +125,14 @@
     <!-- 上传工作环境图片 -->
     <view class="uploadconpanyimage" >
       <image src="{{uploadconpanyimage}}" bindtap="uploadconpanyimage"></image>
-      <block wx:for="{{conpanyimage}}" wx:key="{{item}}" wx:if="{{conpanyimage.length!=0}}">
-        <image src="{{item}}"></image>
-      </block>
+      <view style="position:relative;margin-top:50rpx;" wx:for="{{companyimage}}" wx:key="{{item}}" wx:if="{{companyimage.length!=0}}" >
+        <image src="{{item.work_image}}" ></image>
+        <image src="../../images/index/close.png" style="position:absolute;width:48rpx;height:48rpx;left:660rpx;top:-20rpx;"></image>
+      </view>
+      
     </view>
     <!-- 完成按钮 -->
-    <view class="confirmbtn" bindtap="submitBtn">完成</view>
+    <view class="confirmbtn" bindtap="submitBtn">保存修改</view>
   </view>
 </view>
 

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showbtn:false,//是否显示修改btn
     wages:'',
     showwelfaremodal: false,
     salar: '',
@@ -36,6 +37,11 @@ Page({
     welfarearr: [],
     welfare: '',//工作福利
     validity_time: '请选择招聘有效期',//招聘有效期
+  },
+  //删除logo
+  dellogo:function(e){
+    var that = this;
+
   },
   //富文本编辑器失去焦点事件
   editblur:function(e){
@@ -186,7 +192,16 @@ Page({
         'address':that.data.location,
         'recruiter_id':wx.getStorageSync('id')
       }).then(res => {
-        console.log(res);
+        if(res.code==0){
+          wx.navigateBack({
+            delta:1,
+            success:function(e){
+              wx.showToast({
+                title: '修改成功',
+              })
+            }
+          })
+        }
       })
     }
   },
@@ -194,6 +209,7 @@ Page({
   inputnumber: function (e) {
     var that = this;
     that.setData({
+      showbtn:true,
       number: e.detail.value
     })
   },
@@ -201,6 +217,7 @@ Page({
   bindTimeChange: function (e) {
     var that = this;
     that.setData({
+      showbtn: true,
       validity_time: e.detail.value
     })
   },
@@ -208,6 +225,7 @@ Page({
   inputpositionname: function (e) {
     var that = this;
     that.setData({
+      showbtn: true,
       title: e.detail.value
     })
   },
@@ -215,13 +233,13 @@ Page({
   inputdescribe: function (e) {
     var that = this;
     that.setData({
+      showbtn: true,
       describe: e.detail.value
     })
   },
   //用户输入的工作地点
   inputworkplace: function (e) {
     var that = this;
-    console.log(e.detail.value);
     var qqmapsdk = new QQMapWX({
       key: 'DEQBZ-SZEWJ-3R4FM-FPGJ2-CSRE2-3PFZU'
     });
@@ -240,6 +258,7 @@ Page({
           },
           success: function (res) {
             that.setData({
+              showbtn: true,
               province: res.result.address_component.province,
               city: res.result.address_component.city,
               district: res.result.address_component.district,
@@ -254,11 +273,10 @@ Page({
   //招聘职位类型的选择
   radioChange: function (e) {
     var that = this;
-    console.log(e);
     that.setData({
+      showbtn: true,
       cate: e.detail.value
     })
-    console.log(that.data.cate)
   },
   //工作福利模态框
   showwelfaremodal: function (e) {
@@ -277,11 +295,11 @@ Page({
     } else {
       var newwelfare = e.detail.value.split("，");
       that.setData({
+        showbtn: true,
         welfarearr: newwelfare,
         welfare: e.detail.value
       })
     }
-    console.log(that.data.welfarearr)
   },
   //关闭工作福利模态框
   closewelfaremodal: function (e) {
@@ -309,6 +327,7 @@ Page({
   salaryinput: function (e) {
     var that = this;
     that.setData({
+      showbtn: true,
       salary: e.detail.value
     })
   },
@@ -369,6 +388,29 @@ Page({
       url: '../positionrequire/positionrequire',
     })
   },
+  //删除更新环境图片
+  delcompanyimage:function(e){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除此张公司图片吗',
+      success:function(res){
+        if(res.confirm){
+          api._delete('/delWorkImage', {
+            'id': e.currentTarget.dataset.id
+          }).then(res => {
+            if (res.code == 0) {
+              wx.showToast({
+                title: '删除成功',
+              })
+            }
+          })
+        }else{
+
+        }
+      }
+    })
+  },
   //上传公司环境图片
   uploadconpanyimage: function (e) {
     var that = this;
@@ -378,7 +420,6 @@ Page({
         icon: 'none'
       })
     } else {
-      console.log(that.data.companyimage.length);
       wx.chooseImage({
         count: that.data.imagecount,
         success: function (res) {
@@ -402,7 +443,24 @@ Page({
                     'workid':that.data.workid,
                     'src': JSON.parse(res.data).result
                   }).then(res=>{
-                    
+                    if(res.code==0){
+                      that.setData({
+                        companyimage:that.data.companyimage.concat([
+                          {
+                            'work_image':res.data.result.image_path,
+                            'id':res.data.result.id
+                          }
+                        ])
+                      })
+                      wx.navigateBack({
+                        delta:1,
+                        success:function(e){
+                          wx.showToast({
+                            title: '添加图片成功',
+                          })
+                        }
+                      })
+                    }
                   })
                 } else {
                   wx.showToast({
@@ -437,7 +495,8 @@ Page({
             console.log(res)
             if (JSON.parse(res.data).code == 0) {
               that.setData({
-                logourl: JSON.parse(res.data).result
+                logourl: JSON.parse(res.data).result,
+                showbtn:true
               })
             } else {
               wx.showToast({

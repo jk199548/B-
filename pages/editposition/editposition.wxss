@@ -59,7 +59,6 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   color: #ffffff;
 }
 .uploadlogo{
-  width: 240rpx;
   margin-left: 30rpx;
   margin-top: 57rpx;
   position: relative ;

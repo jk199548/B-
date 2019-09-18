@@ -11,10 +11,11 @@
         <radio value="5" checked="{{cate==5}}">实习</radio>
       </radio-group>
     </view>
-    <view class="uploadlogo" bindtap="chooseconpanylogo">
+    <view class="uploadlogo" >
       <view style="font-size:32rpx;font-weight:bold;color:#3d3d3d;margin-bottom:40rpx;">企业logo</view>
       <image src="{{logourl}}"></image>
-      <image bindtap="dellogo" src="../../images/index/close.png" style="position:absolute;width:34rpx;height:34rpx;top:60rpx;left:223rpx;"></image>
+      <!-- <image bindtap="dellogo" src="../../images/index/close.png" style="position:absolute;width:34rpx;height:34rpx;top:60rpx;left:223rpx;"></image> -->
+      <image src="../../images/index/add.png" bindtap="chooseconpanylogo" style="width:120rpx;height:120rpx;margin-left:50rpx;"></image>
     </view>
     <view class="positionname">
       <view class="positionname-left">
@@ -55,9 +56,9 @@
         <text>薪资待遇</text>
       </view>
       <view class="salary-right" style="display: flex;width:610rpx;justify-content:flex-end;align-items: center;">
-        <view wx:if="{{cycle==0}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/小时</view>
-        <view wx:if="{{cycle==1}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/天</view>
-        <view wx:if="{{cycle==2}}" style="font-size:28rpx;color:#3d3d3d;">{{wages}}/月</view>
+        <view wx:if="{{cycle==0}}" style="font-size:28rpx;color:#3d3d3d;margin-right:10rpx;">{{wages}}/小时</view>
+        <view wx:if="{{cycle==1}}" style="font-size:28rpx;color:#3d3d3d;margin-right:10rpx;">{{wages}}/天</view>
+        <view wx:if="{{cycle==2}}" style="font-size:28rpx;color:#3d3d3d;margin-right:10rpx;">{{wages}}/月</view>
         <image src="../../images/shiming/more.png"></image>
       </view>
     </view>
@@ -127,12 +128,12 @@
       <image src="{{uploadconpanyimage}}" bindtap="uploadconpanyimage"></image>
       <view style="position:relative;margin-top:50rpx;" wx:for="{{companyimage}}" wx:key="{{item}}" wx:if="{{companyimage.length!=0}}" >
         <image src="{{item.work_image}}" ></image>
-        <image src="../../images/index/close.png" style="position:absolute;width:48rpx;height:48rpx;left:660rpx;top:-20rpx;"></image>
+        <image src="../../images/index/close.png" style="position:absolute;width:48rpx;height:48rpx;left:660rpx;top:-20rpx;" data-id="{{item.id}}" bindtap="delcompanyimage"></image>
       </view>
       
     </view>
     <!-- 完成按钮 -->
-    <view class="confirmbtn" bindtap="submitBtn">保存修改</view>
+    <view class="confirmbtn" bindtap="submitBtn" wx:if="{{showbtn}}">保存修改</view>
   </view>
 </view>
 

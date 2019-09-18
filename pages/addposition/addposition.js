@@ -146,10 +146,14 @@ Page({
             'src': that.data.conpanyimage
           }).then(res=>{
             if(res.code==0){
-              wx.showToast({
-                title: '发布成功',
-              });
-              wx.navigateBack();
+              wx.navigateBack({
+                delta:1,
+                success:function(e){
+                  wx.showToast({
+                    title: '发布成功',
+                  });
+                }
+              })
             }
           })
         }

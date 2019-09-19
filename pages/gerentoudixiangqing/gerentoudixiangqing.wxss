@@ -86,8 +86,7 @@
   line-height: 60rpx;
 }
 .workex{
-  width: 180rpx;
-  margin-right: 110rpx;
+  width: 33%;
 }
 .workex text:nth-child(1){
   font-size: 28rpx;
@@ -99,8 +98,7 @@
   margin-left: 10rpx;
 }
 .schoolex{
-  width: 140rpx;
-  margin-right: 110rpx;
+  width: 33%;
 }
 .schoolex text:nth-child(1){
   font-size: 28rpx;
@@ -112,7 +110,7 @@
   margin-left: 10rpx;
 }
 .age{
-  width: 150rpx;
+  width: 33%;
 }
 .age text:nth-child(1){
   font-size: 28rpx;
@@ -123,13 +121,8 @@
   color: #333333;
   margin-left: 10rpx;
 }
-
-
-
-
 .height{
-  width: 180rpx;
-  margin-right: 110rpx;
+  width: 33%;
 }
 .height text:nth-child(1){
   font-size: 28rpx;
@@ -141,8 +134,7 @@
   margin-left: 10rpx;
 }
 .weight{
-  width: 140rpx;
-  margin-right: 110rpx;
+  width: 33%;
 }
 .weight text:nth-child(1){
   font-size: 28rpx;
@@ -154,7 +146,7 @@
   margin-left: 10rpx;
 }
 .home{
-  width: 150rpx;
+  width: 33%;
 }
 .home text:nth-child(1){
   font-size: 28rpx;
@@ -166,7 +158,7 @@
   margin-left: 10rpx;
 }
 .from{
-  width: 300rpx;
+  width: 33%;
 }
 .from text:nth-child(1){
   font-size: 28rpx;

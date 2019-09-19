@@ -1,0 +1,33 @@
+<!--pages/waitpositionlist/waitpositionlist.wxml-->
+<view class="shaixuan" style="margin-top:30rpx;margin-right:30rpx;height:50rpx;" bindtap="shaixuan" wx:if="{{selectedid==0}}">
+    <text class="{{shaixuanisactive?'shaixuanactive':'shaixuannormal'}}">{{shaixuantext}}</text>
+    <image src="{{shaixuanisactive?'../../images/index/shaixuan-active.png':'../../images/index/shaixuan-normal.png'}}"></image>
+  </view>
+<view class="zhaopin-yes-box" bindtap="togerentoudixiangqing" wx:for="{{alllist}}" data-id="{{item.worker_id}}" data-created_at="{{item.created_at}}">
+  <view class="left">
+    <image src="{{item.workers.header}}" style="border-radius:50%;"></image>
+  </view>
+  <view class="right">
+    <view class="right-top">
+      <text>{{item.workers.username}}</text>
+      <text>{{item.workers.experience}}年·{{schoolarr[item.workers.education]}}·4-6k</text>
+      <text wx:if="{{item.status==0}}">待面试</text>
+      <text wx:if="{{item.status==4}}">待审核</text>
+      <view style="width:16rpx;height:16rpx;background-color:#fc7001;border-radius:50%;"></view>
+    </view>
+    <view class="right-bottom">
+      <text>投递 — {{title}}</text>
+      <text>{{item.created_at}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 筛选模态框 -->
+<view class='modal-mask' catchtouchmove='true' bindtap='showmodal' wx:if="{{showmodal}}"></view>
+<view class="modal" wx:if="{{showmodal}}" catchtouchmove='true'>
+  <text style="font-size: 32rpx;color: #ffffff;" bindtap="getAllInterviewer">全部</text>
+  <view style="width:110rpx;height:2rpx;background:rgba(243,243,243,1);opacity:0.3;"></view>
+  <text bindtap="getPosted" style="font-size: 32rpx;color: #ffffff;">已投递</text>
+  <view style="width:110rpx;height:2rpx;background:rgba(243,243,243,1);opacity:0.3;"></view>
+  <text bindtap="getWaitInterview" style="font-size: 32rpx;color: #ffffff;">待面试</text>
+</view>

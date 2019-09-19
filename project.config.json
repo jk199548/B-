@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 35,
+			"current": 36,
 			"list": [
 				{
 					"id": -1,
@@ -300,6 +300,12 @@
 					"name": "职位编辑",
 					"pathName": "pages/editposition/editposition",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "求职者列表",
+					"pathName": "pages/waitpositionlist/waitpositionlist",
 					"scene": null
 				}
 			]

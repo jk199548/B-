@@ -18,25 +18,38 @@
     </view>
   </view>
   <!-- 首页招聘页面有报名 -->
-  <view class="shaixuan" style="margin-top:130rpx;margin-right:30rpx;height:50rpx;" bindtap="shaixuan" wx:if="{{selectedid==0}}">
-    <text class="{{shaixuanisactive?'shaixuanactive':'shaixuannormal'}}">筛选</text>
-    <image src="{{shaixuanisactive?'../../images/index/shaixuan-active.png':'../../images/index/shaixuan-normal.png'}}"></image>
-  </view>
-  <view class="zhaopin-yes" wx:if="{{selectedid==0}}" style="background-color: #fff;">
-    <view class="zhaopin-yes-box">
-      <view class="left">
-        <image src="../../images/index/avtar.png"></image>
+  <view style="height:102rpx;width:750rpx;"></view>
+  <view class="zhaopin-yes" style="margin-top:20rpx;background-color: #fff;" wx:if="{{selectedid==0}}"  wx:for="{{indexposition}}">
+    <view class="myposition-box-top" bindtap="towaitpositionlist" data-id="{{item.id}}" data-title="{{item.title}}">
+      <view class="myposition-box-top-left">
+        <image src="{{item.header}}"></image>
       </view>
-      <view class="right">
-        <view class="right-top">
-          <text>张三</text>
-          <text>3年·专科·4-6k</text>
-          <text>待面试</text>
-          <view style="width:16rpx;height:16rpx;background-color:#fc7001;border-radius:50%;"></view>
+      <view class="myposition-box-top-right">
+        <view class="myposition-box-top-right-top" >
+          <text style="font-size: 36rpx;color: #333333;font-weight: bold;">{{item.title}}</text>
+          <view>
+            <text style="font-size: 28rpx;color: #333333;">招聘人数:</text>
+            <text style="font-size:32rpx;color:#333333;font-weight:bold;">{{item.number}}</text>
+          </view>
         </view>
-        <view class="right-bottom">
-          <text>投递 — 大楼保洁</text>
-          <text>10:05</text>
+        <view class="myposition-box-top-right-mid">
+          <text style="font-size:36rpx;color:#FF7315;font-weight:bold;">{{item.wages}}</text>
+          <text style="font-size:36rpx;color:#FF7315;" wx:if="{{item.cycle==0}}">/小时</text>
+          <text style="font-size:36rpx;color:#FF7315;" wx:if="{{item.cycle==1}}">/天</text>
+          <text style="font-size:36rpx;color:#FF7315;" wx:if="{{item.cycle==2}}">/月</text>
+        </view>
+        <view class="myposition-box-top-right-center" wx:if="{{item.welfare!=''}}">
+          <view wx:for="{{item.welfare}}" >{{item}}</view>
+        </view>
+        <view class="myposition-box-top-right-bottom">
+          <!-- <view>
+            <image src="../../images/index/city.png" style="width:20rpx;height:22rpx;"></image>
+            <text style="font-size:26rpx;color:#333333;">成都怪糖科技有限公司</text>            
+          </view> -->
+          <view>
+            <image src="../../images/index/location.png" style="width:18rpx;height:24rpx;"></image>
+            <text style="font-size:26rpx;color:#333333;margin-left:10rpx;">{{item.address}}</text>   
+          </view>
         </view>
       </view>
     </view>
@@ -121,7 +134,8 @@
   </view>
   <!-- 首页我的职位页面 -->
   <view class="myposition" wx:if="{{selectedid==2&&mypositionnodata!=true}}">
-    <view class="myposition-box" wx:for="{{myposition}}">
+    <view class="myposition-box" wx:for="{{myposition}}" style="position:relative;">
+      <!-- <image src="../../images/index/end.png" style="width:104rpx;height:144rpx;position:absolute;top:0rpx;left:618rpx;"></image> -->
       <view class="myposition-box-top" bindtap="topositiondetail" data-id="{{item.id}}">
         <view class="myposition-box-top-left">
           <image src="{{item.header}}"></image>
@@ -202,29 +216,17 @@
     </view>
   </view>
 </view>
-
-<!-- 筛选模态框 -->
-<view class='modal-mask' catchtouchmove='true' bindtap='showmodal' wx:if="{{showmodal}}"></view>
-<view class="modal" wx:if="{{showmodal}}" catchtouchmove='true'>
-  <text>全部</text>
-  <view class=""></view>
-  <text>已投递</text>
-  <view></view>
-  <text>待面试</text>
-</view>
-
-
   <!-- 首页我的动态页面--没有动态 -->
-  <view class="mydongtainodata" wx:if="{{selectedid==3&&mydongtainodata==true}}">
-    <image src="../../images/index/banner.png"></image>
-    <view >暂未发布动态</view>
-    <view>你暂未发动态，请点击</view>
-    <view bindtap="tofabu">立即发布</view>
-  </view>
-  <!-- 首页我的职位页面--没有职位 -->
-  <view class="mydongtainodata" wx:if="{{selectedid==2&&mypositionnodata==true}}">
-    <image src="../../images/index/banner.png"></image>
-    <view >暂未发布职位</view>
-    <view>你暂未发职位，请点击</view>
-    <view bindtap="toaddposition">立即发布</view>
-  </view>
+<view class="mydongtainodata" wx:if="{{selectedid==3&&mydongtainodata==true}}">
+  <image src="../../images/index/banner.png"></image>
+  <view >暂未发布动态</view>
+  <view>你暂未发动态，请点击</view>
+  <view bindtap="tofabu">立即发布</view>
+</view>
+<!-- 首页我的职位页面--没有职位 -->
+<view class="mydongtainodata" wx:if="{{selectedid==2&&mypositionnodata==true}}">
+  <image src="../../images/index/banner.png"></image>
+  <view >暂未发布职位</view>
+  <view>你暂未发职位，请点击</view>
+  <view bindtap="toaddposition">立即发布</view>
+</view>

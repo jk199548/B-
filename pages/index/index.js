@@ -20,6 +20,35 @@ Page({
     hasUserInfo: false,
     dynamiclist:[],
     myposition:[],
+    indexposition:[]
+  },
+  //招聘页跳转到在职列表页
+  towaitpositionlist:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../waitpositionlist/waitpositionlist?workid='+e.currentTarget.dataset.id+'&title='+e.currentTarget.dataset.title,
+    })
+  },
+  //获取用户在招职位
+  getRecruitWork:function(e){
+    var that= this;
+    api._get('/getRecruitWork',{
+      'id':wx.getStorageSync('id')
+    }).then(res=>{
+      if (res.code == 0) {
+        var newmyposition = res.result;
+        for (let i = 0; i < newmyposition.length; i++) {
+          if (newmyposition[i].welfare != null) {
+            var newwelfare = newmyposition[i].welfare.split("，");
+            newmyposition[i].welfare = newwelfare;
+          }
+        }
+        that.setData({
+          zhaopinnodata: false,
+          indexposition: newmyposition
+        })
+      }
+    })
   },
   //获取用户已经发布的职位
   getMyWork:function(e){
@@ -193,6 +222,7 @@ Page({
     var that = this;
     that.getDynamic();
     that.getMyWork();
+    that.getRecruitWork();
   },
   onShow:function(){
     var that = this;

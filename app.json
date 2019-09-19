@@ -38,7 +38,8 @@
     "pages/mywallte/mywallte",
     "pages/tuiguangjiangli/tuiguangjiangli",
     "pages/addgerenjieshao/addgerenjieshao",
-    "pages/editposition/editposition"
+    "pages/editposition/editposition",
+    "pages/waitpositionlist/waitpositionlist"
   ],
   "window": {
     "backgroundTextStyle": "light",

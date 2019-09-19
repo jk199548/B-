@@ -1,5 +1,5 @@
 <!--pages/gerentoudixiangqing/gerentoudixiangqing.wxml-->
-<view class="box">
+<view class="box" wx:for="{{infolist}}" wx:key="item">
   <!-- 顶部头像框 -->
   <view class="top">
     <view class="top-left">
@@ -7,14 +7,15 @@
     </view>
     <view class="top-right">
       <view class="top-right-top">
-        <text>张三李四</text>
-        <text>男</text>
+        <text>{{item.username}}</text>
+        <text wx:if="{{item.sex==0}}">男</text>
+        <text wx:if="{{item.sex==1}}">女</text>
       </view>
     </view>
   </view>
   <!-- 顶部投递职位列表 -->
-  <view class="top-position" wx:for="{{yuyuelist}}">
-    <view wx:if="{{item.position}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
+  <view class="top-position" wx:for="{{yuyuelist}}" wx:key="item">
+    <view wx:if="{{!item.location}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
       <view class="top-position-left" style="background-color:#808080;"></view>
       <view class="top-position-right">
         <text style="color:#808080;">于{{item.time}}</text>
@@ -35,27 +36,27 @@
     <view class="basic-list">
       <view class="workex">
         <text>工作经验:</text>
-        <text>3年</text>
+        <text>{{item.experience}}年</text>
       </view>
       <view class="schoolex">
         <text>学历:</text>
-        <text>本科</text>
+        <text>{{schoolarr[item.education]}}</text>
       </view>
       <view class="age">
         <text>年龄:</text>
-        <text>18</text>
+        <text>{{item.birthday}}</text>
       </view>
       <view class="height">
         <text>身高:</text>
-        <text>170cm</text>
+        <text>{{item.height}}</text>
       </view>
       <view class="weight">
         <text>体重:</text>
-        <text>60kg</text>
+        <text>{{item.weight}}</text>
       </view>
       <view class="home">
         <text>家乡:</text>
-        <text>绵阳</text>
+        <text>{{item.hometown}}</text>
       </view>
       <view class="from">
         <text>来自:</text>
@@ -70,18 +71,17 @@
       <text>工作经历</text>
       <text>系统记录</text>
     </view>
-    <view class="work-list">
+    <view class="work-list" wx:for="{{item.experiences}}" wx:key="item" style="border-bottom:1rpx solid #808080;">
       <view class="work-list-top">
-        <text>重庆富士康集团</text>
-        <text>2018.03-2018.12</text>
+        <text>{{item.work_unit}}</text>
+        <text>{{item.work_time}}</text>
       </view>
-      <view class="work-list-name">质检员</view>
-      <view class="work-list-bottom">
+      <view class="work-list-name">{{item.position}}</view>
+      <view class="work-list-bottom" style="padding-bottom: 30rpx;">
         <text>工作内容:</text>
-        <text>检验iphone出厂是否合格</text>
+        <rich-text style="margin-bottom:30rpx;" nodes="{{item.discribe}}"></rich-text>
       </view>
     </view>
-    <view style="width:690rpx;height:2rpx;background-color:#f4f4f4;margin-top:30rpx;"></view>
   </view>
   <!-- 加载更多 -->
   <view class="showmore">
@@ -92,15 +92,12 @@
   <view class="schoolex-box">
     <view class="schoolex-text">教育经历</view>
     <view class="schoolex-list">
-      <view class="schoolex-list-item">
-        <text>成都七中</text>
-        <text>2012.09-2015.06</text>
+      <view class="schoolex-list-item" wx:for="{{item.educational}}" wx:key="item">
+        <text>{{item.school}}</text>
+        <text>{{item.major}}</text>
+        <text>{{item.enrol}}-{{item.finish}}</text>
       </view>
       <view style="width:690rpx;height:2rpx;background-color:#f4f4f4;"></view>
-      <view class="schoolex-list-item">
-        <text>成都七中</text>
-        <text>2012.09-2015.06</text>
-      </view>
     </view>
   </view>
   <!-- 含有同意的底部按钮 -->
@@ -123,26 +120,26 @@
   </view>
   <!-- 不含有同意的底部按钮 -->
   <view class="mianshitongguo" wx:else>
-    <view class="mianshitongguo-left">面试不通过</view>
-    <view class="mianshitongguo-right">面试通过</view>
+    <view class="mianshitongguo-left" bindtap="interviewrefuse">面试不通过</view>
+    <view class="mianshitongguo-right" bindtap="interviewpass">面试通过</view>
   </view>
 </view>
 <!-- 点击底部同意按钮弹出的模态框 -->
 <view class="modal" catchtouchmove="true" wx:if="{{yuyuemodal}}" bindtap="closemodal"></view>
-<view class="modal-box"  catchtouchmove="true" wx:if="{{yuyuemodal}}">
+<form bindsubmit="formSubmit" report-submit class="modal-box"  catchtouchmove="true" wx:if="{{yuyuemodal}}">
   <view class="images-box" bindtap="closeyuyuemodal">
     <image src="../../images/index/close.png" style="width:50rpx;height:50rpx;"></image>
   </view>
   <view class="yuyue-text">预约面试时间</view>
   <view class="choosetime">
-    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <picker name="picker" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
       <view>{{time}}</view>
       <image src="../../images/shiming/more.png" style="width:14rpx;height:26rpx;float:right;padding-top:28rpx;margin-right:10rpx;"></image>
     </picker>
   </view>
   <view class="yuyue-text">预约面试地址</view>
   <view class="input-box">
-    <input placeholder="请填写面试地址" bindinput="inputaddress"></input>
+    <input name="input" placeholder="请填写面试地址" bindinput="inputaddress"></input>
   </view>
-  <view class="confirm-btn" bindtap="confirmbtn">完成</view>
-</view>
+  <button class="confirm-btn" form-type="submit">完成</button>
+</form>

@@ -5,6 +5,7 @@ const months = [];
 const days = [];
 const hours = [];
 const minutes = [];
+const api = require('../../utils/api.js');
 //获取年
 for (let i = 2019; i <= date.getFullYear() ; i++) {
   years.push("" + i + "年");
@@ -39,12 +40,7 @@ for (let i = 0; i < 24; i++) {
 // }
 Page({
   data: {
-    yuyuelist:[
-      {
-        'time': '2019年6月28日16: 30',
-        'position':'顺丰分拣员',
-      },
-    ],
+    yuyuelist:[],
     isyuyuesuccess:false,//是否预约成功
     mianshiaddress:'',//预约的面试地点
     mianshitime:'',//预约的面试时间
@@ -53,6 +49,71 @@ Page({
     multiArray: [years, months, days, hours, minutes],
     multiIndex: [0, 0, 0, 0],
     choose_year: '',
+    workerid:'',
+    workid:'',
+    infolist:[],
+    schoolarr: ['请选择学历', '初中', '中专', '高中', '职高', '大专', '本科', '研究生'],
+  },
+  //面试不通过
+  interviewrefuse:function(e){
+    var that = this;
+    api._post('/refuse',{
+      'workid':that.data.workid,
+      'workerid':that.data.workerid
+    }).then(res=>{
+      if(res.code==0){
+        wx.navigateBack({
+          delta:1
+        })
+      }
+    })
+  },
+  //面试通过按钮
+  interviewpass:function(e){
+    var that = this;
+    api._put('/removeWorker',{
+      'workid':that.data.workid,
+      'workerid':that.data.workerid
+    }).then(res=>{
+      console.log(res);
+      if(res.code==0){
+        wx.navigateBack({
+          delta:1
+        });
+      }
+    })
+  },
+  //获取该求职者对于此份工作是否已经预约面试
+  getworkerInterviewAddress:function(e){
+    var that = this;
+    api._get('/getInterviewDetail',{
+      'workid':that.data.workid,
+      'workerid':that.data.workerid
+    }).then(res=>{
+      if(res.code==0){
+        that.setData({
+          isyuyuesuccess:true,
+          yuyuelist: that.data.yuyuelist.concat([{
+            'time': res.result.time,
+            'position': res.result.address,
+            'location': res.result.address
+          }])
+        })
+      }
+    })
+  },
+  //获取员工的基本信息
+  getWorkerDetails:function(e){
+    var that = this;
+    api._get('/workerDetails',{
+      'workerid':that.data.workerid
+    }).then(res=>{
+      if(res.code==0){
+        that.setData({
+          infolist:res.result
+        })
+      }
+    })
   },
   //点击不同意按钮
   disagree:function(e){
@@ -73,16 +134,38 @@ Page({
     })
   },
   //预约模态框的点击完成按钮事件
-  confirmbtn:function(e){
+  formSubmit:function(e){
     var that = this;
-    if(that.data.time=='请选择时间' || that.data.mianshiaddress==''){
+    if(that.data.time=='请选择时间'){
       wx.showToast({
-        title: '请选择时间',
+        title: '请选择面试时间',
+      })
+    }else if(that.data.mianshiaddress==''){
+      wx.showToast({
+        title: '请选择面试地点',
       })
     }else{
+      api._post('/notifyInterview',{
+        'workerid':that.data.workerid,
+        'workid':that.data.workid,
+        'time':that.data.time,
+        'address':that.data.mianshiaddress
+      }).then(res=>{
+        if(res.code==0){
+          wx.showToast({
+            title: '预约面试成功',
+          })
+        }
+      });
+      api._get('/setFormID',{
+        'is_rec':1,
+        'id':wx.getStorageSync('id'),
+        'formId': e.detail.formId
+      }).then(res=>{
+      })
       that.setData({
-        yuyuemodal:false,
-        isyuyuesuccess:true,
+        yuyuemodal: false,
+        isyuyuesuccess: true,
         yuyuelist: that.data.yuyuelist.concat([
           {
             'time': that.data.time,
@@ -120,15 +203,27 @@ Page({
       yuyuemodal:false,
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    var that = this;
     //设置默认的年份
+    
     this.setData({
-      choose_year: this.data.multiArray[0][0]
-    })
+      choose_year: this.data.multiArray[0][0],
+      workerid:options.workerid,
+      workid:options.workid,
+      yuyuelist: [
+        {
+          'time': options.created_at,
+          'position': options.title,
+        }
+      ],
+    });
+    that.getWorkerDetails();
+    that.getworkerInterviewAddress();
+    console.log(that.data.yuyuelist)
   },
   //获取时间日期
   bindMultiPickerChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
@@ -138,23 +233,19 @@ Page({
     const day = this.data.multiArray[2][index[2]];
     const hour = this.data.multiArray[3][index[3]];
     const minute = this.data.multiArray[4][index[4]];
-    // console.log(`${year}-${month}-${day}-${hour}-${minute}`);
     this.setData({
       time: year + month + day + hour 
     })
-    // console.log(this.data.time);
   },
   //监听picker的滚动事件
   bindMultiPickerColumnChange: function (e) {
     //获取年份
     if (e.detail.column == 0) {
       let choose_year = this.data.multiArray[e.detail.column][e.detail.value];
-      console.log(choose_year);
       this.setData({
         choose_year
       })
     }
-    //console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     if (e.detail.column == 1) {
       let num = parseInt(this.data.multiArray[e.detail.column][e.detail.value]);
       let temp = [];
@@ -180,7 +271,6 @@ Page({
         });
       } else if (num == 2) { //判断2月份天数
         let year = parseInt(this.data.choose_year);
-        console.log(year);
         if (((year % 400 == 0) || (year % 100 != 0)) && (year % 4 == 0)) {
           for (let i = 1; i <= 29; i++) {
             if (i < 10) {
@@ -203,7 +293,6 @@ Page({
           });
         }
       }
-      console.log(this.data.multiArray[2]);
     }
     var data = {
       multiArray: this.data.multiArray,

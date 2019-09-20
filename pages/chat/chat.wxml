@@ -27,16 +27,16 @@
   </view>
   <scroll-view class="chatbox" scroll-y="true" scroll-into-view="{{toview}}">
     <block wx:for="{{msglist}}" wx:for-index="index">
-      <view class="chattime">2019-06-21  17:30</view>
-      <view wx:if="{{item.name=='my'}}" class="your-msg" id="msg-{{index}}" >
-        <text class="your-msg-content" wx:if="{{item.title!=''}}">{{item.title}}</text>
-        <image class="chatimage" src="{{item.image}}" wx:if="{{item.title==''}}" style="width:400rpx;height:400rpx;margin-right:14rpx;"></image>
-        <image src="../../images/index/avtar.png" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
+      <view class="chattime">{{item.created_at}}</view>
+      <view wx:if="{{item.is_rec==1}}" class="your-msg" id="msg-{{index}}" >
+        <text class="your-msg-content" wx:if="{{item.type==0}}">{{item.massage}}</text>
+        <image class="chatimage" src="{{item.massage}}" wx:if="{{item.type==1}}" style="width:400rpx;height:400rpx;margin-right:14rpx;"></image>
+        <image src="{{item.header}}" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
       </view>
       <view wx:else class="other-msg"  id="msg-{{index}}" >
-        <image src="../../images/index/avtar.png"></image>
-        <text class="other-msg-content" wx:if="{{item.title!=''}}">{{item.title}}</text>
-        <image class="chatimage" src="{{item.image}}" wx:if="{{item.title==''}}" style="width:400rpx;height:400rpx;margin-right:14rpx;"></image>
+        <image src="{{item.header}}"></image>
+        <text class="other-msg-content" wx:if="{{item.type==0}}">{{item.massage}}</text>
+        <image class="chatimage" src="{{item.massage}}" wx:if="{{item.type==1}}" style="width:400rpx;height:400rpx;margin-right:14rpx;"></image>
         
       </view>
     </block>

@@ -1,4 +1,6 @@
 // pages/news/news.js
+var websocket = require('../../utils/websocket.js');
+const api = require('../../utils/util.js');
 Page({
 
   /**
@@ -20,14 +22,16 @@ Page({
       currentIndex: e.currentTarget.dataset.index
     })
   },
+  //
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setTabBarBadge({
-      index: 1,
-      text: '11',
-    })
+    
+    // wx.setTabBarBadge({
+    //   index: 1,
+    //   text: '11',
+    // })
   },
 
   /**

@@ -6,6 +6,8 @@ const days = [];
 const hours = [];
 const minutes = [];
 const api = require('../../utils/api.js');
+const websocket = require('../../utils/websocket.js');
+var app = getApp();
 //获取年
 for (let i = 2019; i <= date.getFullYear() ; i++) {
   years.push("" + i + "年");
@@ -53,6 +55,57 @@ Page({
     workid:'',
     infolist:[],
     schoolarr: ['请选择学历', '初中', '中专', '高中', '职高', '大专', '本科', '研究生'],
+  },
+  //绑定聊天
+  bindMyGroup: function (data) {
+    var that = this;
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/bindMyGroup',
+      data: {
+        'id': wx.getStorageSync('id'),
+        'client_id': data.client_id,
+        'is_rec': 1
+      },
+      success: function (res) {
+        console.log(res)
+        wx.navigateTo({
+          url: '../chat/chat?workerid=' + that.data.workerid,
+        })
+      }
+    })
+  },
+  //点击咨询，跳转到聊天页面
+  tochat:function(e){
+    var that = this;
+    console.log(app.globalData.isconnect)
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/addFriend',
+      data:{
+        'b_id':wx.getStorageSync('id'),
+        'c_id':that.data.workerid,
+        'is_rec':1
+      },
+      success:function(res){
+        if(app.globalData.isconnect){
+          wx.navigateTo({
+            url: '../chat/chat?workerid=' + that.data.workerid,
+          })
+        }else{
+          websocket.connect(function (res) {
+            var data = JSON.parse(res.data);
+            if (data.type == 'init') {
+              //绑定群,发送请求
+              app.globalData.isconnect = true
+              that.bindMyGroup(data);
+            } else if (data.type == 'say') {
+              //得到聊天消息
+            } else if (data.type == 'notice') {
+              //得到公告信息
+            }
+          })
+        }
+      },
+    })
   },
   //面试不通过
   interviewrefuse:function(e){
@@ -205,8 +258,10 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
+    wx.onSocketClose(function(res){
+      app.globalData.isconnect=false
+    })
     //设置默认的年份
-    
     this.setData({
       choose_year: this.data.multiArray[0][0],
       workerid:options.workerid,

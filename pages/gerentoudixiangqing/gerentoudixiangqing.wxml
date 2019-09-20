@@ -103,7 +103,7 @@
   <!-- 含有同意的底部按钮 -->
   <view class="bottom-btn" wx:if="{{!isyuyuesuccess}}">
     <view class="bottom-btn-left">
-      <view class="bottom-btn-left-left">
+      <view class="bottom-btn-left-left" bindtap="tochat">
         <image src="../../images/index/wechat.png"></image>
         <text style="font-size:28rpx;color:#808080;">询问</text>
       </view>

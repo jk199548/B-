@@ -53,6 +53,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    isregister:''
+    isregister:'',
+    isconnect:false,
   }
 })

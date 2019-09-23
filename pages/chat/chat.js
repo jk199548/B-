@@ -10,23 +10,65 @@ Page({
     toview:'',
     msglist:[],
     inputword:'',
-    workerid:''
+    workerid:'',
+    image:''
+  },
+  //预览聊天记录中的图片
+  previewimage: function (e) {
+    var that = this;
+    wx.previewImage({
+      urls: [e.currentTarget.dataset.image],
+    })
   },
   //选择发送图片
   chooseimage:function(e){
     var that = this;
     wx.chooseImage({
+      count:1,
       success: function(res){
-        that.setData({
-          msglist: that.data.msglist.concat([{
-            name:'my',
-            title:'',
-            image:res.tempFilePaths
-          }]),
-          toview: 'msg-' + (that.data.msglist.length - 1),
-          inputword: ''
+        wx.uploadFile({
+          url: 'https://www.xiaoshetong.cn/api/recruit/uploadLogo',
+          filePath: res.tempFilePaths[0],
+          name: 'logo',
+          success:function(res){
+            that.setData({
+              image: JSON.parse(res.data).result
+            })
+            var time = util.formatTime(new Date());
+            wx.request({
+              url: 'https://www.xiaoshetong.cn/api/sendToPrivate',
+              data:{
+                'b_id':wx.getStorageSync('id'),
+                'c_id':that.data.workerid,
+                'is_rec':1,
+                'massage': JSON.parse(res.data).result,
+                'type':1,
+                'username':wx.getStorageSync('username'),
+                'header':wx.getStorageSync('header'),
+                'created_at':time
+              },
+              success:function(res){
+                that.setData({
+                  msglist: that.data.msglist.concat([
+                    {
+                      'b_id': wx.getStorageSync('id'),
+                      'c_id': that.data.workerid,
+                      'created_at': time,
+                      'header': wx.getStorageSync('header'),
+                      'id': res.data,
+                      'is_rec': 1,
+                      'massage': that.data.image,
+                      'type': 1,
+                      'username': wx.getStorageSync('username'),
+                    }
+                  ]),
+                  toview: 'msg-' + (that.data.msglist.length - 1),
+                  inputword: ''
+                })
+              }
+            })
+          }
         })
-        var filePath = res.tempFilePaths;
       },
     })
   },
@@ -36,26 +78,6 @@ Page({
     that.setData({
       inputword:e.detail.value,
     })
-  },
-  //点击发送按钮事件
-  sendmsg:function(e){
-    var that = this;
-    if(that.data.inputword==''){
-      wx.showToast({
-        title: '不能发送空白信息',
-        duration: 2000,
-        icon: 'none'
-      })
-    }else{
-      var newarr = [{
-        name: 'my',
-        title: that.data.inputword
-      }];
-      that.setData({
-        msglist: that.data.msglist.concat(newarr),
-        
-      })
-    }
   },
   //输入聚焦是触发的事件
   focus:function(){
@@ -68,38 +90,46 @@ Page({
   sendmsg:function(e){
     var that = this;
     var time = util.formatTime(new Date());
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/sendToPrivate',
-      data:{
-        'b_id':wx.getStorageSync('id'),
-        'c_id':that.data.workerid,
-        'is_rec':1,
-        'massage':that.data.inputword,
-        'type': 0,
-        'username':wx.getStorageSync('username'),
-        'header':wx.getStorageSync('header'),
-        'created_at':time,
-      },
-      success:function(res){
-        that.setData({
-          msglist:that.data.msglist.concat([
-            {
-              'b_id': wx.getStorageSync('id'),
-              'c_id': that.data.workerid,
-              'created_at': time,
-              'header': wx.getStorageSync('header'),
-              'id': 32,
-              'is_rec': 1,
-              'massage': that.data.inputword,
-              'type': 0,
-              'username': wx.getStorageSync('username'),
-            }
-          ]),
-          toview: 'msg-' + (that.data.msglist.length - 1),
-          inputword: ''
-        })
-      }
-    })
+    if(that.data.inputword==''){
+      wx.showToast({
+        title: '消息不能为空',
+        icon:'none'
+      })
+    }else{
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/sendToPrivate',
+        data: {
+          'b_id': wx.getStorageSync('id'),
+          'c_id': that.data.workerid,
+          'is_rec': 1,
+          'massage': that.data.inputword,
+          'type': 0,
+          'username': wx.getStorageSync('username'),
+          'header': wx.getStorageSync('header'),
+          'created_at': time,
+        },
+        success: function (res) {
+          that.setData({
+            msglist: that.data.msglist.concat([
+              {
+                'b_id': wx.getStorageSync('id'),
+                'c_id': that.data.workerid,
+                'created_at': time,
+                'header': wx.getStorageSync('header'),
+                'id': 32,
+                'is_rec': 1,
+                'massage': that.data.inputword,
+                'type': 0,
+                'username': wx.getStorageSync('username'),
+              }
+            ]),
+            toview: 'msg-' + (that.data.msglist.length - 1),
+            inputword: ''
+          })
+        }
+      })
+    }
+    
   },
   //获取私聊聊天记录
   getPersonChatRecord:function(e){
@@ -181,6 +211,7 @@ Page({
     that.getchatmsgrecord();
     wx.onSocketMessage(function(res){
       var pages = getCurrentPages();
+      
       if (pages[pages.length - 1].route == "pages/chat/chat") {
         if (JSON.parse(res.data).type == 0 || JSON.parse(res.data).type==1){
           wx.request({
@@ -200,7 +231,8 @@ Page({
         
       }else{
         that.setData({
-          msglist: that.data.msglist.concat([JSON.parse(res.data)])
+          msglist: that.data.msglist.concat([JSON.parse(res.data)]),
+          toview: 'msg-' + (that.data.msglist.length - 1),
         });
       }
     })
@@ -231,6 +263,7 @@ Page({
    */
   onUnload: function () {
     var that = this;
+    console.log(that.data.msglist)
     if (that.data.msglist.length != 0) {
       wx.request({
         url: 'https://www.xiaoshetong.cn/api/setLastMsgId',

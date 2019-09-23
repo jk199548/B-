@@ -16,27 +16,27 @@
         </view>
         <view class="positionlist">
           <image src="../../images/chat/workex.png"></image>
-          <text>经验不限</text>
+          <text>学历不限</text>
         </view>
         <view class="positionlist">
           <image src="../../images/chat/workex.png"></image>
-          <text>经验不限</text>
+          <text>地点</text>
         </view>
       </view>
     </view>
   </view>
   <scroll-view class="chatbox" scroll-y="true" scroll-into-view="{{toview}}">
-    <block wx:for="{{msglist}}" wx:for-index="index">
+    <block wx:for="{{msglist}}" wx:key="{{item}}" wx:for-index="index">
       <view class="chattime">{{item.created_at}}</view>
       <view wx:if="{{item.is_rec==1}}" class="your-msg" id="msg-{{index}}" >
         <text class="your-msg-content" wx:if="{{item.type==0}}">{{item.massage}}</text>
-        <image class="chatimage" src="{{item.massage}}" wx:if="{{item.type==1}}" style="width:400rpx;height:400rpx;margin-right:14rpx;"></image>
+        <image class="chatimage" src="{{item.massage}}" wx:if="{{item.type==1}}" style="width:200rpx;height:200rpx;margin-left:14rpx;" bindtap="previewimage" data-image="{{item.massage}}"></image>
         <image src="{{item.header}}" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
       </view>
       <view wx:else class="other-msg"  id="msg-{{index}}" >
         <image src="{{item.header}}"></image>
         <text class="other-msg-content" wx:if="{{item.type==0}}">{{item.massage}}</text>
-        <image class="chatimage" src="{{item.massage}}" wx:if="{{item.type==1}}" style="width:400rpx;height:400rpx;margin-right:14rpx;"></image>
+        <image class="chatimage" src="{{item.massage}}" wx:if="{{item.type==1}}" style="width:200rpx;height:200rpx;margin-left:14rpx;" bindtap="previewimage" data-image="{{item.massage}}"></image>
         
       </view>
     </block>

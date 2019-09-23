@@ -3,7 +3,7 @@
 <view class='box'>
   <view class='head'>
     <view class='navbar'>
-      <text wx:for="{{navbar}}" data-index="{{index}}" bindtap='navbarTab' class="{{currentIndex==index?'baractive':'barnormal'}}">{{item}}</text>
+      <text wx:for="{{navbar}}" wx:key="{{item}}" data-index="{{index}}" bindtap='navbarTab' class="{{currentIndex==index?'baractive':'barnormal'}}">{{item}}</text>
     </view>
     <!-- <image class='dakaimage' src='../../images/news/daka.png' style='width:24rpx;height:28rpx;margin-right:10rpx;'></image>
       <text  class='dakatext' style='font-size:28rpx;color:#808080;'>打卡</text> -->
@@ -12,25 +12,28 @@
 
 <!-- 聊天页面 -->
 <view hidden="{{currentIndex!==1}}" class='chat'> 
-    <view class='interest-box'>
+    <view class='interest-box' wx:for="{{newslist}}" bindtap="tochat" data-id="{{workerid[index]}}" wx:key="{{item}}">
       <view class='interest-left'>
-        
-        <image class='interest-left-avtar' src='../../images/news/avtar.png'></image>
+        <image class='interest-left-avtar' src='{{item.header}}'></image>
       </view>
       <view class='interest-right'>
         <view class='interest-right-top'>
-          <text class='interest-right-top-left'>张某某  京东HR</text>
-          <text class='interest-right-top-right'>5月19日</text>
+          <text class='interest-right-top-left'>{{item.username}}</text>
+          
+          <text class='interest-right-top-right'>{{item.created_at}}</text>
         </view>
         <view class='interest-right-bottom'>
-          <text class='interest-right-bottom-text'>京东HR：今天很高兴通间是早上9:00我的撒大所大所大多翁</text>
+          <text class='interest-right-bottom-text' wx:if="{{item.is_rec==0&&item.type==0}}">{{item.username}}：{{item.massage}}</text>
+          <text class='interest-right-bottom-text' wx:if="{{item.is_rec==1&&item.type==0}}">我：{{item.massage}}</text>
+          <text class='interest-right-bottom-text' wx:if="{{item.is_rec==1&&item.type==1}}">我：[图片]</text>
+          <text class='interest-right-bottom-text' wx:if="{{item.is_rec==0&&item.type==1}}">{{item.username}}：[图片]</text>
           <view>55</view>
         </view>
       </view>
     </view>
     <view class='showmore'>
       <text class='showmore-text'>加载更多</text>
-      <image class='showmore-image' src='../../images/index/hot-detail-lookmore-icon.png'></image>
+      <!-- <image class='showmore-image' src='../../images/index/hot-detail-lookmore-icon.png'></image> -->
     </view>
 </view> 
 <!-- 互动页面 -->

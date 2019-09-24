@@ -156,6 +156,16 @@ Page({
               })
             }
           })
+        }else if(res.code==20){
+          wx.showModal({
+            title: '提示',
+            content: '职位正在审核中',
+          })
+        }else if(res.code==21){
+          wx.showModal({
+            title: '提示',
+            content: '审核未通过',
+          })
         }
       })
     }

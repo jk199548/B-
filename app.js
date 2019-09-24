@@ -26,6 +26,7 @@ App({
               that.globalData.isregister=true;
               wx.setStorageSync('token', res.data.result.token);
               wx.setStorageSync('id', res.data.result.id);
+              wx.setStorageSync('username', res.data.result.username);
             }
           }
         })

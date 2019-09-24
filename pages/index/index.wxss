@@ -411,7 +411,7 @@
 }
 .mydongtai-box{
   position: relative;
-  width: 100%;
+  width: 720rpx;
   padding-left: 30rpx;
   background-color: #ffffff;
 }

@@ -124,14 +124,13 @@
 }
 .interest-right-bottom view{
   height: 28rpx;
+  width: 28rpx;
   background-color: #f77201;
   color: #f4f4f4;
   font-size: 24rpx;
-  padding-left: 15rpx;
-  padding-right: 15rpx;
-  padding-top: 5rpx;
-  padding-bottom: 5rpx;
-  border-radius: 20rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28rpx;
 }
 .interest-right-bottom-text{
   width: 400rpx;

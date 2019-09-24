@@ -9,7 +9,7 @@
     </view>
     <view class="userinfobox-right">
       <view class="userinfobox-right-top">
-        <text>{{name}}</text>
+        <text>{{username}}</text>
         <image src="../../images/index/bianji1.png" bindtap="togerenziliao"></image>
       </view>
       <view class="userinfobox-right-mid">

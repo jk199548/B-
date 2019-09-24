@@ -36,6 +36,7 @@ Page({
       'id':wx.getStorageSync('id')
     }).then(res=>{
       if (res.code == 0) {
+        wx.stopPullDownRefresh();
         var newmyposition = res.result;
         for (let i = 0; i < newmyposition.length; i++) {
           if (newmyposition[i].welfare != null) {
@@ -46,6 +47,18 @@ Page({
         that.setData({
           zhaopinnodata: false,
           indexposition: newmyposition
+        });
+        wx.hideLoading();
+        wx.showToast({
+          title: '加载成功',
+          icon:'none'
+        })
+      }else{
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+        wx.showToast({
+          title: '加载失败',
+          icon:'none'
         })
       }
     })
@@ -59,6 +72,7 @@ Page({
     }).then(res=>{
       console.log(res)
       if(res.code==0){
+        wx.stopPullDownRefresh();
         var newmyposition = res.result;
         for (let i = 0; i < newmyposition.length; i++) {
           if (newmyposition[i].welfare != null) {
@@ -69,7 +83,22 @@ Page({
         that.setData({
           mypositionnodata:false,
           myposition:newmyposition
-        })
+        });
+        
+        wx.hideLoading();
+        wx.showToast({
+          title: '加载成功',
+          icon:'none'
+        });
+        
+      } else {
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+        wx.showToast({
+          title: '加载失败',
+          icon:'none'
+        });
+       
       }
     })
   },
@@ -84,6 +113,12 @@ Page({
         if(res.result.length==0){
           that.setData({
             mydongtainodata:true,
+            
+          })
+          wx.hideLoading();
+          wx.showToast({
+            title: '加载成功',
+            icon: 'none'
           })
         }else{
           for(var i = 0; i < res.result.length; i++){
@@ -92,8 +127,20 @@ Page({
           that.setData({
             dynamiclist:res.result,
             mydongtainodata:false
-          })
+          });
+          wx.hideLoading();
+          wx.showToast({
+            title: '加载成功',
+            icon:'none'
+          });
+          wx.stopPullDownRefresh();
         }
+      } else {
+        wx.hideLoading();
+        wx.showToast({
+          title: '加载失败',
+        });
+        wx.stopPullDownRefresh();
       }
     })
   },
@@ -209,7 +256,7 @@ Page({
   changenav:function(e){
     var that =this;
     that.setData({
-      selectedid:e.currentTarget.dataset.id
+      selectedid: e.currentTarget.dataset.id
     })
   },
   //事件处理函数
@@ -220,13 +267,26 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    that.getDynamic();
-    that.getMyWork();
     that.getRecruitWork();
   },
   onShow:function(){
     var that = this;
     that.getDynamic();
     that.getMyWork();
+  },
+  onPullDownRefresh:function(e){
+    var that = this;
+    wx.showLoading({
+      title: '正在刷新...',
+    })
+    if(that.data.selectedid==0){
+      that.getRecruitWork();
+    }else if(that.data.selectedid==1){
+
+    } else if (that.data.selectedid == 2) {
+      that.getMyWork();
+    } else if (that.data.selectedid == 3) {
+      that.getDynamic();
+    }
   }
 })

@@ -176,11 +176,10 @@ Page({
     var that = this;
     console.log(app.globalData.isconnect)
     if (app.globalData.isconnect){
-      wx.onSocketMessage(function(res){
-        console.log(res)
-      })
+      
     }else{
       websocket.connect(function (res) {
+        app.globalData.isconnect = true;
         var data = JSON.parse(res.data);
         if (data.content == undefined) {
           //为私聊
@@ -241,7 +240,7 @@ Page({
         
         if (data.type == 'init') {
           //绑定群,发送请求
-          app.globalData.isconnect=true;
+          
           that.bindMyGroup(data);
           that.bindmygroup(data)
         } else if (data.type == 'say') {
@@ -331,6 +330,7 @@ Page({
    */
   onShow: function () {
     var that = this;
+    that.getLastMsg(that);
     that.setData({
       workerid: [],
       newslist: []

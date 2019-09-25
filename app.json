@@ -39,7 +39,8 @@
     "pages/tuiguangjiangli/tuiguangjiangli",
     "pages/addgerenjieshao/addgerenjieshao",
     "pages/editposition/editposition",
-    "pages/waitpositionlist/waitpositionlist"
+    "pages/waitpositionlist/waitpositionlist",
+    "pages/showgroupQRcode/showgroupQRcode"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -121,8 +121,9 @@ Page({
   },
   //跳转到群管理
   toqunguanli: function (e) {
+    var that = this;
     wx.navigateTo({
-      url: '../qunguanli/qunguanli',
+      url: '../qunguanli/qunguanli?workid='+that.data.group_id,
     })
   },
   //监听输入框事件

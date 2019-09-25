@@ -1,0 +1,4 @@
+<!--pages/showgroupQRcode/showgroupQRcode.wxml-->
+<view class="qrcode">
+  <image src="{{qrcode}}"></image>
+</view>

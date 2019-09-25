@@ -3,50 +3,26 @@
 <view class="box">
   <view class="top">
     <view class="qunmember">
-      <view class="qunmember-box">
-        <image src="../../images/index/avtar.png"></image>
-        <text>美女一</text>
+      <view class="qunmember-box" wx:for="{{groupmenber}}" wx:key="item">
+        <image src="{{item.header}}"></image>
+        <text>{{item.username}}</text>
         <view class="group">1组</view>
-      </view>
-      <view class="qunmember-box">
-        <image src="../../images/index/avtar.png"></image>
-        <text>美女一</text>
-        <view class="group">2组</view>
-      </view>
-      <view class="qunmember-box">
-        <image src="../../images/index/avtar.png"></image>
-        <text>美女一</text>
-        <view class="group">3组</view>
-      </view>
-      <view class="qunmember-box">
-        <image src="../../images/index/avtar.png"></image>
-        <text>美女一</text>
-        <view class="group">4组</view>
-      </view>
-      <view class="qunmember-box">
-        <image src="../../images/index/avtar.png"></image>
-        <text>美女一</text>
-        <view class="group">5组</view>
-      </view>
-      <view class="qunmember-box">
-        <image src="../../images/index/avtar.png"></image>
-        <text>美女一</text>
       </view>
     </view>
   </view>
-  <view class='position-require-lookmore' bindtap="toallqunliaomembers">
-    <text class='position-require-lookmore-text'>查看更多</text>
+  <view class='position-require-lookmore' bindtap="toallqunliaomembers" wx:if="{{showallmenbers}}">
+    <text class='position-require-lookmore-text'>查看所有群成员</text>
     <image class='position-require-lookmore-icon' src='../../images/index/showmore.png'></image>
   </view>
   <view class="qunliaoname">
     <text>群聊名称</text>
     <view>
-      <text>京东分拣员工作群</text>
+      <text>{{groupname}}</text>
       <image src="../../images/shiming/more.png" style="width:16rpx;height:30rpx;margin-left:21rpx;"></image>
     </view>
     
   </view>
-  <view class="qunqrcode">
+  <view class="qunqrcode" bindtap="toshowgroupQRcode">
     <text style=" font-size: 30rpx;color: #808080;">群二维码</text>
     <view>
       <image src="../../images/index/qrcode.png" style="width:30rpx;height:30rpx;"></image>

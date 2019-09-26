@@ -18,6 +18,23 @@ Page({
     groupIdArr: [],
     unreadnumberarr: '',
     lastmsg:[],
+    friendlist: [],
+  },
+  //获取好友列表
+  getFriendList: function (e) {
+    var that = this;
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/getFriend',
+      data: {
+        'id': wx.getStorageSync('id'),
+        'is_rec': 0
+      },
+      success: function (res) {
+        that.setData({
+          friendlist: res.data.result
+        })
+      }
+    })
   },
   interestnavbarTab: function (e) {
     this.setData({
@@ -124,21 +141,6 @@ Page({
       url: '../chat/chat?hrid=' + e.currentTarget.dataset.id,
     })
   },
- //绑定私聊聊天
-  bindMyGroup: function (data) {
-    var that = this;
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/bindMyGroup',
-      data: {
-        'id': wx.getStorageSync('id'),
-        'client_id': data.client_id,
-        'is_rec': 1
-      },
-      success: function (res) {
-        
-      }
-    })
-  },
   //跳转到聊天页面
   tochat:function(e){
     var that = this;
@@ -156,15 +158,13 @@ Page({
         'is_rec':1
       },
       success:function(res){
-        for(var item in res.data.result){
-          if (res.data.result[item]!=''){
+        for (var item in res.data.result) {
+          if (res.data.result[item] != '') {
             that.setData({
-              workerid:that.data.workerid.concat([item]),
               newslist: that.data.newslist.concat([res.data.result[item]])
             })
           }
-        }     
-        console.log(that.data.newslist)
+        }
       }
     })
   },
@@ -174,7 +174,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(app.globalData.isconnect)
+    that.getFriendList();
     if (app.globalData.isconnect){
       
     }else{
@@ -186,20 +186,34 @@ Page({
           if (data.type == 'is_ok') {
 
           } else if (data.type == 0 || data.type == 1) {
-            if (that.data.workerid.includes(data.c_id)) {
+            if (that.data.newslist.length == 0) {
+              var newlog = data.c_id;
+              that.setData({
+                friendlist: {
+                  [newlog]: {
+                    'username': data.username,
+                    'header': data.header
+                  }
+                },
+                newslist: that.data.newslist.concat([data])
+              })
+            } else {
               for (var item in that.data.newslist) {
-                if (that.data.workerid[item] == data.c_id) {
-                  that.data.newslist[item] = data
+                if (that.data.newslist[item].c_id == data.c_id) {
+                  that.data.newslist[item] = data;
                   that.setData({
                     newslist: that.data.newslist
                   })
                 } else {
+                  var newheader = 'friendlist[' + data.c_id + '].header';
+                  var newusername = 'friendlist[' + data.c_id + '].username';
+                  that.setData({
+                    ['newusername']: data.username,
+                    ['newheader']: data.header,
+                    newslist: that.data.newslist.concat([data])
+                  })
                 }
               }
-            } else {
-              that.setData({
-                newslist: that.data.newslist.concat([data])
-              })
             }
           }
         } else {
@@ -237,12 +251,9 @@ Page({
             }
           }
         }
-        
         if (data.type == 'init') {
           //绑定群,发送请求
-          
-          that.bindMyGroup(data);
-          that.bindmygroup(data)
+          that.bindmygroup(data);
         } else if (data.type == 'say') {
           //得到聊天消息
         } else if (data.type == 'notice') {
@@ -268,21 +279,35 @@ Page({
         //为私聊
         if (data.type == 'is_ok') {
 
-        } else {
-          if (that.data.workerid.includes(data.c_id)) {
+        } else if (data.type == 0 || data.type == 1) {
+          if (that.data.newslist.length == 0) {
+            var newlog = data.c_id;
+            that.setData({
+              friendlist: {
+                [newlog]: {
+                  'username': data.username,
+                  'header': data.header
+                }
+              },
+              newslist: that.data.newslist.concat([data])
+            })
+          } else {
             for (var item in that.data.newslist) {
-              if (that.data.workerid[item] == data.c_id) {
-                that.data.newslist[item] = data
+              if (that.data.newslist[item].c_id == data.c_id) {
+                that.data.newslist[item] = data;
                 that.setData({
                   newslist: that.data.newslist
                 })
               } else {
+                var newheader = 'friendlist[' + data.c_id + '].header';
+                var newusername = 'friendlist[' + data.c_id + '].username';
+                that.setData({
+                  ['newusername']: data.username,
+                  ['newheader']: data.header,
+                  newslist: that.data.newslist.concat([data])
+                })
               }
             }
-          } else {
-            that.setData({
-              newslist: that.data.newslist.concat([data])
-            })
           }
         }
       }else{
@@ -345,21 +370,35 @@ Page({
         //为私聊
         if (data.type == 'is_ok') {
 
-        } else {
-          if (that.data.workerid.includes(data.c_id)) {
+        } else if (data.type == 0 || data.type == 1) {
+          if (that.data.newslist.length == 0) {
+            var newlog = data.c_id;
+            that.setData({
+              friendlist: {
+                [newlog]: {
+                  'username': data.username,
+                  'header': data.header
+                }
+              },
+              newslist: that.data.newslist.concat([data])
+            })
+          } else {
             for (var item in that.data.newslist) {
-              if (that.data.workerid[item] == data.c_id) {
-                that.data.newslist[item] = data
+              if (that.data.newslist[item].c_id == data.c_id) {
+                that.data.newslist[item] = data;
                 that.setData({
                   newslist: that.data.newslist
                 })
               } else {
+                var newheader = 'friendlist[' + data.c_id + '].header';
+                var newusername = 'friendlist[' + data.c_id + '].username';
+                that.setData({
+                  ['newusername']: data.username,
+                  ['newheader']: data.header,
+                  newslist: that.data.newslist.concat([data])
+                })
               }
             }
-          } else {
-            that.setData({
-              newslist: that.data.newslist.concat([data])
-            })
           }
         }
       } else {

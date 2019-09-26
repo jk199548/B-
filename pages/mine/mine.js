@@ -54,6 +54,7 @@ Page({
           header:wx.getStorageSync('header'),
           phonenum:res.result.phone,
           isComPany:res.result.is_company,
+          username:res.result.username
         })
       }else{
         wx.setStorageSync('is_company',res.result.is_company);
@@ -62,6 +63,7 @@ Page({
           header:wx.getStorageSync('header'),
           phonenum:res.result.phone,
           isComPany:res.result.is_company,
+          username:wx.getStorageSync('username')
         })
       }
     })

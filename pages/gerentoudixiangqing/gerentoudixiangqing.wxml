@@ -3,7 +3,7 @@
   <!-- 顶部头像框 -->
   <view class="top">
     <view class="top-left">
-      <image src="../../images/index/avtar.png"></image>
+      <image src="{{item.header}}" style="border-radius:50%;"></image>
     </view>
     <view class="top-right">
       <view class="top-right-top">
@@ -14,7 +14,7 @@
     </view>
   </view>
   <!-- 顶部投递职位列表 -->
-  <view class="top-position" wx:for="{{yuyuelist}}" wx:key="item">
+  <view class="top-position" wx:for="{{yuyuelist}}" wx:key="item" wx:if="{{!notoudi}}">
     <view wx:if="{{!item.location}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
       <view class="top-position-left" style="background-color:#808080;"></view>
       <view class="top-position-right">
@@ -84,9 +84,9 @@
     </view>
   </view>
   <!-- 加载更多 -->
-  <view class="showmore">
-    <text>加载更多</text>
-    <image src="../../images/index/showmore.png"></image>
+  <view class="showmore" wx:if="{{noeducation}}">
+    <text>暂无记录!</text>
+    <!-- <image src="../../images/index/showmore.png"></image> -->
   </view>
   <!-- 教育经历 -->
   <view class="schoolex-box">
@@ -100,8 +100,16 @@
       <view style="width:690rpx;height:2rpx;background-color:#f4f4f4;"></view>
     </view>
   </view>
+  <view class="showmore" wx:if="{{noexperiences}}">
+    <text>暂无记录!</text>
+    <!-- <image src="../../images/index/showmore.png"></image> -->
+  </view>
+  <!-- 立即沟通按钮 -->
+  <view class="nowchat" wx:if="{{fromnewworkers}}" bindtap="tochat">
+  立即沟通
+  </view>
   <!-- 含有同意的底部按钮 -->
-  <view class="bottom-btn" wx:if="{{!isyuyuesuccess}}">
+  <view class="bottom-btn" wx:if="{{!isyuyuesuccess&&fromnewworkers==false}}">
     <view class="bottom-btn-left">
       <view class="bottom-btn-left-left" bindtap="tochat">
         <image src="../../images/index/wechat.png"></image>
@@ -119,7 +127,7 @@
     </view>
   </view>
   <!-- 不含有同意的底部按钮 -->
-  <view class="mianshitongguo" wx:else>
+  <view class="mianshitongguo" wx:if="{{isyuyuesuccess&&fromnewworkers==false}}">
     <view class="mianshitongguo-left" bindtap="interviewrefuse">面试不通过</view>
     <view class="mianshitongguo-right" bindtap="interviewpass">面试通过</view>
   </view>

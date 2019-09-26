@@ -20,7 +20,58 @@ Page({
     hasUserInfo: false,
     dynamiclist:[],
     myposition:[],
-    indexposition:[]
+    indexposition:[],
+    newworkers:[],
+    schoolarr:['请选择学历','初中','中专','高中','职高','大专','本科','研究生'],
+    lookmearr:[],
+    collectionworkerarr:[]
+  },
+  //招聘端获取收藏用户已发布的工作的员工
+  getCollectionWorker:function(e){
+    var that = this;
+    api._get('/getCollectionWorker',{
+      'id':wx.getStorageSync('id')
+    }).then(res=>{
+      if(res.code==0){
+        that.setData({
+          collectionworkerarr:res.result
+        })
+      }
+    })
+  },
+  //查看新求职者
+  looknewworkers:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../gerentoudixiangqing/gerentoudixiangqing?workerid='+e.currentTarget.dataset.id,
+    })
+  },
+  //获取c端看过我职位的用户
+  getViewWork:function(e){
+    var that = this;
+    api._get('/getViewWork',{
+      'id':wx.getStorageSync('id')
+    }).then(res=>{
+      if(res.code==0){
+        that.setData({
+          lookmearr:res.result
+        })
+      }
+    })
+  },
+  //获取首页人才市场的新求职者
+  getNewWorkers:function(e){
+    var that = this;
+    api._get('/getNewWorkers',{
+      'id':wx.getStorageSync('id'),
+      'token':wx.getStorageSync('token')
+    }).then(res=>{
+      if(res.code==0){
+        that.setData({
+          newworkers:res.result
+        })
+      }
+    })
   },
   //招聘页跳转到在职列表页
   towaitpositionlist:function(e){
@@ -268,6 +319,9 @@ Page({
   onLoad: function () {
     var that = this;
     that.getRecruitWork();
+    that.getNewWorkers();
+    that.getViewWork();
+    that.getCollectionWorker();
   },
   onShow:function(){
     var that = this;

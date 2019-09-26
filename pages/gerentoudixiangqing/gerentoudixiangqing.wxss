@@ -247,6 +247,20 @@
   height: 133rpx;
   line-height: 133rpx;
 }
+.nowchat{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 120rpx;
+  z-index: 1000;
+  background-color: #fc7001;
+  border-top: 1rpx solid #eeeeee;
+  width:750rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 120rpx;
+}
 .bottom-btn{
   position: fixed;
   bottom: 0;

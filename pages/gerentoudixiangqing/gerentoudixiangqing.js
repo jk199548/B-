@@ -42,6 +42,10 @@ for (let i = 0; i < 24; i++) {
 // }
 Page({
   data: {
+    fromnewworkers:false,//判断用户从哪个页面进入此页面 fasle:从首页招聘进入 true:从首页人才市场新求职者进入
+    noeducation:false,//c端用户没有填写教育经历
+    noexperiences:false,//c端用户有无填写工作经历
+    notoudi:false,//c端用户还未投递次工作
     yuyuelist:[],
     isyuyuesuccess:false,//是否预约成功
     mianshiaddress:'',//预约的面试地点
@@ -55,6 +59,17 @@ Page({
     workid:'',
     infolist:[],
     schoolarr: ['请选择学历', '初中', '中专', '高中', '职高', '大专', '本科', '研究生'],
+  },
+  
+  //标记此c端用户为该招聘者已看过
+  recordViewWorker:function(e){
+    var that = this;
+    api._post('/recordViewWorker',{
+      'recruit_id':wx.getStorageSync('id'),
+      'workerid':that.data.workerid
+    }).then(res=>{
+      console.log(res)
+    })
   },
   //绑定聊天
   bindMyGroup: function (data) {
@@ -165,6 +180,22 @@ Page({
         that.setData({
           infolist:res.result
         })
+        if(res.result[0].educational.length==0&&res.result[0].experiences.length==0){
+          that.setData({
+            noeducation:true,
+            noexperiences:true
+          })
+        }else if(res.result[0].educational.length!=0&&res.result[0].experiences.length==0){
+          that.setData({
+            noeducation:false,
+            noexperiences:true
+          })
+        }else if(res.result[0].educational.length==0&&res.result[0].experiences.length!=0){
+          that.setData({
+            noeducation:true,
+            noexperiences:false
+          })
+        }
       }
     })
   },
@@ -262,20 +293,30 @@ Page({
       app.globalData.isconnect=false
     })
     //设置默认的年份
-    this.setData({
-      choose_year: this.data.multiArray[0][0],
-      workerid:options.workerid,
-      workid:options.workid,
-      yuyuelist: [
-        {
-          'time': options.created_at,
-          'position': options.title,
-        }
-      ],
-    });
+    if(options.workid==undefined){
+      
+      this.setData({
+        choose_year:this.data.multiArray[0][0],
+        workerid:options.workerid,
+        notoudi:true,
+        fromnewworkers:true,
+      })
+      that.recordViewWorker();
+    }else{
+      this.setData({
+        choose_year: this.data.multiArray[0][0],
+        workerid:options.workerid,
+        workid:options.workid,
+        yuyuelist: [
+          {
+            'time': options.created_at,
+            'position': options.title,
+          }
+        ],
+      });
+    }
     that.getWorkerDetails();
     that.getworkerInterviewAddress();
-    console.log(that.data.yuyuelist)
   },
   //获取时间日期
   bindMultiPickerChange: function (e) {

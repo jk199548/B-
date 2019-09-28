@@ -91,7 +91,6 @@ Page({
         loading:false,
       })
     }else if(!idcardreg.test(e.detail.value.idcard)){
-      console.log(that.data.idcard)
       wx.showToast({
         title:'身份证号码格式有误',
         icon:'none'
@@ -124,7 +123,6 @@ Page({
             'company':that.data.companyname,
             'id':wx.getStorageSync('id')
           }).then(res=>{
-            console.log(res)
             if(res.code==0){
               that.setData({
                 loading:false,
@@ -151,7 +149,6 @@ Page({
           'license':that.data.license,
           'company':that.data.companyname
         }).then(res=>{
-          console.log(res)
           if(res.code==0){
             wx.setStorageSync('token',res.result.token);
             wx.setStorageSync('id', res.result.id);

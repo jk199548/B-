@@ -12,6 +12,7 @@ Page({
     groupname:'',
     groupQRcode:'',
     showallmenbers:false,//是否显示查看所有成员按钮
+    groupnamearr:'',//群聊分组名
   },
   showmodal:function(e){
     var that = this;
@@ -30,7 +31,7 @@ Page({
   toallqunliaomembers:function(e){
     var that = this;
     wx.navigateTo({
-      url: '../allqunliaomembers/allqunliaomembers',
+      url: '../allqunliaomembers/allqunliaomembers?workid='+that.data.workid,
     })
   },
   //退出群聊按钮点击事件
@@ -61,6 +62,52 @@ Page({
       url: '../showgroupQRcode/showgroupQRcode?workid='+that.data.workid,
     })
   },
+  //获取群聊所有成员
+  getAllGroupMembers:function(e){
+    var that = this;
+    //获取群聊所有成员
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/getGrouping',
+      data: {
+        'workid':that.data.workid
+      },
+      method: 'GET', 
+      success: function(res){
+        if(res.data.code==0){
+          if(res.data.result.length>10){
+            that.setData({
+              groupmenber: res.data.result,
+              showallmenbers:true,
+            })
+          }else{
+            that.setData({
+              groupmenber: res.data.result,
+              showallmenbers:false
+            })
+          }
+        }
+      },
+    });
+  },
+  //获取群聊所有分组名
+  getGroupAllName:function(e){
+    var that = this;
+    //获取群聊所有分组名
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/getGroupingName',
+      data: {
+        'workid':that.data.workid
+      },
+      method: 'GET', 
+      success: function(res){
+        if(res.data.code==0){
+          that.setData({
+            groupnamearr:res.data.result
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -74,21 +121,13 @@ Page({
       'workid':that.data.workid
     }).then(res=>{
       if(res.code==0){
-        if(res.result[0].workers.length>10){
-          that.setData({
-            groupmenber: res.result[0].workers,
-            groupname: res.result[0].title,
-            showallmenbers:true,
-          })
-        }else{
-          that.setData({
-            groupmenber: res.result[0].workers,
-            groupname: res.result[0].title,
-            showallmenbers:false
-          })
-        }
+        that.setData({
+          groupname: res.result[0].title,
+        })
       }
-    })
+    });
+    that.getAllGroupMembers();
+    that.getGroupAllName();
   },
 
   /**
@@ -102,7 +141,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getAllGroupMembers();
+    that.getGroupAllName();
   },
 
   /**

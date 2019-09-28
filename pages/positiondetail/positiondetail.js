@@ -83,7 +83,6 @@ Page({
           welfarearr:newwelfare,
           companyimage:res.result.work_image
         })
-        console.log(that.data.welfarearr)
       }
     })
   },

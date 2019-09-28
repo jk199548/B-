@@ -4,13 +4,14 @@
   <view class="top">
     <view class="qunmember">
       <view class="qunmember-box" wx:for="{{groupmenber}}" wx:key="item">
-        <image src="{{item.header}}"></image>
-        <text>{{item.username}}</text>
-        <view class="group">1组</view>
+        <image src="{{item.workers.header}}"></image>
+        <text>{{item.workers.username}}</text>
+        <view class="group">{{groupnamearr[item.group_id]}}</view>
       </view>
     </view>
   </view>
-  <view class='position-require-lookmore' bindtap="toallqunliaomembers" wx:if="{{showallmenbers}}">
+  <!-- <view class='position-require-lookmore' bindtap="toallqunliaomembers" wx:if="{{showallmenbers}}"> -->
+  <view class='position-require-lookmore' bindtap="toallqunliaomembers">
     <text class='position-require-lookmore-text'>查看所有群成员</text>
     <image class='position-require-lookmore-icon' src='../../images/index/showmore.png'></image>
   </view>

@@ -88,7 +88,6 @@ Page({
             showprogressarr:that.data.showprogressarr.concat([true])
           })
         }
-        console.log(that.data.showprogressarr)
         that.setData({
           localimagearr:that.data.localimagearr.concat(res.tempFilePaths),
           success:true,
@@ -118,8 +117,7 @@ Page({
                 percentarr:that.data.percentarr.concat(newpercentarr),
                 uploadsuccessarr: that.data.uploadsuccessarr.concat(newuploadsuccessarr),
                 success:false,
-              })
-              console.log(that.data.showprogressarr)
+              });
             }
           })
         }

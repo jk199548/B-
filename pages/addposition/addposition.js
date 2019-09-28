@@ -42,7 +42,6 @@ Page({
     var that = this;
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context;
-      console.log("初始化成功：" + wx.getStorageSync("content"))
       that.editorCtx.setContents({ html:that.data.content}) // 注意：插入的是对象
     }).exec()
 
@@ -50,7 +49,6 @@ Page({
   // 获取内容
   onContentChange(e) {
     var that = this;
-    console.log(e.detail)
     that.setData({
       describe:e.detail.html
     })
@@ -139,7 +137,6 @@ Page({
         'number':that.data.number,
         'describe':that.data.describe
       }).then(res=>{
-        console.log(res);
         if(res.code==0){
           api._post('/addWorkImage',{
             'workid':res.result,
@@ -201,14 +198,12 @@ Page({
   //用户输入的工作地点
   inputworkplace:function(e){
     var that = this;
-    console.log(e.detail.value);
     var qqmapsdk = new QQMapWX({
       key: 'DEQBZ-SZEWJ-3R4FM-FPGJ2-CSRE2-3PFZU'
     });
     qqmapsdk.geocoder({
       address: e.detail.value,
       success: function(res){
-        console.log(res)
         that.setData({
           longitude:res.result.location.lng,
           latitude:res.result.location.lat,
@@ -234,11 +229,9 @@ Page({
   //招聘职位类型的选择
   radioChange:function(e){
     var that = this;
-    console.log(e);
     that.setData({
       cate:e.detail.value
     })
-    console.log(that.data.cate)
   },
   //工作福利模态框
   showwelfaremodal:function(e){
@@ -261,7 +254,6 @@ Page({
         welfare:e.detail.value
       })
     }
-    console.log(that.data.welfarearr)
   },
   //关闭工作福利模态框
   closewelfaremodal:function(e){
@@ -273,7 +265,6 @@ Page({
   //工作福利模态框确定按钮
   welfaremodalbtn:function(e){
     var that = this;
-    console.log(e)
     if(that.data.welfarearr.length==0){
       that.setData({
         welfarearr:[],
@@ -358,7 +349,6 @@ Page({
         icon: 'none'
       })
     }else{
-      console.log(that.data.conpanyimage.length);
       wx.chooseImage({
         count: that.data.imagecount,
         success: function (res) {
@@ -381,7 +371,6 @@ Page({
                 }
               },
               fail:function(res){
-                console.log(res)
               }
             })
           }
@@ -403,7 +392,6 @@ Page({
           // header: {}, // 设置请求的 header
           // formData: {}, // HTTP 请求中其他额外的 form data
           success: function(res){
-            console.log(res)
             if(JSON.parse(res.data).code==0){
               that.setData({
                 logourl:JSON.parse(res.data).result
@@ -416,7 +404,6 @@ Page({
             }
           },
           fail:function(res){
-            console.log(res)
           }
         })
       },

@@ -27,7 +27,6 @@ Page({
       'token':wx.getStorageSync('token'),
       'id':wx.getStorageSync('id')
     }).then(res=>{
-      console.log(res)
       if(res.result.is_company==1){
         that.setData({
           companyname:res.result.company,
@@ -81,7 +80,6 @@ Page({
   //用户输入手机号码事件
   changephonenum:function(e){
     var that = this;
-    console.log(e)
     if(e.detail.value!=''){
       that.setData({
         ischange:true,

@@ -59,7 +59,6 @@ Page({
         'position':that.data.idcardfront,
         'back':that.data.idcardback
       }).then(res=>{
-        console.log(res)
         if(res.code==0){
           wx.setStorageSync('token',res.result.token);
           wx.setStorageSync('id', res.result.id);
@@ -175,7 +174,6 @@ Page({
                 'title':'上传成功',
                 'icon':'none'
               })
-              console.log(res)
               that.setData({
                 idcardback:JSON.parse(res.data).position,
                 showbacktext: !that.data.showbacktext

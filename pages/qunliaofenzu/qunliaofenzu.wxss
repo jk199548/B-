@@ -25,8 +25,8 @@
   width: 600rpx;
 }
 .qunliaogroup-list image{
-  width: 25rpx;
-  height: 25rpx;
+  width: 36rpx;
+  height: 36rpx;
 }
 .addnewgroupbtn{
   width: 690rpx;
@@ -81,7 +81,6 @@
 }
 .group-modal{
   width: 610rpx;
-  height: 730rpx;
   position: fixed;
   left: 70rpx;
   top: 80rpx;
@@ -129,6 +128,7 @@
   margin-top: 20rpx;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 50rpx;
 }
 .group-modal-bottombtn view:nth-child(1){
   width:230rpx;

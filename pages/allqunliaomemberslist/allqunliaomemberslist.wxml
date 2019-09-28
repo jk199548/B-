@@ -7,10 +7,10 @@
       <input placeholder="搜索你要寻找的人" placeholder-class="placeholder"></input>
     </view>
     <view class="members-list">
-      <view class="members-list-box" wx:for="{{memberslist}}" data-id="{{index}}" wx:for-index="index">
-        <image src="{{item.avtar}}"></image>
-        <text>{{item.name}}</text>
-        <view class="group">{{item.group}}组</view>
+      <view class="members-list-box" wx:for="{{memberslist}}" wx:for-index="index" data-id="{{item.workers.id}}" bindtap="addtogroup">
+        <image src="{{item.workers.header}}" ></image>
+        <text>{{item.workers.username}}</text>
+        <view class="group">{{groupnamearr[item.group_id]}}</view>
       </view>
     </view>
   </view>

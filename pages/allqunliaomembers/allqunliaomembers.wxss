@@ -46,6 +46,11 @@
   margin-bottom: 30rpx;
   position: relative;
 }
+.delimage{
+  position: absolute;
+  left: 95rpx;
+  top: -10rpx;
+}
 .members-list-box image{
   width: 100rpx;
   height: 100rpx;

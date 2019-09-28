@@ -64,7 +64,6 @@ Page({
       },
       success: function (res) {
         //返回群id
-        console.log(res.data.result)
         if (res.data.code == 1) {
           wx.showModal({
             title: '提示',
@@ -99,7 +98,6 @@ Page({
         'workid': that.data.groupIdArr
       },
       success: function (res) {
-        console.log(res.data.result)
         for (var item in res.data.result) {
           if (res.data.result[item].content == undefined) {
 
@@ -118,7 +116,6 @@ Page({
   //获取群聊未读消息条数
   getUnreadNumber: function (e) {
     var that = this;
-    console.log(that.data.groupIdArr)
     var str = "" + that.data.groupIdArr + "";
     wx.request({
       url: 'https://www.xiaoshetong.cn/api/getUnreadNumber',
@@ -273,8 +270,6 @@ Page({
     var that = this;
     wx.onSocketMessage(function (res) {
       var data = JSON.parse(res.data);
-      console.log(data);
-      console.log(data.content);
       if(data.content==undefined){
         //为私聊
         if (data.type == 'is_ok') {
@@ -364,8 +359,6 @@ Page({
     that.getUnreadNumber();
     wx.onSocketMessage(function (res) {
       var data = JSON.parse(res.data);
-      console.log(data);
-      console.log(data.content);
       if (data.content == undefined) {
         //为私聊
         if (data.type == 'is_ok') {

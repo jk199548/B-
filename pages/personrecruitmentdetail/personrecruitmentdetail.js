@@ -81,7 +81,6 @@ Page({
   //点击nav切换事件
   changenavid:function(e){
     var that = this;
-    console.log(e)
     that.setData({
       selectid: e.currentTarget.dataset.id
     })

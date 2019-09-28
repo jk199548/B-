@@ -7,9 +7,9 @@
     </view>
     <view class="members-list">
       <view class="members-list-box" wx:for="{{memberslist}}" data-id="{{index}}" wx:for-index="index" bindlongpress="showgroupmodal" >
-        <image src="{{item.avtar}}"></image>
-        <text>{{item.name}}</text>
-        <view class="group">{{item.group}}组</view>
+        <image src="{{item.workers.header}}"></image>
+        <text>{{item.workers.username}}</text>
+        <view class="group">{{groupnamearr[item.group_id]}}</view>
         <view class="group-modal" wx:if="{{showmodalgroup&&selectedgroupid==index}}" catchtouchmove="true">
           <view>1组</view>
           <view>2组</view>
@@ -18,8 +18,9 @@
           <view>5组</view>
           <view>6组</view>
         </view>
+        <image wx:if="{{showdelbtn}}" src="../../images/index/del1.png" class="delimage" style="width:36rpx;height:36rpx;"></image>
       </view>
-      <view class="members-list-box">
+      <view class="members-list-box" bindtap="showdelbtn">
         <image src="../../images/index/delmembers.png" style="width:100rpx;height:100rpx;"></image>
       </view>
     </view>

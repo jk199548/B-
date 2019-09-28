@@ -5,95 +5,74 @@ Page({
    * 页面的初始数据
    */
   data: {
-    memberslist: [
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': '赏罚分明'
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-    ],
+    memberslist: [],
+    workid:'',
+    group_id:''
   },
-
+  addtogroup:function(e){
+    var that = this;
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/setGrouping',
+      data: {
+        'workid':that.data.workid,
+        'workerid':e.currentTarget.dataset.id,
+        'grouping_id':that.data.group_id
+      },
+      method: 'POST', 
+      success: function(res){
+        if(res.data.code==0){
+          wx.navigateBack({
+            delta: 1, // 回退前 delta(默认为1) 页面
+            success: function(res){
+              // success
+            },
+          })
+        }else{
+          wx.showToast({
+            title:'加入失败或该成员已在群',
+            icon:'none'
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      workid:options.workid,
+      group_id:options.group_id
+    });
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/getGrouping',
+      data: {
+        'workid':that.data.workid
+      },
+      method: 'GET', 
+      success: function(res){
+        if(res.data.code==0){
+          that.setData({
+            memberslist:res.data.result
+          })
+        }
+      },
+    });
+    wx.request({
+      //获取该群聊的分组情况
+      url: 'https://www.xiaoshetong.cn/api/getGroupingName',
+      data: {
+        'workid': that.data.workid
+      },
+      success: function (res) {
+        if(res.data.code==0){
+          that.setData({
+            groupnamearr:res.data.result
+          })
+        }
+      }
+    });
   },
 
   /**

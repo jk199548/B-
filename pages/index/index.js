@@ -121,7 +121,6 @@ Page({
       'token':wx.getStorageSync('token'),
       'id':wx.getStorageSync('id')
     }).then(res=>{
-      console.log(res)
       if(res.code==0){
         wx.stopPullDownRefresh();
         var newmyposition = res.result;
@@ -159,7 +158,6 @@ Page({
     api._get('/getDynamic',{
       'recruiter_id':wx.getStorageSync('id')
     }).then(res=>{
-      console.log(res)
       if(res.code==0){
         if(res.result.length==0){
           that.setData({
@@ -205,7 +203,6 @@ Page({
   //跳转到职位详情页面
   topositiondetail:function(e){
     var that = this;
-    console.log(e)
     wx.navigateTo({
       url: '../positiondetail/positiondetail?workid='+e.currentTarget.dataset.id,
     })
@@ -239,7 +236,6 @@ Page({
             }
           })
         }else{
-          console.log('取消删除')
         }
       }
     })
@@ -247,7 +243,6 @@ Page({
   //点击我的动态页面的图标事件展示分享删除弹框
   showdelmodal:function(e){
     var that = this;
-    console.log(e)
     that.setData({
       showdelmodal:!that.data.showdelmodal,
       delmodalid:e.currentTarget.dataset.id

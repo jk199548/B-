@@ -71,7 +71,6 @@ Page({
     api._get('/workDetail', {
       "id": that.data.workid,
     }).then(res => {
-      console.log(res)
       that.setData({
         welfare:res.result.welfare
       })
@@ -111,7 +110,6 @@ Page({
     var that = this;
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context;
-      console.log("初始化成功：" + wx.getStorageSync("content"))
       that.editorCtx.setContents({ html: that.data.describe }) // 注意：插入的是对象
     }).exec()
 
@@ -246,7 +244,6 @@ Page({
     qqmapsdk.geocoder({
       address: e.detail.value,
       success: function (res) {
-        console.log(res)
         that.setData({
           longitude: res.result.location.lng,
           latitude: res.result.location.lat,
@@ -311,7 +308,6 @@ Page({
   //工作福利模态框确定按钮
   welfaremodalbtn: function (e) {
     var that = this;
-    console.log(e)
     if (that.data.welfarearr.length == 0) {
       that.setData({
         welfarearr: [],
@@ -429,7 +425,6 @@ Page({
               filePath: res.tempFilePaths[item],
               name: 'logo',
               success: function (res) {
-                console.log(res)
                 if (JSON.parse(res.data).code == 0) {
                   that.setData({
                     companyimage: that.data.companyimage.concat([
@@ -470,7 +465,6 @@ Page({
                 }
               },
               fail: function (res) {
-                console.log(res)
               }
             })
           }
@@ -492,7 +486,6 @@ Page({
           // header: {}, // 设置请求的 header
           // formData: {}, // HTTP 请求中其他额外的 form data
           success: function (res) {
-            console.log(res)
             if (JSON.parse(res.data).code == 0) {
               that.setData({
                 logourl: JSON.parse(res.data).result,
@@ -506,7 +499,6 @@ Page({
             }
           },
           fail: function (res) {
-            console.log(res)
           }
         })
       },

@@ -35,7 +35,6 @@ Page({
     if(options.from=='mine'){
       
     }else{
-      console.log(111111)
       if(wx.getStorageSync('token')){
         wx.switchTab({
           url: '../index/index',

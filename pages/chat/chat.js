@@ -220,7 +220,6 @@ Page({
               'msg_id': JSON.parse(res.data).id
             },
             success: function (res) {
-              console.log(res)
             }
           })
         }
@@ -263,7 +262,6 @@ Page({
    */
   onUnload: function () {
     var that = this;
-    console.log(that.data.msglist)
     if (that.data.msglist.length != 0) {
       wx.request({
         url: 'https://www.xiaoshetong.cn/api/setLastMsgId',

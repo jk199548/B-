@@ -6,112 +6,82 @@ Page({
    */
   data: {
     showmodalgroup:false,
-    memberslist:[
-      {
-        'name':'么么哒',
-        'avtar':'../../images/index/avtar.png',
-        'group':'赏罚分明'
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-      {
-        'name': '么么哒',
-        'avtar': '../../images/index/avtar.png',
-        'group': 1
-      },
-    ],
-    selectedgroupid:0
+    memberslist:[],
+    selectedgroupid:0,
+    workid:'',
+    showdelbtn:false,
+    groupnamearr:[]
   },
+  //点击显示delimage
+  showdelbtn:function(e){
+    var that = this;
+    that.setData({
+      showdelbtn:!that.data.showdelbtn
+    })
+  },
+  //获取分组情况
+  getGrouping:function(e){
+    var that = this;
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/getGrouping',
+      data:{
+        'workid':that.data.workid
+      },
+      success:function(res){
+        if(res.data.code==0){
+          that.setData({
+            memberslist:res.data.result
+          })
+        }
+      }
+    })
+  },
+  
   //跳转到分组情况页面
   toqunliaofenzu:function(e){
     var that = this;
     wx.navigateTo({
-      url: '../qunliaofenzu/qunliaofenzu',
+      url: '../qunliaofenzu/qunliaofenzu?workid='+that.data.workid,
     })
   },
   //长按显示分组
   showgroupmodal:function(e){
-    console.log(e)
     var that = this;
     that.setData({
       showmodalgroup:true,
       selectedgroupid: e.currentTarget.dataset.id
     })
-    console.log(that.data.selectedgroupid)
   },
+  //获取群聊所有分组名
+  getAllGroupName:function(e){
+    var that = this;
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/getGroupingName',
+      data: {
+        'workid':that.data.workid
+      },
+      method: 'GET', 
+      success: function(res){
+        if(res.data.code==0){
+          that.setData({
+            groupnamearr:res.data.result
+          })
+        }
+      },
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      workid:options.workid
+    })
+    that.getGrouping();
+    //获取群聊所有分组名
+    that.getAllGroupName();
   },
 
   /**
@@ -125,7 +95,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getGrouping();
+    that.getAllGroupName();
   },
 
   /**

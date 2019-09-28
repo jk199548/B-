@@ -30,7 +30,6 @@ Page({
       'workid': that.data.group_id,
       'id': that.data.lastmsgid
     }).then(res => {
-      console.log(res)
       if (res.code == 0) {
         if (res.result[0].length == 1) {
           if (res.result[0][0].id == that.data.msglist[0].id) {
@@ -283,7 +282,6 @@ Page({
     //   'id':wx.getStorageSync('id'),
     //   'is_rec':0
     // }).then(res=>{
-    //   console.log(res)
     // })
   },
 

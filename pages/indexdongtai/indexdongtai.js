@@ -27,7 +27,6 @@ Page({
             showdelmodal: false
           })
         } else {
-          console.log('取消删除')
         }
       }
     })

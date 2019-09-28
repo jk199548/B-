@@ -68,7 +68,6 @@ Page({
       'recruit_id':wx.getStorageSync('id'),
       'workerid':that.data.workerid
     }).then(res=>{
-      console.log(res)
     })
   },
   //绑定聊天
@@ -82,7 +81,6 @@ Page({
         'is_rec': 1
       },
       success: function (res) {
-        console.log(res)
         wx.navigateTo({
           url: '../chat/chat?workerid=' + that.data.workerid,
         })
@@ -92,7 +90,6 @@ Page({
   //点击咨询，跳转到聊天页面
   tochat:function(e){
     var that = this;
-    console.log(app.globalData.isconnect)
     wx.request({
       url: 'https://www.xiaoshetong.cn/api/addFriend',
       data:{
@@ -143,7 +140,6 @@ Page({
       'workid':that.data.workid,
       'workerid':that.data.workerid
     }).then(res=>{
-      console.log(res);
       if(res.code==0){
         wx.navigateBack({
           delta:1

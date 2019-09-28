@@ -1,17 +1,17 @@
 <!--pages/qunliaofenzu/qunliaofenzu.wxml-->
 <view class="box">
   <view class="qunliaogroup">
-    <view class="qunliaogroup-list" wx:for="{{qunliaogrouplist}}" wx:for-index="index" data-id="{{index}}">
-      <text>{{index+1}}</text>
-      <text>{{item.groupname}}</text>
-      <image src="{{item.image}}" bindtap="bianji" data-id="{{index}}" data-name="{{item.groupname}}"></image>
-      <image src="{{item.delimage}}" bindtap="delgroup" data-id="{{index}}" data-name="{{item.groupname}}"></image>
+    <view class="qunliaogroup-list" wx:for="{{groupnamelist}}" wx:key="key" data-id="{{index}}">
+      <text>{{index}}</text>
+      <text>{{item}}</text>
+      <image style="margin-right:30rpx;" src="../../images/index/bianji.png" bindtap="bianji" data-id="{{index}}" data-name="{{item}}"></image>
+      <image src="../../images/index/del2.png" bindtap="delgroupname" data-id="{{index}}" data-name="{{item}}"></image>
     </view>
   </view>
   <view class="inputnewgroupname" wx:if="{{isaddnewgroup}}">
     <input placeholder="请输入新的组名" placeholder-class="placeholder" bindinput="inputnewgroupnamehandler"></input>
   </view>
-  <view class="confirmbtn" wx:if="{{isaddnewgroup}}" bindtap="confirmaddnewgroupname">确定</view>
+  <view class="confirmbtn" wx:if="{{isaddnewgroup}}" bindtap="addNewGrouping">确定</view>
   <view class="addnewgroupbtn" wx:if="{{!isaddnewgroup}}" bindtap="addnewgroupname">新增分组</view>
 </view>
 
@@ -22,35 +22,10 @@
     <input value="{{modalgroupname}}" focus="true" cursor="0" bindinput="savenewinputgroupname"></input>
   </view>
   <view class="group-modal-memberslist">
-    <view class="group-modal-memberslist-box">
-      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
-      <text>皮卡丘</text>
-      <image src="../../images/index/del1.png" class="delimage"></image>
-    </view>
-    <view class="group-modal-memberslist-box">
-      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
-      <text>皮卡丘</text>
-      <image src="../../images/index/del1.png" class="delimage"></image>
-    </view>
-    <view class="group-modal-memberslist-box" >
-      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
-      <text>皮卡丘</text>
-      <image src="../../images/index/del1.png" class="delimage"></image>
-    </view>
-    <view class="group-modal-memberslist-box">
-      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
-      <text>皮卡丘</text>
-      <image src="../../images/index/del1.png" class="delimage"></image>
-    </view>
-    <view class="group-modal-memberslist-box">
-      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
-      <text>皮卡丘</text>
-      <image src="../../images/index/del1.png" class="delimage"></image>
-    </view>
-    <view class="group-modal-memberslist-box">
-      <image src="../../images/index/avtar.png" style="width: 100rpx;height: 100rpx;"></image>
-      <text>皮卡丘</text>
-      <image src="../../images/index/del1.png" class="delimage"></image>
+    <view class="group-modal-memberslist-box" wx:for="{{currentgrouparr}}">
+      <image src="{{item.workers.header}}" style="width: 100rpx;height: 100rpx;"></image>
+      <text>{{item.workers.username}}</text>
+      <image src="../../images/index/del1.png" class="delimage" bindtap="delgroupmembers" data-id="{{item.workers.id}}"></image>
     </view>
     <view class="group-modal-memberslist-box" bindtap="addnewmembers">
       <image src="../../images/index/addnewmembers.png" style="width: 100rpx;height: 100rpx;"></image>

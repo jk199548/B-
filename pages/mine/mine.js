@@ -47,7 +47,6 @@ Page({
       'token':wx.getStorageSync('token'),
       'id':wx.getStorageSync('id')
     }).then(res=>{
-      console.log(res)
       if(res.result.is_company==1){
         that.setData({
           name:res.result.company,

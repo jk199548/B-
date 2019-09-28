@@ -86,9 +86,7 @@ Page({
       content: '确定删除此条动态吗？',
       success:function(res){
         if(res.confirm){
-          console.log('点击了确定按钮')
         }else{
-          console.log('点击了取消按钮')
         }
       }
     })

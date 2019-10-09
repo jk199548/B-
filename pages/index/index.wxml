@@ -10,7 +10,7 @@
   <!-- 首页招聘页面没有报名 -->
   <view class="zhaopin-no" wx:if="{{selectedid==0&&zhaopinnodata==true}}">
     <image src="../../images/index/banner.png"></image>
-    <view style="text-align:center;margin-top:85rpx;font-size:28rpx;color:#333333;">你发布的职位还没有人报名去</view>
+    <view style="text-align:center;margin-top:85rpx;font-size:28rpx;color:#333333;">你发布的职位还没有人报名</view>
     <view style="text-align:center;margin-top:10rpx;" bindtap="torencaishichang">
       <text style="font-size:28rpx;color:#333333;">去</text>
       <text style="font-size:32rpx;color:#fc7001;font-weight:bold;">人才市场</text>
@@ -55,6 +55,7 @@
     </view>
   </view>
   <!-- 首页人才市场页面 -->
+  
   <view class="rencaishichang" wx:if="{{selectedid==1}}" style="background-color: #fff;">
     <view class="rencaishichang-box">
       <view class="nav">
@@ -71,62 +72,72 @@
           <text class="{{navid==2?'active-text':'normal-text'}}">新求职者</text>
         </view>
       </view>
-          <!-- 首页人才市场页面--看过我的页面 -->
-      <view class="lookme-box" wx:if="{{navid==0}}" wx:for="{{lookmearr}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.worker_id}}">
-        <view class="lookme-top">
-          <view class="lookme-top-left">
-            <image src="{{item.worker.header}}" style="border-radius:50%;"></image>
-          </view>
-          <view class="lookme-top-right">
-            <view class="lookme-top-right-top">
-              <text>{{item.worker.username}}</text>
-              <text>{{item.worker.experience}}年·{{schoolarr[item.worker.education]}}</text>
-            </view>
-            <view class="lookme-top-right-mid">期望职业  美容美发、网管、收营员</view>
-            <view class="lookme-top-right-bottom">期望地点  成都、重庆</view>
-          </view>
-        </view>
-        <view class="lookme-bottom">
-          <text>查看了您的职位</text>
-          <text>{{item.work.title}}</text>
-        </view>
+    </view>
+  </view>
+  <view wx:if="{{lookmearr==''&&navid==0&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据0</view>
+  <view wx:if="{{collectionworkerarr==''&&navid==1&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据1</view>
+  <view wx:if="{{newworkers==''&&navid==2&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据2</view>
+  <!-- 首页人才市场页面--看过我的页面 -->
+      
+  <view class="lookme-box" wx:if="{{navid==0&&selectedid==1}}" wx:for="{{lookmearr}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.worker_id}}">
+    <view class="lookme-top">
+      <view class="lookme-top-left">
+        <image src="{{item.worker.header}}" style="border-radius:50%;"></image>
       </view>
-      <!-- 首页人才市场--收藏我的页面 -->
-      <view class="lookme-box" wx:if="{{navid==1}}" wx:for="{{collectionworkerarr}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.worker_id}}">
-        <view class="lookme-top">
-          <view class="lookme-top-left">
-            <image src="{{item.workers.header}}" style="border-radius:50%;"></image>
-          </view>
-          <view class="lookme-top-right">
-            <view class="lookme-top-right-top">
-              <text>{{item.workers.username}}</text>
-              <text>{{item.workers.experience}}年·{{schoolarr[item.workers.education]}}</text>
-            </view>
-            <view class="lookme-top-right-mid">期望职业  美容美发、网管、收营员</view>
-            <view class="lookme-top-right-bottom">期望地点  成都、重庆</view>
-          </view>
+      <view class="lookme-top-right">
+        <view class="lookme-top-right-top">
+          <text>{{item.worker.username}}</text>
+          <text>{{item.worker.experience}}年·{{schoolarr[item.worker.education]}}</text>
         </view>
-        <view class="lookme-bottom">
-          <text>收藏了您的职位</text>
-          <text>{{item.works.title}}</text>
-        </view>
+        <view class="lookme-top-right-mid" wx:if="{{item.worker.experiences[0].intention_work}}">期望职业 {{item.worker.experiences[0].intention_work}}</view>
+        <view class="lookme-top-right-mid" wx:else>期望职业 暂无</view>
+        <view class="lookme-top-right-bottom" wx:if="{{item.worker.experiences[0].intention_place}}">期望地点  {{item.worker.experiences[0].intention_place}}</view>
+        <view class="lookme-top-right-bottom" wx:else>期望地点  暂无</view>
       </view>
-      <!-- 首页人才市场--新求职者页面 -->
-      <view class="lookme-box" wx:if="{{navid==2}}" wx:for="{{newworkers}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.id}}">
-        <view class="lookme-top">
-          <view class="lookme-top-left">
-            <image src="{{item.header}}" style="border-radius:50%;"></image>
-          </view>
-          <view class="lookme-top-right">
-            <view class="lookme-top-right-top">
-              <text>{{item.username}}</text>
-              <text>{{item.experience}}年·{{schoolarr[item.education]}}</text>
-              <!-- <text>待面试</text> -->
-            </view>
-            <view class="lookme-top-right-mid">期望职业  美容美发、网管、收营员</view>
-            <view class="lookme-top-right-bottom">期望地点  成都、重庆</view>
-          </view>
+    </view>
+    <view class="lookme-bottom">
+      <text>查看了您的职位</text>
+      <text>{{item.work.title}}</text>
+    </view>
+  </view>
+  <!-- 首页人才市场--收藏我的页面 -->
+  <view class="lookme-box" wx:if="{{navid==1&&selectedid==1}}" wx:for="{{collectionworkerarr}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.worker_id}}">
+    <view class="lookme-top">
+      <view class="lookme-top-left">
+        <image src="{{item.workers.header}}" style="border-radius:50%;"></image>
+      </view>
+      <view class="lookme-top-right">
+        <view class="lookme-top-right-top">
+          <text>{{item.workers.username}}</text>
+          <text>{{item.workers.experience}}年·{{schoolarr[item.workers.education]}}</text>
         </view>
+        <view class="lookme-top-right-mid" wx:if="{{item.workers.experiences[0].intention_work}}">期望职业 {{item.workers.experiences[0].intention_work}}</view>
+        <view class="lookme-top-right-mid" wx:else>期望职业 暂无</view>
+        <view class="lookme-top-right-bottom" wx:if="{{item.workers.experiences[0].intention_place}}">期望地点  {{item.workers.experiences[0].intention_place}}</view>
+        <view class="lookme-top-right-bottom" wx:else>期望地点  暂无</view>
+      </view>
+    </view>
+    <view class="lookme-bottom">
+      <text>收藏了您的职位</text>
+      <text>{{item.works.title}}</text>
+    </view>
+  </view>
+  <!-- 首页人才市场--新求职者页面 -->
+  <view class="lookme-box" wx:if="{{navid==2&&selectedid==1}}" wx:for="{{newworkers}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.id}}">
+    <view class="lookme-top">
+      <view class="lookme-top-left">
+        <image src="{{item.header}}" style="border-radius:50%;"></image>
+      </view>
+      <view class="lookme-top-right">
+        <view class="lookme-top-right-top">
+          <text>{{item.username}}</text>
+          <text>{{item.experience}}年·{{schoolarr[item.education]}}</text>
+          <!-- <text>待面试</text> -->
+        </view>
+        <view class="lookme-top-right-mid" wx:if="{{item.experiences[0].intention_work}}">期望职业 {{item.experiences[0].intention_work}}</view>
+        <view class="lookme-top-right-mid" wx:else>期望职业 暂无</view>
+        <view class="lookme-top-right-bottom" wx:if="{{item.experiences[0].intention_place}}">期望地点  {{item.experiences[0].intention_place}}</view>
+        <view class="lookme-top-right-bottom" wx:else>期望地点  暂无</view>
       </view>
     </view>
   </view>

@@ -41,6 +41,7 @@ Page({
             })
           }
         } else {
+          console.log(res)
           var newmsglist;
           for (var item in res.result[0]) {
             res.result[0][item].content = JSON.parse(res.result[0][item].content);

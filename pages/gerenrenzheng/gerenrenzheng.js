@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    buttontext:'完成',
+    loading:false,
     showfronttext: true,
     showbacktext: true,
     username: '',//用户输入的名字
@@ -12,13 +14,37 @@ Page({
     idcardfront: '../../images/shiming/shenfenzheng.png',//身份证正面照片
     idcardback: '../../images/shiming/shenfenzheng.png',//身份证反面照片
   },
+  //选择性别事件
+  changesex:function(e){
+    var that = this;
+    console.log(e)
+  },
   //表单提交
   formSubmit:function(e){
     var that = this;
+    that.setData({
+      loading:true,
+    })
     var usernamereg = /^(([\u4e00-\u9fa5+\·?\u4e00-\u9fa5+]{2,30}$))/;
     var phonenumreg = /^1[3456789]\d{9}$/;
     var idcardreg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/;
-    if(!usernamereg.test(e.detail.value.username)){
+    if (that.data.idcardfront == '../../images/shiming/shenfenzheng.png'){
+      wx.showToast({
+        title: '请上传身份证正面',
+        icon: 'none'
+      })
+      that.setData({
+        loading: false,
+      })
+    } else if (that.data.idcardback =='../../images/shiming/shenfenzheng.png'){
+      wx.showToast({
+        title: '请上传身份证反面',
+        icon: 'none'
+      })
+      that.setData({
+        loading: false,
+      })
+    } else if(!usernamereg.test(e.detail.value.username)){
       wx.showToast({
         title:'姓名格式有误',
         icon:'none'
@@ -26,7 +52,15 @@ Page({
       that.setData({
         loading:false,
       })
-    }else if(!phonenumreg.test(e.detail.value.phonenum)){
+    } else if(e.detail.value.sex==''){
+      wx.showToast({
+        title: '请选择性别',
+        icon:'none'
+      });
+      that.setData({
+        loading: false,
+      })
+    } else if(!phonenumreg.test(e.detail.value.phonenum)){
       wx.showToast({
         title:'电话号码格式有误',
         icon:'none'
@@ -43,10 +77,14 @@ Page({
         loading:false,
       })
     }else{
+      that.setData({
+        buttontext:'正在加载...'
+      })
       api._get('/setFormID',{
         'formId':e.detail.formId,
         'is_rec':1,
       }).then(res=>{
+        
       })
       api._post('/register',{
         'username':e.detail.value.username,
@@ -65,12 +103,44 @@ Page({
           that.setData({
             loading:false,
           });
-          wx.showToast({
-            title:'认证成功',
-            icon:'none'
-          });
           wx.switchTab({
             url: '../index/index',
+            success:function(res){
+              wx.showToast({
+                title: '认证成功',
+                icon: 'none'
+              });
+            }
+          })
+        }else if(res.code==9){
+          that.setData({
+            loading:false,
+            buttontext:'完成'
+          });
+          wx.showToast({
+            title: '身份信息不匹配',
+            icon:'none',
+            duration:2500
+          })
+        }else if(res.code==15){
+          that.setData({
+            loading: false,
+            buttontext: '完成'
+          });
+          wx.showToast({
+            title: '请重新上传身份证（身份证照错误）',
+            icon: 'none',
+            duration: 2500
+          })
+        }else if(res.code==16){
+          that.setData({
+            loading: false,
+            buttontext: '完成'
+          });
+          wx.showToast({
+            title: '身份证正反面错误',
+            icon: 'none',
+            duration: 2500
           })
         }
       })

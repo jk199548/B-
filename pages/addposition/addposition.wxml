@@ -105,7 +105,7 @@
         <text>*</text>
         <text>招聘有效期</text>
       </view>
-      <picker mode="date" start="2019-09-11" end="2019-09-30" bindchange="bindTimeChange" class="salary-right" style="width:490rpx;display:flex;justify-content:flex-end;height:100rpx;align-items: center;">
+      <picker mode="date" bindchange="bindTimeChange" class="salary-right" style="width:490rpx;display:flex;justify-content:flex-end;height:100rpx;align-items: center;">
         <text style="font-size:28rpx;color:#808080;margin-right:20rpx;">{{validity_time}}</text>
         <image src="../../images/shiming/more.png"></image>
       </picker>

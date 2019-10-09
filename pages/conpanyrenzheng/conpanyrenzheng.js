@@ -71,6 +71,9 @@ Page({
   //表单提交
   formSubmit:function(e){
     var that = this;
+    that.setData({
+      loading: true,
+    })
     var usernamereg = /^(([\u4e00-\u9fa5+\·?\u4e00-\u9fa5+]{2,30}$))/;
     var phonenumreg = /^1[3456789]\d{9}$/;
     var idcardreg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/;
@@ -127,12 +130,14 @@ Page({
               that.setData({
                 loading:false,
               });
-              wx.showToast({
-                title:'认证成功',
-                icon:'none'
-              });
               wx.switchTab({
                 url: '../index/index',
+                success:function(res){
+                  wx.showToast({
+                    title: '认证成功',
+                    icon: 'none'
+                  });
+                }
               })
             }
           })
@@ -149,18 +154,21 @@ Page({
           'license':that.data.license,
           'company':that.data.companyname
         }).then(res=>{
+          console.log(res.code)
           if(res.code==0){
             wx.setStorageSync('token',res.result.token);
             wx.setStorageSync('id', res.result.id);
             that.setData({
-              loading:false,
-            });
-            wx.showToast({
-              title:'认证成功',
-              icon:'none'
+              loading: false,
             });
             wx.switchTab({
               url: '../index/index',
+              success: function (res) {
+                wx.showToast({
+                  title: '认证成功',
+                  icon: 'none'
+                });
+              }
             })
           }
         })

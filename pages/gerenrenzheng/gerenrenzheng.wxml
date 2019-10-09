@@ -52,6 +52,6 @@
       </checkbox-group>
       <text>点击完后即表示同意《用户注册与隐私保护服务协议》</text>
     </view>
-    <button loading="{{loading}}" class="confirmbtn" form-type="submit">完成</button>
+    <button loading="{{loading}}" class="confirmbtn" form-type="submit">{{buttontext}}</button>
   </form>
 </view>

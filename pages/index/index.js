@@ -86,24 +86,35 @@ Page({
     api._get('/getRecruitWork',{
       'id':wx.getStorageSync('id')
     }).then(res=>{
+      console.log(res)
       if (res.code == 0) {
-        wx.stopPullDownRefresh();
-        var newmyposition = res.result;
-        for (let i = 0; i < newmyposition.length; i++) {
-          if (newmyposition[i].welfare != null) {
-            var newwelfare = newmyposition[i].welfare.split("，");
-            newmyposition[i].welfare = newwelfare;
+        if(res.result.length==0){
+          wx.stopPullDownRefresh();
+          that.setData({
+            zhaopinnodata:true,
+          });
+          wx.showToast({
+            title: '刷新成功',
+          })
+        }else{
+          wx.stopPullDownRefresh();
+          var newmyposition = res.result;
+          for (let i = 0; i < newmyposition.length; i++) {
+            if (newmyposition[i].welfare != null) {
+              var newwelfare = newmyposition[i].welfare.split("，");
+              newmyposition[i].welfare = newwelfare;
+            }
           }
+          that.setData({
+            zhaopinnodata: false,
+            indexposition: newmyposition
+          });
+          wx.hideLoading();
+          wx.showToast({
+            title: '加载成功',
+            icon: 'none'
+          })
         }
-        that.setData({
-          zhaopinnodata: false,
-          indexposition: newmyposition
-        });
-        wx.hideLoading();
-        wx.showToast({
-          title: '加载成功',
-          icon:'none'
-        })
       }else{
         wx.stopPullDownRefresh();
         wx.hideLoading();
@@ -144,10 +155,10 @@ Page({
       } else {
         wx.stopPullDownRefresh();
         wx.hideLoading();
-        wx.showToast({
-          title: '加载失败',
-          icon:'none'
-        });
+        // wx.showToast({
+        //   title: '加载失败',
+        //   icon:'none'
+        // });
        
       }
     })
@@ -322,6 +333,10 @@ Page({
     var that = this;
     that.getDynamic();
     that.getMyWork();
+    that.getCollectionWorker();
+    that.getViewWork();
+    that.getRecruitWork();
+    that.getNewWorkers();
   },
   onPullDownRefresh:function(e){
     var that = this;

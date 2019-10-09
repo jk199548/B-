@@ -1,4 +1,7 @@
 /**index.wxss**/
+.box{
+  height: 100%;
+}
 .index-box{
   width: 100%;
   height: 102rpx;

@@ -296,8 +296,7 @@ Page({
         workerid:options.workerid,
         notoudi:true,
         fromnewworkers:true,
-      })
-      that.recordViewWorker();
+      });
     }else{
       this.setData({
         choose_year: this.data.multiArray[0][0],
@@ -313,6 +312,10 @@ Page({
     }
     that.getWorkerDetails();
     that.getworkerInterviewAddress();
+  },
+  onUnload:function(e){
+    var that = this;
+    that.recordViewWorker();
   },
   //获取时间日期
   bindMultiPickerChange: function (e) {

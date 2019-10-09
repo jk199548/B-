@@ -1,6 +1,6 @@
 // pages/news/news.js
 var websocket = require('../../utils/websocket.js');
-const api = require('../../utils/util.js');
+const api = require('../../utils/api.js');
 var app = getApp();
 Page({
 
@@ -10,6 +10,7 @@ Page({
   data: {
     navbar: ["职位管理", "互动"],
     interestNavbar: ['对我感兴趣', '看过我', '工作群'],
+    schoolarr: ['请选择学历', '初中', '中专', '高中', '职高', '大专', '本科', '研究生'],
     currentIndex: 0,//tabbar索引
     interestcurrentIndex: 0,
     newslist:[],
@@ -19,6 +20,20 @@ Page({
     unreadnumberarr: '',
     lastmsg:[],
     friendlist: [],
+    lookmearr:[],
+  },
+  //获取c端看过我职位的用户
+  getViewWork: function (e) {
+    var that = this;
+    api._get('/getViewWork', {
+      'id': wx.getStorageSync('id')
+    }).then(res => {
+      if (res.code == 0) {
+        that.setData({
+          lookmearr: res.result
+        })
+      }
+    })
   },
   //获取好友列表
   getFriendList: function (e) {
@@ -171,7 +186,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      lookmearr:[]
+    })
     that.getFriendList();
+    that.getViewWork();
     if (app.globalData.isconnect){
       
     }else{

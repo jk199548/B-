@@ -12,6 +12,37 @@ Page({
     showdelbtn:false,
     groupnamearr:[]
   },
+  //删除某一个群成员
+  delmenbers:function(e){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定将该成员从此群中移除吗?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'https://www.xiaoshetong.cn/api/leaveGroup',
+            data: {
+              'workid': that.data.workid,
+              'workerid': e.currentTarget.dataset.id
+            },
+            success: function (res) {
+              wx.navigateBack({
+                delta:1,
+                success:function(res){
+                  wx.showToast({
+                    title: '操作成功',
+                    icon:'none'
+                  })
+                }  
+              })
+              
+            }
+          })
+        }
+      }
+    })
+  },
   //点击显示delimage
   showdelbtn:function(e){
     var that = this;

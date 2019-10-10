@@ -18,7 +18,7 @@
           <view>5组</view>
           <view>6组</view>
         </view>
-        <image wx:if="{{showdelbtn}}" src="../../images/index/del1.png" class="delimage" style="width:36rpx;height:36rpx;"></image>
+        <image bindtap="delmenbers" data-id="{{item.worker_id}}" wx:if="{{showdelbtn}}" src="../../images/index/del1.png" class="delimage" style="width:36rpx;height:36rpx;"></image>
       </view>
       <view class="members-list-box" bindtap="showdelbtn">
         <image src="../../images/index/delmembers.png" style="width:100rpx;height:100rpx;"></image>

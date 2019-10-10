@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    service:'',
+    satisfaction: '',//工作环境评分
+    wages: '',//薪资待遇评分
   },
 
   /**

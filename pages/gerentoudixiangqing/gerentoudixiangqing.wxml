@@ -16,10 +16,10 @@
   <!-- 顶部投递职位列表 -->
   <view class="top-position" wx:for="{{yuyuelist}}" wx:key="item" wx:if="{{!notoudi}}">
     <view wx:if="{{!item.location}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
-      <view class="top-position-left" style="background-color:#808080;"></view>
-      <view class="top-position-right">
+      <view class="top-position-left" style="background-color:#808080;" wx:if="{{item.position !== 'undefined'}}"></view>
+      <view class="top-position-right" wx:if="{{item.position !== 'undefined'}}">
         <text style="color:#808080;">于{{item.time}}</text>
-        <text style="color:#808080;">投递"{{item.position}}"</text>
+        <text style="color:#808080;" >投递"{{item.position}}"</text>
       </view>
     </view>
     <view wx:if="{{item.location}}" style="display: flex;justify-content: space-between;align-items: center;flex-direction: row;">

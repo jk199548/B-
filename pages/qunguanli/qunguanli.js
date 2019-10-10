@@ -53,6 +53,16 @@ Page({
     var that = this;
     that.setData({
       showmodal:false,
+    });
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/unGroup',
+      data:{
+        'workid':that.data.workid,
+        'id':wx.getStorageSync('id')
+      },
+      success:function(res){
+        console.log(res)
+      }
     })
   },
   //跳转到展示群聊二维码

@@ -11,6 +11,14 @@ Page({
     phonenum:'',
     name:'',
     isComPany:0,//0是个人,1是公司
+    zonghefen:'',
+  },
+  //跳转到意见反馈页面
+  toyijianfankui:function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '../yijianfankui/yijianfankui',
+    })
   },
   //跳转到公司认证页面
   tocompanyrenzheng:function(e){
@@ -67,12 +75,33 @@ Page({
       }
     })
   },
+  //获取综合评分
+  getFraction:function(e){
+    var that = this;
+    wx.request({
+      url: 'https://www.xiaoshetong.cn/api/recruit/fraction',
+      data:{
+        'id':wx.getStorageSync('id')
+      },
+      success:function(res){
+        console.log(res.data)
+        if(res.data.code==0){
+
+          that.setData({
+            zonghefen:res.data.result
+          })
+        }
+      }
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    that.getMyDetail()
+    that.getMyDetail();
+    that.getFraction();
   },
 
   /**
@@ -88,6 +117,7 @@ Page({
   onShow: function () {
     var that = this;
     that.getMyDetail();
+    that.getFraction();
   },
 
   /**

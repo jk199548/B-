@@ -3,7 +3,8 @@
   <view class="mine-banner">
     <image class='banner' src="../../images/mine/headbanner.png"></image>
   </view>
-  <view class="userinfobox">
+  <button class="loginbtn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!login}}">点击登录</button>
+  <view class="userinfobox" wx:if="{{login}}">
     <view class="userinfobox-left">
       <image src="{{header}}" style="border-radius:50%;"></image>
     </view>
@@ -19,6 +20,7 @@
       <view class="userinfobox-right-bottom">服务区域：四川-成都-金牛区</view>
     </view>
   </view>
+  
   <view class="renzhengbox" wx:if="{{isComPany==0}}">
     <image src="../../images/mine/safe.png"></image>
     <text>你还未进行认证哦!请点击</text>

@@ -5,64 +5,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-    gonggaotitle:'',
-    gonggaocontent:'',
-    workid:''
+    gonggaotitle: '',
+    gonggaocontent: '',
+    workid: '',
+    id:'',//群公告id
+    active:false,//用户是否已经输入新的公告标题或者内容
   },
   //用户输入时保存的公告名称
-  saveinputtitle:function(e){
+  saveinputtitle: function (e) {
     var that = this;
     that.setData({
-      gonggaotitle:e.detail.value
+      gonggaotitle: e.detail.value,
+      active:true,
     })
   },
   //用户输入时保存的公告内容
   saveinputcontent: function (e) {
     var that = this;
     that.setData({
-      gonggaocontent: e.detail.value
-    })
-  },
-  //点击保存草稿
-  savecaogao:function(e){
-    var that = this;
-    wx.setStorageSync('caogao', {
-      'gonggaotitle':that.data.gonggaotitle,
-      'gonggaocontent':that.data.gonggaocontent
+      gonggaocontent: e.detail.value,
+      active:true
     })
   },
   //点击保存并发布按钮
-  savegonggao:function(e){
+  savegonggao: function (e) {
     var that = this;
-    if(that.data.gonggaotitle==''){
+    if (that.data.gonggaotitle == '') {
       wx.showToast({
         title: '公告标题不能为空',
-        icon:'none',
-        duration:2000
+        icon: 'none',
+        duration: 2000
       })
-    }else if(that.data.gonggaocontent==''){
+    } else if (that.data.gonggaocontent == '') {
       wx.showToast({
         title: '公告内容不能为空',
         icon: 'none',
         duration: 2000
       })
-    }else{
+    } else {
       wx.request({
-        method:'POST',
-        url: 'https://www.xiaoshetong.cn/api/recruit/release',
-        data:{
-          'workid':that.data.workid,
-          'id':wx.getStorageSync('id'),
-          'title':that.data.gonggaotitle,
-          'content':that.data.gonggaocontent
+        method: 'POST',
+        url: 'https://www.xiaoshetong.cn/api/recruit/editNotice',
+        data: {
+          'workid': that.data.workid,
+          'id': that.data.id,
+          'title': that.data.gonggaotitle,
+          'content': that.data.gonggaocontent
         },
-        success:function(res){
-          if(res.data.code==0){
+        success: function (res) {
+          if (res.data.code == 0) {
             wx.navigateBack({
-              delta:1,
-              success:function(res){
-                wx,wx.showToast({
-                  title: '发布成功',
+              delta: 1,
+              success: function (res) {
+                wx, wx.showToast({
+                  title: '修改成功',
                   icon: 'none',
                   duration: 2000,
                 })
@@ -79,7 +75,10 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      workid:options.workid
+      workid: options.workid,
+      id:options.id,
+      gonggaotitle:options.title,
+      gonggaocontent:options.content
     })
   },
 

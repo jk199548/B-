@@ -38,18 +38,20 @@ Page({
   //获取好友列表
   getFriendList: function (e) {
     var that = this;
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/getFriend',
-      data: {
-        'id': wx.getStorageSync('id'),
-        'is_rec': 0
-      },
-      success: function (res) {
-        that.setData({
-          friendlist: res.data.result
-        })
-      }
-    })
+    if(wx.getStorageSync('id')){
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/getFriend',
+        data: {
+          'id': wx.getStorageSync('id'),
+          'is_rec': 0
+        },
+        success: function (res) {
+          that.setData({
+            friendlist: res.data.result
+          })
+        }
+      })
+    }
   },
   interestnavbarTab: function (e) {
     this.setData({
@@ -70,39 +72,41 @@ Page({
   //绑定群群
   bindmygroup: function (data) {
     var that = this;
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/bindMyGroup',
-      data: {
-        'id': wx.getStorageSync('id'),
-        'client_id': data.client_id,
-        'is_rec': 1
-      },
-      success: function (res) {
-        //返回群id
-        if (res.data.code == 1) {
-          wx.showModal({
-            title: '提示',
-            content: '您暂未加入任何群聊',
-          })
-        } else {
-          that.setData({
-            newsarr: res.data.result
-          })
-          if (res.data.result.length == 0) {
-            that.setData({
-              nochat: true
+    if(wx.getStorageSync('id')){
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/bindMyGroup',
+        data: {
+          'id': wx.getStorageSync('id'),
+          'client_id': data.client_id,
+          'is_rec': 1
+        },
+        success: function (res) {
+          //返回群id
+          if (res.data.code == 1) {
+            wx.showModal({
+              title: '提示',
+              content: '您暂未加入任何群聊',
             })
           } else {
-            for (var i = 0; i < res.data.result.length; i++) {
+            that.setData({
+              newsarr: res.data.result
+            })
+            if (res.data.result.length == 0) {
               that.setData({
-                groupIdArr: that.data.groupIdArr.concat([res.data.result[i].id]),
+                nochat: true
               })
+            } else {
+              for (var i = 0; i < res.data.result.length; i++) {
+                that.setData({
+                  groupIdArr: that.data.groupIdArr.concat([res.data.result[i].id]),
+                })
+              }
+              that.getLastMsg(that)
             }
-            that.getLastMsg(that)
           }
         }
-      }
-    })
+      })
+    }
   },
   //获取群聊最后一条消息
   getLastMsg: function (e) {
@@ -132,19 +136,21 @@ Page({
   getUnreadNumber: function (e) {
     var that = this;
     var str = "" + that.data.groupIdArr + "";
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/getUnreadNumber',
-      data: {
-        'workid': str,
-        'id': wx.getStorageSync('id'),
-        'is_rec': 1
-      },
-      success: function (res) {
-        that.setData({
-          unreadnumberarr: res.data.result
-        })
-      }
-    })
+    if(wx.getStorageSync('id')){
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/getUnreadNumber',
+        data: {
+          'workid': str,
+          'id': wx.getStorageSync('id'),
+          'is_rec': 1
+        },
+        success: function (res) {
+          that.setData({
+            unreadnumberarr: res.data.result
+          })
+        }
+      })
+    }
   },
   //跳转到聊天页面
   tochat: function (e) {
@@ -163,22 +169,24 @@ Page({
   //获取消息列表
   getNewsList:function(e){
     var that = this;
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/getLastPrivateMsg',
-      data:{
-        'id':wx.getStorageSync('id'),
-        'is_rec':1
-      },
-      success:function(res){
-        for (var item in res.data.result) {
-          if (res.data.result[item] != '') {
-            that.setData({
-              newslist: that.data.newslist.concat([res.data.result[item]])
-            })
+    if(wx.getStorageSync('id')){
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/getLastPrivateMsg',
+        data: {
+          'id': wx.getStorageSync('id'),
+          'is_rec': 1
+        },
+        success: function (res) {
+          for (var item in res.data.result) {
+            if (res.data.result[item] != '') {
+              that.setData({
+                newslist: that.data.newslist.concat([res.data.result[item]])
+              })
+            }
           }
         }
-      }
-    })
+      })
+    }
   },
   //
   /**

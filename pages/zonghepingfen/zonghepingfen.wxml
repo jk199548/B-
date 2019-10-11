@@ -3,15 +3,15 @@
   <view class="top-text">对我的评价</view>
   <view class="fuwutaiduslider">
     <view>服务态度:</view>
-    <slider block-size="10" activeColor="#FC7101" disabled="true" value="50" show-value="true"></slider>
+    <slider block-size="10" activeColor="#FC7101" disabled="true" value="{{service}}" show-value="true"></slider>
   </view>
   <view class="zhaopinmiaoshu">
-    <view>招聘描述:</view>
-    <slider block-size="10" activeColor="#FC7101" disabled="true" value="85" show-value="true"></slider>
+    <view>薪资待遇:</view>
+    <slider block-size="10" activeColor="#FC7101" disabled="true" value="{{wages}}" show-value="true"></slider>
   </view>
   <view class="zhaopinmiaoshu">
     <view>工作环境:</view>
-    <slider block-size="10" activeColor="#FC7101" disabled="true" value="100" show-value="true"></slider>
+    <slider block-size="10" activeColor="#FC7101" disabled="true" value="{{satisfaction}}" show-value="true"></slider>
   </view>
   <view class="wodepingjia">
     <view>对我的评价</view>

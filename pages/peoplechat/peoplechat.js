@@ -101,8 +101,9 @@ Page({
   },
   //跳转到职位详情
   topositiondetail: function (e) {
+    var that = this;
     wx.navigateTo({
-      url: '../positiondetail/positiondetail',
+      url: '../positiondetail/positiondetail?workid=' + that.data.group_id,
     })
   },
   //跳转到群公告

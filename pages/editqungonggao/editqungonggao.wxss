@@ -1,0 +1,51 @@
+/* pages/addnewgonggao/addnewgonggao.wxss */
+.gonggao-name{
+  width: 630rpx;
+  height: 70rpx;
+  margin-left: 60rpx;
+  margin-top: 60rpx;
+  background-color: #fafafa;
+  border-radius: 10rpx;
+}
+.gonggao-name input{
+  width: 610rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  color: #808080;
+  margin-left: 20rpx; 
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #808080; 
+}
+.gonggao-content{
+  width: 630rpx;
+  height: 840rpx;
+  margin-left: 60rpx;
+  margin-top: 60rpx;
+  background-color: #fafafa;
+  border-radius: 10rpx;
+}
+.gonggao-content textarea{
+  width: 610rpx;
+  height: 820rpx;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+.gonggao-bottom{
+  width: 630rpx;
+  margin-left: 60rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gonggao-bottom view{
+  width: 360rpx;
+  height: 70rpx;
+  background-color: #fc7001;
+  color: #fff;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}

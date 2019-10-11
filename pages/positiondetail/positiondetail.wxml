@@ -125,5 +125,8 @@
       </block>
     </view>
   </view>
-  <view class="stopzhaopin" bindtap="stopzhaopin">停止招聘</view>
+  <view class="stopzhaopin" bindtap="stopzhaopin" wx:if="{{status==0}}">停止招聘</view>
+  <view class="stopzhaopin" wx:if="{{status==1}}">已停止招聘，工作中</view>
+  <view class="stopzhaopin" wx:if="{{status==2}}">工作已结束</view>
+  
 </view>

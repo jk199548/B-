@@ -12,6 +12,7 @@ Page({
     name:'',
     isComPany:0,//0是个人,1是公司
     zonghefen:'',
+    login:false,
   },
   //跳转到意见反馈页面
   toyijianfankui:function(e){
@@ -51,50 +52,70 @@ Page({
   //获取已过认证的个人或公司信息
   getMyDetail:function(e){
     var that = this;
-    api._get('/getMyDetails',{
-      'token':wx.getStorageSync('token'),
-      'id':wx.getStorageSync('id')
-    }).then(res=>{
-      if(res.result.is_company==1){
-        that.setData({
-          name:res.result.company,
-          header:wx.getStorageSync('header'),
-          phonenum:res.result.phone,
-          isComPany:res.result.is_company,
-          username:res.result.username
-        })
-      }else{
-        wx.setStorageSync('is_company',res.result.is_company);
-        that.setData({
-          name:res.result.username,
-          header:wx.getStorageSync('header'),
-          phonenum:res.result.phone,
-          isComPany:res.result.is_company,
-          username:wx.getStorageSync('username')
-        })
-      }
-    })
+    if(wx.getStorageSync('id')){
+      api._get('/getMyDetails', {
+        'token': wx.getStorageSync('token'),
+        'id': wx.getStorageSync('id')
+      }).then(res => {
+        if (res.result.is_company == 1) {
+          that.setData({
+            name: res.result.company,
+            header: wx.getStorageSync('header'),
+            phonenum: res.result.phone,
+            isComPany: res.result.is_company,
+            username: res.result.username
+          })
+        } else {
+          wx.setStorageSync('is_company', res.result.is_company);
+          that.setData({
+            name: res.result.username,
+            header: wx.getStorageSync('header'),
+            phonenum: res.result.phone,
+            isComPany: res.result.is_company,
+            username: wx.getStorageSync('username')
+          })
+        }
+      })
+    }
   },
   //获取综合评分
   getFraction:function(e){
     var that = this;
-    wx.request({
-      url: 'https://www.xiaoshetong.cn/api/recruit/fraction',
-      data:{
-        'id':wx.getStorageSync('id')
-      },
-      success:function(res){
-        console.log(res.data)
-        if(res.data.code==0){
+    if(wx.getStorageSync('id')){
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/recruit/fraction',
+        data: {
+          'id': wx.getStorageSync('id')
+        },
+        success: function (res) {
+          console.log(res.data)
+          if (res.data.code == 0) {
 
-          that.setData({
-            zonghefen:res.data.result
-          })
+            that.setData({
+              zonghefen: res.data.result.fraction
+            })
+          }
         }
-      }
-    })
+      })
+    }else{
+
+    }
   },
-  
+  //用户点击登录按钮
+  getUserInfo: function (e) {
+    var that = this;
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      wx.setStorageSync('header', e.detail.userInfo.avatarUrl);
+      wx.navigateTo({
+        url: '../shenfenxuanze/shenfenxuanze'
+      });
+    } else {
+      wx.showToast({
+        title: '登录失败,请先登录',
+        icon: 'none'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -102,6 +123,11 @@ Page({
     var that = this;
     that.getMyDetail();
     that.getFraction();
+    if(wx.getStorageSync('token')){
+      that.setData({
+        login:true,
+      })
+    }
   },
 
   /**

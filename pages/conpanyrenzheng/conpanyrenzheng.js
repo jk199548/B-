@@ -154,8 +154,23 @@ Page({
           'license':that.data.license,
           'company':that.data.companyname
         }).then(res=>{
-          console.log(res.code)
-          if(res.code==0){
+          if(res.code==13){
+            wx.showToast({
+              title: res.result,
+              icon:'none'
+            });
+            that.setData({
+              loading:false
+            })
+          }else if(res.code==14){
+            wx.showToast({
+              title: res.result,
+              icon:'none'
+            });
+            that.setData({
+              loading:false
+            })
+          }else if(res.code==0){
             wx.setStorageSync('token',res.result.token);
             wx.setStorageSync('id', res.result.id);
             that.setData({
@@ -211,7 +226,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    if (wx.getStorageSync('token')) {
+      api._get('/getMyDetails', {
+        'token': wx.getStorageSync('token'),
+        'id': wx.getStorageSync('id')
+      }).then(res => {
+        that.setData({
+          idcard: res.result.idcard,
+          sex: res.result.sex,
+          username: res.result.username,
+          phonenum: res.result.phone,
+        })
+      })
+    }
+    if (options.companyname != '') {
+      that.setData({
+        companyname: options.companyname
+      })
+    }
   },
 
   /**

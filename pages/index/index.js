@@ -83,47 +83,53 @@ Page({
   //获取用户在招职位
   getRecruitWork:function(e){
     var that= this;
-    api._get('/getRecruitWork',{
-      'id':wx.getStorageSync('id')
-    }).then(res=>{
-      console.log(res)
-      if (res.code == 0) {
-        if(res.result.length==0){
-          wx.stopPullDownRefresh();
-          that.setData({
-            zhaopinnodata:true,
-          });
-          wx.showToast({
-            title: '刷新成功',
-          })
-        }else{
-          wx.stopPullDownRefresh();
-          var newmyposition = res.result;
-          for (let i = 0; i < newmyposition.length; i++) {
-            if (newmyposition[i].welfare != null) {
-              var newwelfare = newmyposition[i].welfare.split("，");
-              newmyposition[i].welfare = newwelfare;
+    if(wx.getStorageSync('id')){
+      api._get('/getRecruitWork', {
+        'id': wx.getStorageSync('id')
+      }).then(res => {
+        console.log(res)
+        if (res.code == 0) {
+          if (res.result.length == 0) {
+            wx.stopPullDownRefresh();
+            that.setData({
+              zhaopinnodata: true,
+            });
+            wx.showToast({
+              title: '刷新成功',
+            })
+          } else {
+            wx.stopPullDownRefresh();
+            var newmyposition = res.result;
+            for (let i = 0; i < newmyposition.length; i++) {
+              if (newmyposition[i].welfare != null) {
+                var newwelfare = newmyposition[i].welfare.split("，");
+                newmyposition[i].welfare = newwelfare;
+              }
             }
+            that.setData({
+              zhaopinnodata: false,
+              indexposition: newmyposition
+            });
+            wx.hideLoading();
+            wx.showToast({
+              title: '加载成功',
+              icon: 'none'
+            })
           }
-          that.setData({
-            zhaopinnodata: false,
-            indexposition: newmyposition
-          });
+        } else {
+          wx.stopPullDownRefresh();
           wx.hideLoading();
           wx.showToast({
-            title: '加载成功',
+            title: '加载失败',
             icon: 'none'
           })
         }
-      }else{
-        wx.stopPullDownRefresh();
-        wx.hideLoading();
-        wx.showToast({
-          title: '加载失败',
-          icon:'none'
-        })
-      }
-    })
+      })
+    }else{
+      that.setData({
+        zhaopinnodata:true
+      })
+    }
   },
   //获取用户已经发布的职位
   getMyWork:function(e){
@@ -155,54 +161,53 @@ Page({
       } else {
         wx.stopPullDownRefresh();
         wx.hideLoading();
-        // wx.showToast({
-        //   title: '加载失败',
-        //   icon:'none'
-        // });
-       
       }
     })
   },
   //获取到我的动态数据
   getDynamic:function(e){
     var that = this;
-    api._get('/getDynamic',{
-      'recruiter_id':wx.getStorageSync('id')
-    }).then(res=>{
-      if(res.code==0){
-        if(res.result.length==0){
-          that.setData({
-            mydongtainodata:true,
-            
-          })
-          wx.hideLoading();
-          wx.showToast({
-            title: '加载成功',
-            icon: 'none'
-          })
-        }else{
-          for(var i = 0; i < res.result.length; i++){
-            res.result[i].created_at = util.js_date_time(res.result[i].created_at);
+    if(wx.getStorageSync('id')){
+      api._get('/getDynamic', {
+        'recruiter_id': wx.getStorageSync('id')
+      }).then(res => {
+        if (res.code == 0) {
+          if (res.result.length == 0) {
+            that.setData({
+              mydongtainodata: true,
+
+            })
+            wx.hideLoading();
+            wx.showToast({
+              title: '加载成功',
+              icon: 'none'
+            })
+          } else {
+            for (var i = 0; i < res.result.length; i++) {
+              res.result[i].created_at = util.js_date_time(res.result[i].created_at);
+            }
+            that.setData({
+              dynamiclist: res.result,
+              mydongtainodata: false
+            });
+            wx.hideLoading();
+            wx.showToast({
+              title: '加载成功',
+              icon: 'none'
+            });
+            wx.stopPullDownRefresh();
           }
-          that.setData({
-            dynamiclist:res.result,
-            mydongtainodata:false
-          });
+        } else {
           wx.hideLoading();
           wx.showToast({
-            title: '加载成功',
-            icon:'none'
+            title: '加载失败',
           });
           wx.stopPullDownRefresh();
         }
-      } else {
-        wx.hideLoading();
-        wx.showToast({
-          title: '加载失败',
-        });
-        wx.stopPullDownRefresh();
-      }
-    })
+      })
+    }else{
+      
+    }
   },
   //跳转到职位发布页面
   toaddposition:function(e){

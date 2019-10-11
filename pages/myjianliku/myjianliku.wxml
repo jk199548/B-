@@ -23,7 +23,7 @@
     </view>
   </view>
   <!-- 已收到的简历 -->
-  <view class="lookme-box" wx:if="{{selectednavid==1}}" wx:for="{{receivedlist}}">
+  <view class="lookme-box" wx:if="{{selectednavid==1}}" wx:for="{{receivedlist}}" bindtap="togerentoudixiangqing" data-id="{{item.pivot.worker_id}}" data-created_at="{{item.pivot.created_at}}" data-work_id="{{item.pivot.work_id}}">
     <view class="lookme-top">
       <view class="lookme-top-left">
         <image src="{{item.header}}" style="border-radius:50%;"></image>
@@ -41,7 +41,7 @@
     </view>
   </view>
   <!-- 工作中的简历 -->
-  <view class="lookme-box" wx:if="{{selectednavid==2}}" wx:for="{{workinglist}}">
+  <view class="lookme-box" wx:if="{{selectednavid==2}}" wx:for="{{workinglist}}" bindtap="togerentoudixiangqing" data-id="{{item.pivot.worker_id}}" data-created_at="{{item.pivot.created_at}}" data-work_id="{{item.pivot.work_id}}">
     <view class="lookme-top">
       <view class="lookme-top-left">
         <image src="{{item.header}}" style="border-radius:50%;"></image>
@@ -59,7 +59,7 @@
     </view>
   </view>
   <!-- 已完成的简历 -->
-  <view class="lookme-box" wx:if="{{selectednavid==3}}" wx:for="{{endlist}}">
+  <view class="lookme-box" wx:if="{{selectednavid==3}}" wx:for="{{endlist}}" bindtap="togerentoudixiangqing" data-id="{{item.pivot.worker_id}}" data-created_at="{{item.pivot.created_at}}" data-work_id="{{item.pivot.work_id}}">
     <view class="lookme-top">
       <view class="lookme-top-left">
         <image src="{{item.header}}" style="border-radius:50%;"></image>

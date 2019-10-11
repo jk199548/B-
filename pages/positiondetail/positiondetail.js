@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    status:'',
     wages:'',
     workid:'',
     salarymodallist: ['日结', '小时', '月结'],
@@ -67,6 +68,7 @@ Page({
           }
         }
         that.setData({
+          status:res.result.status,
           location:res.result.address,
           logourl:res.result.header,
           age:res.result.age,

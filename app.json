@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/login",
     "pages/shenfenxuanze/shenfenxuanze",
-    "pages/index/index",
     "pages/mine/mine",
     "pages/news/news",
     "pages/toudixiangqing/toudixiangqing",
@@ -40,7 +40,8 @@
     "pages/addgerenjieshao/addgerenjieshao",
     "pages/editposition/editposition",
     "pages/waitpositionlist/waitpositionlist",
-    "pages/showgroupQRcode/showgroupQRcode"
+    "pages/showgroupQRcode/showgroupQRcode",
+    "pages/editqungonggao/editqungonggao"
   ],
   "window": {
     "backgroundTextStyle": "light",

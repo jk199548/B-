@@ -11,7 +11,7 @@
     </view>
   </view>
   <!-- <view class='position-require-lookmore' bindtap="toallqunliaomembers" wx:if="{{showallmenbers}}"> -->
-  <view class='position-require-lookmore' bindtap="toallqunliaomembers">
+  <view class='position-require-lookmore' bindtap="toallqunliaomembers" >
     <text class='position-require-lookmore-text'>查看所有群成员</text>
     <image class='position-require-lookmore-icon' src='../../images/index/showmore.png'></image>
   </view>

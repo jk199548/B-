@@ -285,7 +285,6 @@
 .myposition-box-top{
   width: 690rpx;
   margin-left: 30rpx;
-  height: 280rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -293,7 +292,6 @@
 }
 .myposition-box-top-left{
   width: 140rpx;
-  height: 280rpx;
 }
 .myposition-box-top-left image{
   width: 140rpx;
@@ -303,7 +301,6 @@
 }
 .myposition-box-top-right{
   width: 520rpx;
-  height: 280rpx;
 }
 .myposition-box-top-right-top{
   display: flex;

@@ -88,11 +88,20 @@ Page({
           'id': wx.getStorageSync('id')
         },
         success: function (res) {
-          console.log(res.data)
           if (res.data.code == 0) {
-
+            if(res.data.result==0){
+              that.setData({
+                zonghefen:'暂无'
+              })
+            }else{
+              that.setData({
+                zonghefen: res.data.result.fraction
+              })
+            }
+            
+          }else if(res.data.code==1){
             that.setData({
-              zonghefen: res.data.result.fraction
+              zonghefen:'暂无'
             })
           }
         }

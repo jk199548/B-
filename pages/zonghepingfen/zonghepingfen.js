@@ -8,13 +8,41 @@ Page({
     service:'',
     satisfaction: '',//工作环境评分
     wages: '',//薪资待遇评分
+    list:''
   },
-
+  //获取c端对该用户的所有评论
+  getAllComment:function(e){
+    var that = this;
+    if(wx.getStorageSync('id')){
+      wx.request({
+        url: 'https://www.xiaoshetong.cn/api/recruit/getCommentByRec',
+        data: {
+          'id': wx.getStorageSync('id')
+        },
+        success: function (res) {
+          if(res.data.code==0){
+            that.setData({
+              list:res.data.result
+            });
+            var newlist = [];
+            for(var item in res.data.result){
+              newlist = newlist.concat(res.data.result[item].comment)
+            }
+            that.setData({
+              list:newlist
+            });
+            console.log(that.data.list)
+          }
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.getAllComment()
   },
 
   /**

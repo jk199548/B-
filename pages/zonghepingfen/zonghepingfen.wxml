@@ -15,25 +15,25 @@
   </view>
   <view class="wodepingjia">
     <view>对我的评价</view>
-    <view class="wodepingjiabox">
+    <view class="nodata" wx:if="{{list==''}}">暂无评价!</view>
+    <view class="wodepingjiabox"  wx:for="{{list}}">
       <view class="left">
-        <image src="../../images/index/avtar.png"></image>
+        <image src="{{item.workers.header}}" style="border-radius:50%;"></image>
       </view>
       <view class="right">
         <view class="right-top">
-          <text>向日葵的太阳</text>
-          <view class="right-top-right"> 
+          <text>{{item.workers.username}}</text>
+          <!-- <view class="right-top-right"> 
             <image src="../../images/index/dianzan.png"></image>
             <text>66</text>
-          </view>
+          </view> -->
         </view>
-        <view class="right-mid">
-          四川省创享人力资源管理有限公司成立于2010年，位于天府之国成都，已从单一劳务派遣服务供应商，发展成为四川省创享人力资源管理有限公司成立于2010年</view>
-        <view class="right-bottom">1天前</view>
+        <view class="right-mid">{{item.comment}}</view>
+        <view class="right-bottom">{{item.created_at}}</view>
       </view>
     </view>
   </view>
-  <view class="showmore">
+  <view class="showmore" wx:if="{{list!=''}}">
     <text>加载更多</text>
     <image src="../../images/index/showmore.png"></image>
   </view>

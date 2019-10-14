@@ -23,6 +23,7 @@ App({
               wx.setStorageSync('openid', res.data.result)
             }else if(res.data.code==0){
               // 已注册过
+              console.log(res.data)
               that.globalData.isregister=true;
               wx.setStorageSync('token', res.data.result.token);
               wx.setStorageSync('id', res.data.result.id);

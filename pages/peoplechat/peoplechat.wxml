@@ -19,7 +19,7 @@
         <text>群管理</text>
       </view>
     </view>
-    <view class="sendmoney">点击发工资</view>
+    <!-- <view class="sendmoney">点击发工资</view> -->
   </view>
 
   <!-- 聊天区域页面 -->

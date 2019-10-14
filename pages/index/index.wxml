@@ -2,7 +2,7 @@
 <view class="box">
   <view class="index-box">
     <view class="index-box-nav">
-      <view class="{{selectedid==index?'active':'normal'}}" wx:for="{{navarr}}" data-id="{{index}}" wx:for-index='index' bindtap="changenav">
+      <view class="{{selectedid==index?'active':'normal'}}" wx:for="{{navarr}}" data-id="{{index}}" wx:for-index='index' bindtap="changenav" wx:key="item">
         <view class="item-text">{{item}}</view>
       </view>
     </view>
@@ -19,7 +19,7 @@
   </view>
   <!-- 首页招聘页面有报名 -->
   <view style="height:102rpx;width:750rpx;"></view>
-  <view class="zhaopin-yes" style="margin-top:20rpx;background-color: #fff;" wx:if="{{selectedid==0}}"  wx:for="{{indexposition}}">
+  <view class="zhaopin-yes" style="margin-top:20rpx;background-color: #fff;" wx:if="{{selectedid==0}}"  wx:for="{{indexposition}}" wx:key="item">
     <view class="myposition-box-top" bindtap="towaitpositionlist" data-id="{{item.id}}" data-title="{{item.title}}">
       <view class="myposition-box-top-left">
         <image src="{{item.header}}"></image>
@@ -39,7 +39,7 @@
           <text style="font-size:36rpx;color:#FF7315;" wx:if="{{item.cycle==2}}">/月</text>
         </view>
         <view class="myposition-box-top-right-center" wx:if="{{item.welfare!=''}}">
-          <view wx:for="{{item.welfare}}" >{{item}}</view>
+          <view wx:for="{{item.welfare}}" wx:key="item">{{item}}</view>
         </view>
         <view class="myposition-box-top-right-bottom">
           <!-- <view>
@@ -74,9 +74,9 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{lookmearr==''&&navid==0&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据0</view>
-  <view wx:if="{{collectionworkerarr==''&&navid==1&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据1</view>
-  <view wx:if="{{newworkers==''&&navid==2&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据2</view>
+  <view wx:if="{{lookmearr==''&&navid==0&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据</view>
+  <view wx:if="{{collectionworkerarr==''&&navid==1&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据</view>
+  <view wx:if="{{newworkers==''&&navid==2&&selectedid==1}}" style="text-align:center;width:100%;">暂无数据</view>
   <!-- 首页人才市场页面--看过我的页面 -->
       
   <view class="lookme-box" wx:if="{{navid==0&&selectedid==1}}" wx:for="{{lookmearr}}" wx:key="item" bindtap="looknewworkers" data-id="{{item.worker_id}}">
@@ -143,7 +143,7 @@
   </view>
   <!-- 首页我的职位页面 -->
   <view class="myposition" wx:if="{{selectedid==2&&mypositionnodata!=true}}">
-    <view class="myposition-box" wx:for="{{myposition}}" style="position:relative;">
+    <view class="myposition-box" wx:for="{{myposition}}" style="position:relative;" wx:key="item">
       <!-- <image src="../../images/index/end.png" style="width:104rpx;height:144rpx;position:absolute;top:0rpx;left:618rpx;"></image> -->
       <view class="myposition-box-top" bindtap="topositiondetail" data-id="{{item.id}}">
         <view class="myposition-box-top-left">

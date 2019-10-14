@@ -93,6 +93,7 @@ Page({
             wx.stopPullDownRefresh();
             that.setData({
               zhaopinnodata: true,
+              indexposition:[]
             });
             wx.showToast({
               title: '刷新成功',

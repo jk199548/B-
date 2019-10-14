@@ -11,7 +11,6 @@ Page({
     groupmenber:[],
     groupname:'',
     groupQRcode:'',
-    showallmenbers:false,//是否显示查看所有成员按钮
     groupnamearr:'',//群聊分组名
   },
   showmodal:function(e){
@@ -75,7 +74,6 @@ Page({
   //获取群聊所有成员
   getAllGroupMembers:function(e){
     var that = this;
-    //获取群聊所有成员
     wx.request({
       url: 'https://www.xiaoshetong.cn/api/getGrouping',
       data: {
@@ -87,12 +85,10 @@ Page({
           if(res.data.result.length>10){
             that.setData({
               groupmenber: res.data.result,
-              showallmenbers:true,
             })
           }else{
             that.setData({
               groupmenber: res.data.result,
-              showallmenbers:false
             })
           }
         }
@@ -102,7 +98,6 @@ Page({
   //获取群聊所有分组名
   getGroupAllName:function(e){
     var that = this;
-    //获取群聊所有分组名
     wx.request({
       url: 'https://www.xiaoshetong.cn/api/getGroupingName',
       data: {
